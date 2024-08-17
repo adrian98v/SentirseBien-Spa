@@ -1,0 +1,67 @@
+.citas{
+    position: relative;
+    /* background-color: rgb(253, 222, 227); */
+    background-image: url('./assets/pexels-pixabay-161737.jpg');
+    background-size: cover;
+    
+    height: 43em;
+    z-index: 0;
+}
+
+.fondo_oscuro{
+    position: relative;
+    background-color: black;
+    height: 40em;
+    padding-top: 3em;
+    opacity: .8;
+    z-index: 1;
+}
+
+.citas_contenedor{
+    position: relative;
+    top: -37em;
+    z-index: 2;
+}
+
+label{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-size: 2.3em;
+    font-weight: 600;
+    
+}
+
+#custom-calendar{
+    margin: 0px;
+    margin-right: 10%;
+    padding: 3em 3em 1em 3em;
+    background-color: rgb(255, 242, 242);
+}
+
+#custom-calendar button{
+    font-size: 0.8em;
+}
+
+#custom-calendar span{
+    font-size: 0.7em;
+}
+
+.calendario{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.seccion_reservas{
+    display: flex;
+    justify-content: space-around;
+    /* margin: 3em 0 0 0; */
+}
+
+.seccion_reservas_parrafo{
+    color: white;
+    width: 35%;
+}
+
+.seccion_reservas_parrafo{
+
+}

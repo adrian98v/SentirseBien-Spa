@@ -1,0 +1,39 @@
+.header{
+    display: flex;
+    height: 6em;
+    background-color: rgb(247, 238, 243);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em 0 1em;
+}
+
+.icono{
+    height: 85%;
+    align-content: center;
+    
+}
+
+.opciones{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 4em;
+    align-items: center;
+    height: 30%;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7em;
+    background-color: #da376d;
+    color: white;
+    height: 3em;
+    border-radius: 2em;
+    font-size: medium;
+}
+
+button{
+    all: unset; 
+    cursor: pointer;
+}
