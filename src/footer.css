@@ -1,0 +1,13 @@
+.orders_second_container{
+    display: flex;
+    justify-content: space-around;
+    height: min-content;
+    font-size: 0.8em;
+    margin-top: 2em;
+    background-color: rgb(252, 133, 198);
+}
+
+.orders_p{
+    font-weight: 600;
+    font-size: 1.2em;
+}
