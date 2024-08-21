@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import 'dayjs/locale/es';
 import Footer from './Footer.js'
-
+import FooterSegundo from './OtroFooter.js'
 
 function Citas(){
 
@@ -83,7 +83,8 @@ function Citas(){
 
             <Footer></Footer>
 
-
+            <FooterSegundo></FooterSegundo>
+            
         </div>
 
     </div>

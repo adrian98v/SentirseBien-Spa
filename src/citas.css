@@ -36,7 +36,7 @@ label{
     margin: 0px;
     margin-right: 10%;
     padding: 3em 3em 0 3em;
-    background-color: rgb(255, 252, 252);
+    background-color: rgb(241, 225, 235);
 }
 
 #custom-calendar button{
@@ -50,7 +50,7 @@ label{
 .calendario{
     display: flex;
     justify-content: flex-end;
-    background-color: white;
+    background-color: rgb(241, 225, 235);
     padding-bottom: 3em;
 }
 
@@ -71,10 +71,13 @@ label{
 }
 
 .politicas{
-    margin-top: 10em;
+    margin-top: 60px;
+    padding-top: 50px;
     text-align: left;
-    height: 28em;
-    margin-left: 2em;
+    height: 26em;
+    padding-left: 2em;
+    background-color: #EEE1B0;
+    /* background-color: #E7C981; */
 }
 
 .politicas label{
@@ -107,4 +110,5 @@ label{
 
 .politicas_container p{
     font-weight: 300;
+    color: black;
 }

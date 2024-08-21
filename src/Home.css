@@ -1,0 +1,183 @@
+/* src/App.css */
+
+.App {
+  font-family: Arial, sans-serif;
+}
+
+.bienvenida {
+  width: 100%;
+  height: 47.5em; /* 760px / 16 */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.6)),
+  url(img/imagen_inicio1.jpg);
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.bienvenida h1 {
+  font-size: 3.75em; /* 60px / 16 */
+  text-align: center;
+  margin-bottom: 0.9375em; /* 15px / 16 */
+  color: white;
+}
+
+.bienvenida p {
+  margin-top: 0.625em; /* 10px / 16 */
+  margin-bottom: 2.5em; /* 40px / 16 */
+  font-size: 1.5625em; /* 25px / 16 */
+  line-height: 1.5;
+  max-width: 34.375em; /* 550px / 16 */
+  text-align: center;
+  color: white;
+}
+
+.bienvenida button {
+  border-radius: 2.5em; /* 40px / 16 */
+  border-style: none;
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.6); /* 4px / 16 */
+  width: 15.625em; /* 250px / 16 */
+  height: 4.375em; /* 70px / 16 */
+  color: white;
+  background-color: #CD3363;
+  background-size: 3.125em; /* 50px / 16 */
+  font-size: 1.25em; /* 20px / 16 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.bienvenida button:hover {
+  transform: scale(1.1);
+  background-color: #da6086;
+}
+
+.seccion1 {
+  width: 100%;
+  height: 53.125em; /* 850px / 16 */
+  display: flex;
+  justify-content: space-around;
+  background-color: #E7C981;
+}
+
+.seccion1_articulo, .seccion1_aside {
+  flex: 1;
+}
+
+.seccion1_articulo {
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+
+.seccion1_aside {
+  background-image: url(img/imagen_inicio2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.seccion1_titulo {
+  font-size: 4.0625em; /* 65px / 16 */
+  margin-right: 0.625em; /* 10px / 16 */
+}
+
+.seccion1_texto {
+  margin-left: 3em; /* 70px / 16 */
+  text-align: justify;
+  font-size: 1.875em; /* 30px / 16 */
+  max-width: 25em; /* 800px / 16 */
+  color: black;
+  width: 80%;
+}
+
+.seccion2 {
+  position: relative;
+  width: 100%;
+  height: 43.75em; /* 700px / 16 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.seccion2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(img/imagen_3.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(0.5em); /* 8px / 16 */
+  z-index: -1;
+}
+
+.seccion2_articulo, .seccion2_aside {
+  width: 45%;
+}
+
+.seccion2_articulo {
+  margin-left: 5%;
+  text-align: left;
+}
+
+.seccion2_articulo h2 {
+  font-size: 2.8125em; /* 45px / 16 */
+  color: white;
+}
+
+.seccion2_articulo p {
+  font-size: 1.5em; /* 24px / 16 */
+  max-width: 37.5em; /* 600px / 16 */
+  color: white;
+}
+
+.seccion2_aside {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.nombre {
+  width: 47.5em; /* 600px / 16 */
+  height: 5em; /* 80px / 16 */
+  border-radius: 1.5625em; /* 25px / 16 */
+  padding: 0.625em; /* 10px / 16 */
+  font-size: 0.75em; /* 12px / 16 */
+  border: 0.03125em solid #000000; /* 0.5px / 16 */
+}
+
+.seccion2_aside button {
+  margin-top: 0.8125em; /* 13px / 16 */
+  border-radius: 2.5em; /* 40px / 16 */
+  border: none;
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.6); /* 4px / 16 */
+  width: 29.7em; /* 620px / 16 */
+  height: 3.125em; /* 50px / 16 */
+  color: white;
+  background-color: #CD3363;
+  background-size: 3.125em; /* 50px / 16 */
+  font-size: 1.25em; /* 20px / 16 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.seccion2_aside button:hover {
+  background-color: #da6086;
+  transform: scale(1.02);
+}

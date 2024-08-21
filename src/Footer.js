@@ -1,35 +1,32 @@
-import './footer.css'
+import React from 'react';
+import './footer.css'; // Si tienes estilos específicos para el footer
 
-function Footer(){
-    return <div className='orders_second_container'>
+function Footer() {
+    return (
+      <footer className="footer">
 
-    <div className='orders_second_container_one'>
-        <p className='orders_p'>Contacto:</p>
-        <p>+555 555 555</p>
-        <p>SpaSentirseBien@gmail.com</p>
+        <section className='sector_izquierdo'>
+            <h1>Contacto:</h1>
+            <p>Telefono: +555 434 3422</p>
+            <p>Correo: SpaSentirsebien@gmail.com</p>
+            <p>Direccion: Julio A.Roca 1534</p>
+        </section>
 
-    </div>
+        <section className='sector_medio'>
+            <h1>Trabaja con nosotros:</h1>
+            <p>recursosHumanosSB@gmail.com</p>
+        </section>
 
-    <div className='orders_second_container_two'>
-        <p className='orders_p'>Visitanos</p>
-        <p>Julio A. Roca 1232</p>
+        <section className='sector_derecho'>
+            <h1>Seguinos en nuestras redes:</h1>
+            <p>Facebook</p>
+            <p>Twitter</p>
+            <p>Instagram</p>
+            <p>YouTube</p>
+        </section>
         
-        
-    </div>
-
-    <div className='orders_second_container_three'>
-        <p className='orders_p'>Siguenos en nuestras redes:</p>
-        <p>Facebook</p>
-        <p>Instagram</p>
-        <p>Twitter</p>
-        <p>YouTube</p>
-   
-    </div>
-
-
-</div>
-}
-
-export default Footer
-
-
+      </footer>
+    );
+  }
+  
+  export default Footer;
