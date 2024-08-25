@@ -1,18 +1,19 @@
 /* src/App.css */
 
+/* Estilos generales */
 .App {
   font-family: Arial, sans-serif;
 }
 
+/* Sección de Bienvenida */
 .bienvenida {
   width: 100%;
-  height: 47.5em; /* 760px / 16 */
+  height: 47.5em;
   background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.6)),
-  url(img/imagen_inicio1.jpg);
+    url(img/imagen_inicio1.jpg);
   background-size: cover;
   background-position: center 20%;
   background-repeat: no-repeat;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,32 +22,32 @@
 }
 
 .bienvenida h1 {
-  font-size: 3.75em; /* 60px / 16 */
+  font-size: 3.75em;
   text-align: center;
-  margin-bottom: 0.9375em; /* 15px / 16 */
+  margin-bottom: 0.9375em;
   color: white;
 }
 
 .bienvenida p {
-  margin-top: 0.625em; /* 10px / 16 */
-  margin-bottom: 2.5em; /* 40px / 16 */
-  font-size: 1.5625em; /* 25px / 16 */
+  margin-top: 0.625em;
+  margin-bottom: 2.5em;
+  font-size: 1.5625em;
   line-height: 1.5;
-  max-width: 34.375em; /* 550px / 16 */
+  max-width: 34.375em;
   text-align: center;
   color: white;
 }
 
 .bienvenida button {
-  border-radius: 2.5em; /* 40px / 16 */
+  border-radius: 2.5em;
   border-style: none;
-  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.6); /* 4px / 16 */
-  width: 15.625em; /* 250px / 16 */
-  height: 4.375em; /* 70px / 16 */
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.6);
+  width: 15.625em;
+  height: 4.375em;
   color: white;
   background-color: #CD3363;
-  background-size: 3.125em; /* 50px / 16 */
-  font-size: 1.25em; /* 20px / 16 */
+  background-size: 3.125em;
+  font-size: 1.25em;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
@@ -57,9 +58,10 @@
   background-color: #da6086;
 }
 
+/* Sección 1 */
 .seccion1 {
   width: 100%;
-  height: 53.125em; /* 850px / 16 */
+  height: 53.125em;
   display: flex;
   justify-content: space-around;
   background-color: #E7C981;
@@ -70,6 +72,9 @@
 }
 
 .seccion1_articulo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   justify-self: center;
   align-self: center;
@@ -80,32 +85,30 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .seccion1_titulo {
-  font-size: 4.0625em; /* 65px / 16 */
-  margin-right: 0.625em; /* 10px / 16 */
+  font-size: 4.0625em;
+  margin-right: 0.625em;
 }
 
 .seccion1_texto {
-  margin-left: 3em; /* 70px / 16 */
   text-align: justify;
-  font-size: 1.875em; /* 30px / 16 */
-  max-width: 25em; /* 800px / 16 */
+  font-size: 1.875em;
+  max-width: 25em;
   color: black;
   width: 80%;
 }
 
+/* Sección 2 */
 .seccion2 {
   position: relative;
   width: 100%;
-  height: 43.75em; /* 700px / 16 */
+  height: 43.75em;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
   overflow: hidden;
 }
 
@@ -120,7 +123,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(0.5em); /* 8px / 16 */
+  filter: blur(0.5em);
   z-index: -1;
 }
 
@@ -134,13 +137,13 @@
 }
 
 .seccion2_articulo h2 {
-  font-size: 2.8125em; /* 45px / 16 */
+  font-size: 2.8125em;
   color: white;
 }
 
 .seccion2_articulo p {
-  font-size: 1.5em; /* 24px / 16 */
-  max-width: 37.5em; /* 600px / 16 */
+  font-size: 1.5em;
+  max-width: 37.5em;
   color: white;
 }
 
@@ -149,29 +152,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: start;
 }
 
 .nombre {
-  width: 47.5em; /* 600px / 16 */
-  height: 5em; /* 80px / 16 */
-  border-radius: 1.5625em; /* 25px / 16 */
-  padding: 0.625em; /* 10px / 16 */
-  font-size: 0.75em; /* 12px / 16 */
-  border: 0.03125em solid #000000; /* 0.5px / 16 */
+  width: 47.5em;
+  height: 5em;
+  border-radius: 1.5625em;
+  padding: 0.625em;
+  font-size: 0.75em;
+  border: 0.03125em solid #000000;
 }
 
 .seccion2_aside button {
-  margin-top: 0.8125em; /* 13px / 16 */
-  border-radius: 2.5em; /* 40px / 16 */
+  margin-top: 0.8125em;
+  border-radius: 2.5em;
   border: none;
-  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.6); /* 4px / 16 */
-  width: 29.7em; /* 620px / 16 */
-  height: 3.125em; /* 50px / 16 */
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.6);
+  width: 29.7em;
+  height: 3.125em;
   color: white;
   background-color: #CD3363;
-  background-size: 3.125em; /* 50px / 16 */
-  font-size: 1.25em; /* 20px / 16 */
+  background-size: 3.125em;
+  font-size: 1.25em;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
@@ -180,4 +183,96 @@
 .seccion2_aside button:hover {
   background-color: #da6086;
   transform: scale(1.02);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .bienvenida {
+    height: auto;
+    padding: 2em 1em;
+  }
+
+  .bienvenida h1 {
+    font-size: 2.5em;
+  }
+
+  .bienvenida p {
+    font-size: 1.25em;
+  }
+
+  .bienvenida button {
+    width: 80%;
+    font-size: 1em;
+  }
+
+  .seccion1 {
+    flex-direction: column;
+    height: auto;
+    padding: 2em 1em;
+  }
+
+  .seccion1_titulo {
+    font-size: 2.5em;
+  }
+
+  .seccion1_texto {
+    font-size: 1.25em;
+  }
+
+  .seccion2 {
+    flex-direction: column;
+    height: auto;
+    padding: 2em 1em;
+  }
+
+  .seccion2_articulo, .seccion2_aside {
+    width: 100%;
+    margin: 0 0 2em 0;
+  }
+
+  .nombre {
+    width: 100%;
+  }
+
+  .seccion2_aside button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .bienvenida h1 {
+    font-size: 2em;
+  }
+
+  .bienvenida p {
+    font-size: 1em;
+  }
+
+  .bienvenida button {
+    font-size: 0.875em;
+  }
+
+  .seccion1_titulo {
+    font-size: 2em;
+  }
+
+  .seccion1_texto {
+    font-size: 1em;
+  }
+
+  .seccion2_articulo h2 {
+    font-size: 2em;
+  }
+
+  .seccion2_articulo p {
+    font-size: 1.125em;
+  }
+
+  .nombre {
+    font-size: 0.875em;
+  }
+
+  .seccion2_aside button {
+    font-size: 1em;
+  }
 }

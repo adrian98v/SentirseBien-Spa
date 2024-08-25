@@ -2,8 +2,7 @@
 import React from 'react';
 import './Home.css';
 import Footer from './Footer.js';
-import Header from './Header.js'
-
+import FooterSegundo from './OtroFooter.js'
 
 function Home() {
   return (
@@ -45,6 +44,8 @@ function Home() {
         </aside>
       </section>
       <Footer />
+
+      <FooterSegundo></FooterSegundo>
     </div>
     
   );
