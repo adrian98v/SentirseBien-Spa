@@ -1,0 +1,62 @@
+.login_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(247, 247, 247);
+    height: 100vh;
+}
+
+.login_logo {
+    width: 130px;
+    margin-top: 25px;
+}
+
+.login_container > h2 {
+    margin-top: 0px;
+}
+
+.login_container {
+    padding: 20px;
+    width: 300px;
+    border: 1px solid rgb(190, 190, 190);
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.login_button {
+    width: 100%;
+    background: linear-gradient(#ff7fff, #ef4ef5);
+    border: 1px solid #a11d8b;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.login_button:active{
+    background: linear-gradient(#ff7fff, #b131b6);
+}
+
+.login_create_account_button {
+    background: linear-gradient(#fcfcfc, #d8d8d8);
+    border: 1px solid rgb(110, 110, 110);
+    height: 30px;
+    padding: 0 1em 0 1em;
+    border-radius: 3px;
+    margin-top: 30px;
+    color: black;
+    text-decoration: none;
+}
+
+.login_fail{
+    margin-top: 10px;
+}
+
+.login_fail > span{ 
+    font-size: 0.8em;
+    color: rgb(216, 4, 4);
+    font-weight: 500;
+}
+
+h4{
+    margin: 2em 0 1em 0;
+}

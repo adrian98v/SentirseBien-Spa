@@ -11,6 +11,7 @@ function Header() {
     return (
         <div className={`header ${menuOpen ? 'active' : ''}`}>
             <div className='icono'>
+                
             <Link to='/'>
                 <img src={Icono} className='icono' alt='logo'></img>
             </Link>
@@ -28,7 +29,7 @@ function Header() {
                 <button onClick={()=>{history('/contacto')}}>Contacto</button>
             </div>
 
-            <button className='login'>Iniciar Sesión</button>
+            <button className='login' onClick={()=>{history('/login')}}>Iniciar Sesión</button>
         </div>
     );
 }

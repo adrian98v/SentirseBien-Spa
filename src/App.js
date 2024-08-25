@@ -4,6 +4,7 @@ import Citas from './Citas.js'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {createContext, useEffect, useState} from 'react'
 import Home from './Home.js'
+import Login from './Login.js'
 
 export const DataContext = createContext()
 
@@ -21,6 +22,9 @@ function App() {
               
             </>}/>
 
+            <Route path="/login" element={<>
+              <Login/>
+            </>}/>
 
             <Route path="/" element={<>
               <Header/>
