@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {createContext, useEffect, useState} from 'react'
 import Home from './Home.js'
 import Login from './Login.js'
+import Contact from './Contact.jsx';
 
 export const DataContext = createContext()
 
@@ -29,6 +30,12 @@ function App() {
             <Route path="/" element={<>
               <Header/>
               <Home/> 
+              
+            </>}/>
+            <Route path="/contacto" element={<>
+              <Header/>
+              <Contact/> 
+              
               
             </>}/>
           </Routes>

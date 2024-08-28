@@ -13,12 +13,12 @@ footer {
 }
 
 /* Estilos para los encabezados */
-h1 {
+.footer h1 {
     font-size: 22px;
 }
 
 /* Estilos para los párrafos */
-p {
+.footer p {
     color: white;
     font-size: 16px;
 }
@@ -30,7 +30,7 @@ p {
 
 /* Media Queries para pantallas pequeñas */
 @media (max-width: 768px) {
-    footer {
+    .footer {
         flex-direction: column;
         align-items: center;
         height: auto; /* Ajusta la altura para el contenido dinámico */

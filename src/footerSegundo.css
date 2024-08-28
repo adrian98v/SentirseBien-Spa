@@ -1,7 +1,8 @@
 .segundo_footer{
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    height: 5em;
+    background-color: white;
 }
 
 label{
