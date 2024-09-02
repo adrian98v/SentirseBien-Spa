@@ -189,7 +189,7 @@
 @media (max-width: 768px) {
   .bienvenida {
     height: auto;
-    padding: 2em 1em;
+    /* padding: 2em 1em; */
   }
 
   .bienvenida h1 {
@@ -208,7 +208,7 @@
   .seccion1 {
     flex-direction: column;
     height: auto;
-    padding: 2em 1em;
+    /* padding: 2em 1em; */
   }
 
   .seccion1_titulo {
@@ -222,7 +222,7 @@
   .seccion2 {
     flex-direction: column;
     height: auto;
-    padding: 2em 1em;
+    /* padding: 2em 1em; */
   }
 
   .seccion2_articulo, .seccion2_aside {

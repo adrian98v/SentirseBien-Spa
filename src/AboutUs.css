@@ -1,0 +1,92 @@
+/* Estilo general del contenedor */
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #E7C981;
+    padding: 2em;
+    min-height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
+    margin-bottom: 2em; /* Añade un margen entre las secciones */
+}
+
+/* Contenedor de texto */
+.about-us-text {
+    font-family: 'Nunito', sans-serif;
+    flex: 1;
+    min-width: 300px;
+    max-width: 50%; /* Limita el ancho máximo al 50% */
+    padding: 1em;
+    box-sizing: border-box;
+    font-size: 1.2em; /* Aumenta el tamaño de la letra */
+    line-height: 1.6em; /* Aumenta el interlineado */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el texto dentro del contenedor */
+    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+}
+
+/* Opcional: Añadir padding adicional para mejorar el centrado */
+.about-us-text p {
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: justify; /* Justifica el texto si lo prefieres */
+}
+
+/* Estilo para los párrafos dentro del contenedor de texto */
+.about-us-text p {
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: justify; /* Justifica el texto si lo prefieres */
+    font-weight: 600; /* Hace el texto más grueso (valor medio) */
+}
+
+
+/* Estilo para la sección de imágenes */
+.about-us-images {
+    flex: 1;
+    min-width: 300px;
+    max-width: 50%; /* Limita el ancho máximo al 50% */
+    padding: 1em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; /* Centra las imágenes horizontalmente */
+}
+
+/* Estilo para las imágenes */
+.about-us-images img {
+    width: 90%; /* La imagen ocupará el 100% del ancho del contenedor */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    max-width: 300px; /* Limita el ancho máximo de la imagen a 300px */
+    margin-bottom: 1em;
+    border-radius: 8px; /* Bordes redondeados opcionales */
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .about-us-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-us-text, .about-us-images {
+        max-width: 100%;
+        padding: 1em;
+    }
+}
+
+/* Estilo del separador */
+/* Separador punteado */
+.section-divider {
+    border: none;
+    border-top: 2px dashed #da376d; /* Línea punteada */
+    margin: 3em 0;
+    width: 80%; /* Ajusta el ancho de la línea */
+    margin-left: auto;
+    margin-right: auto; /* Centra la línea */
+}
+
+.rotate-image {
+    transform: rotate(-5deg); /* Rota la imagen 5 grados */
+    
+}

@@ -6,6 +6,10 @@ import {createContext, useEffect, useState} from 'react'
 import Home from './Home.js'
 import Login from './Login.js'
 import Contact from './Contact.jsx';
+import AboutUs from './AboutUs.jsx';
+import Services from './Services.js';
+import Footer from './Footer.js';
+import FooterSegundo from './OtroFooter.js';
 
 export const DataContext = createContext()
 
@@ -30,6 +34,21 @@ function App() {
             <Route path="/" element={<>
               <Header/>
               <Home/> 
+              
+            </>}/>
+            <Route path="/servicios" element={<>
+              <Header/>
+              <Services/> 
+              <Footer></Footer>
+        <FooterSegundo></FooterSegundo>
+              
+            </>}/>
+            <Route path="/about" element={<>
+              <Header/>
+              <AboutUs/> 
+              
+              <Footer></Footer>
+        <FooterSegundo></FooterSegundo>
               
             </>}/>
             <Route path="/contacto" element={<>
