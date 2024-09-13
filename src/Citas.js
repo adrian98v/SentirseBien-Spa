@@ -4,18 +4,64 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import 'dayjs/locale/es';
 import Footer from './Footer.js'
 import FooterSegundo from './OtroFooter.js'
+import { useNavigate } from 'react-router-dom';
+import { DataContext } from './App.js';
+import { doc, updateDoc,  collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "./firebase.js"
 
 function Citas(){
 
-    const startOfYear = dayjs(); // Primer día del año actual
-
-    const [fechaReserva, setFechaReserva] = useState(dayjs())
+    const startOfYear = dayjs();
+    const endOfYear = dayjs().endOf('year'); // Último día del año actual
     
-    console.log(fechaReserva)
+    const history = useNavigate();
+
+    
+
+    const {user, horaReserva, setHoraReserva, 
+        fechaReserva, setFechaReserva,
+        horariosTomados, setHorariosTomados,
+        servicio, setServicio} = useContext(DataContext)
+    
+
+    async function updateReserva(){
+        const updateCliente = doc(db, "clientes", user.email);
+
+        await updateDoc(updateCliente, {
+            reservaCompleta: {dia: fechaReserva,
+            hora: horaReserva,
+            },
+            servicio: servicio
+        });
+    }
+
+    async function getReservas(){
+        const q = query(collection(db, "clientes"), where("servicio", "==", servicio));
+
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+        setHorariosTomados([...horariosTomados, doc.data().reservaCompleta])
+       })
+        
+    }
+    
+    useEffect(() => {
+        setHorariosTomados([])    //  AACAAAA SEGUIIIIIIIIIIIRRRR
+ 
+    }, []); // Dependencia en servicio
+
+    useEffect(() => {
+        setHorariosTomados([])
+        if(user) getReservas();
+    }, [servicio]); // Dependencia en servicio
+
+
+
+    // console.log(horariosTomados)
 
     return <div className="citas">
 
@@ -37,12 +83,53 @@ function Citas(){
 
                 <div className='calendario'>
                     <div className='calendarioHora'>
+
+                        <div class="dropdown">
+                            <button class="dropdown-button">Servicio</button>
+                            <div class="dropdown-content">
+                                <button onClick={()=>{setServicio("masaje")}}>Masaje</button>
+                                <button onClick={()=>{setServicio("belleza")}}>Belleza</button>
+                                <button onClick={()=>{setServicio("facial")}}>Tratamiento facial</button>
+                                <button onClick={()=>{setServicio("corporal")}}>Tratamiento corporal</button>
+                            </div>
+                        </div>
+
                         <LocalizationProvider adapterLocale="es" dateAdapter={AdapterDayjs} id='calendario'>
                             <DateCalendar id='custom-calendar'
-                            minDate={startOfYear} onChange={(newDate)=>{setFechaReserva(newDate)}}/>
+                            minDate={startOfYear} maxDate={endOfYear} onChange={(newDate)=>{
+                                const formattedDate = dayjs(newDate).format('DD/MM/YYYY');  // Formato personalizado
+                                setFechaReserva(formattedDate)
+                                
+                            }}/>
 
-                            <TimePicker ampm={true}></TimePicker>
+                            <TimePicker 
+                            minTime={dayjs().set('hour',8).startOf('hour')}
+                            maxTime={dayjs().set('hour', 20).startOf('hour')}
+
+                            shouldDisableTime={(value, view) =>{
+                                if(view === 'minutes'){ return value.minute()}      
+                                if(view === 'hours'){ return value.hour() > 11 && value.hour() < 15 }       
+                            }}                       
+                            
+
+                            onChange={(e)=>{
+                                const formattedTime = dayjs(e).format('HH:mm');  // Formato de 12 horas con AM/PM
+                                setHoraReserva(formattedTime);}}></TimePicker>
+                            
                         </LocalizationProvider>
+
+                        <button className='reservar_button' disabled={!horaReserva || !fechaReserva}
+                            onClick={()=>{
+                                if(user){                             
+                                    updateReserva()
+                                    history('/confirmation')
+                                }else{
+                                    setFechaReserva(null)
+                                    setHoraReserva(null)
+                                    history('/login')
+                                }
+                            }}
+                        >Reservar</button>
 
                     </div>
                     

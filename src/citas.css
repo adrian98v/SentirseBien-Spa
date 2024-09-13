@@ -32,7 +32,7 @@ label {
 #custom-calendar {
     margin: 0px;
     margin-right: 10%;
-    padding: 3em 3em 0 3em;
+    padding: 1em 3em 0 3em;
     background-color: rgb(241, 225, 235);
 }
 
@@ -48,7 +48,7 @@ label {
     display: flex;
     justify-content: flex-end;
     background-color: rgb(241, 225, 235);
-    padding-bottom: 3em;
+    padding-bottom: 2em;
 }
 
 .seccion_reservas {
@@ -67,7 +67,7 @@ label {
 }
 
 .politicas {
-    margin-top: 60px;
+    margin-top: 40px;
     padding-top: 50px;
     text-align: left;
     height: 26em;
@@ -107,6 +107,87 @@ label {
     font-weight: 300;
     color: black;
 }
+
+.reservar_button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 0 10px 0;
+    width: 7em;
+    background-color: #da376d;
+    color: white;
+    height: 1em;
+    border-radius: 1em;
+    font-size: medium;
+}
+
+.reservar_button:disabled{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 0 10px 0;
+    width: 7em;
+    background-color: #7a7a7a;
+    color: rgb(190, 190, 190);
+    height: 1em;
+    border-radius: 1em;
+    font-size: medium;
+}
+
+/* Estilos para el menú */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Estilo para el botón */
+  .dropdown-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Lista del menú desplegable */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: -2em;
+    
+  }
+
+  /* Opciones del menú */
+  .dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    
+  }
+
+  /* Cambia el fondo al pasar el ratón sobre una opción */
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Mostrar el menú al pasar sobre el dropdown */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Cambiar el color del botón al pasar sobre él */
+  .dropdown:hover .dropdown-button {
+    background-color: #3e8e41;
+  }
 
 /* Media Queries para hacer responsive */
 @media (max-width: 700px) {

@@ -2,10 +2,9 @@ import { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import './login.css'
 import Icono from './assets/Logo_VerdeOscuro-removebg-preview.png';
-// import {auth} from './firebase.js'
-// import { signInWithEmailAndPassword } from "firebase/auth"
+import {auth} from './firebase.js'
 import { DataContext } from "./App.js"
-
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
 function Login(){
@@ -15,7 +14,10 @@ function Login(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [boolLogin, setBoolLogin] = useState(false)
-    // const {setUserFlag} = useContext(DataContext)
+    const {setUserFlag} = useContext(DataContext)
+
+
+    const auth = getAuth();
 
     return <div className="login_page">
         <Link to='/'>
@@ -42,15 +44,15 @@ function Login(){
                 }}/>
 
                 <button onClick={(e)=>{
-                    // e.preventDefault()
+                    e.preventDefault()
 
-                    // signInWithEmailAndPassword(auth, email, password)
-                    // .then(res => {
-                    //     setUserFlag(true)
-                    //     history('/')})
-                    // .catch(error => {
-                    //     setBoolLogin(true)
-                    // })
+                    signInWithEmailAndPassword(auth, email, password)
+                    .then(res => {
+                        setUserFlag(true)
+                        history('/')})
+                    .catch(error => {
+                        setBoolLogin(true)
+                    })
 
                 }} className="login_button">Iniciar sesión</button>
             </form>

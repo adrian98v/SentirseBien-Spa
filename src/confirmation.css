@@ -1,0 +1,42 @@
+.successful_payment_container{
+    min-width: 30em;
+    width: 60vw;
+    background-color: white;
+    margin: 0 auto;
+    height: 25em;
+    padding-right: 1.2em;
+    padding-left: 1.2em;
+    margin-top: 2em;
+    text-align: center;
+}
+
+.successful_payment_p{
+    margin: 0px;
+    padding-top: 1em;
+    font-size: 1.3em;
+    color: rgb(13, 133, 13);
+    font-weight: 700;
+}
+
+.successful_green_check{
+    max-width: 8em;
+    width: 20%;
+    padding-top: 1.3em;
+}
+
+.successful_payment_amount{
+    padding-top: 0.5em;
+}
+
+.successful_button{
+    margin-top: 2em;
+    padding: 0.6em 4em;
+    border-radius: 1.5em;
+    border: 1px solid #97284d;
+    background-color: #da376d;
+    color: rgb(255, 255, 255);
+}
+
+.successful_button:active{
+    background-color: rgb(52, 168, 64);
+}
