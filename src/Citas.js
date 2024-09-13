@@ -39,29 +39,36 @@ function Citas(){
         });
     }
 
+
+
     async function getReservas(){
+        setHorariosTomados([])
         const q = query(collection(db, "clientes"), where("servicio", "==", servicio));
 
         const querySnapshot = await getDocs(q);
+        const nuevosHorarios = []; // Crear un array temporal para almacenar los nuevos horarios
+
         querySnapshot.forEach((doc) => {
-        setHorariosTomados([...horariosTomados, doc.data().reservaCompleta])
-       })
+            nuevosHorarios.push(doc.data().reservaCompleta); // Agregar cada reserva al array temporal
+        });
+
+        setHorariosTomados(nuevosHorarios);
         
     }
     
     useEffect(() => {
-        setHorariosTomados([])    //  AACAAAA SEGUIIIIIIIIIIIRRRR
+        setHorariosTomados([])   
  
     }, []); // Dependencia en servicio
 
     useEffect(() => {
-        setHorariosTomados([])
+        
         if(user) getReservas();
     }, [servicio]); // Dependencia en servicio
 
 
 
-    // console.log(horariosTomados)
+    
 
     return <div className="citas">
 
@@ -85,7 +92,7 @@ function Citas(){
                     <div className='calendarioHora'>
 
                         <div class="dropdown">
-                            <button class="dropdown-button">Servicio</button>
+                            <button class="dropdown-button">{servicio == "" ? 'Servicio' : servicio.charAt(0).toUpperCase() + servicio.slice(1)}</button>
                             <div class="dropdown-content">
                                 <button onClick={()=>{setServicio("masaje")}}>Masaje</button>
                                 <button onClick={()=>{setServicio("belleza")}}>Belleza</button>
@@ -96,6 +103,16 @@ function Citas(){
 
                         <LocalizationProvider adapterLocale="es" dateAdapter={AdapterDayjs} id='calendario'>
                             <DateCalendar id='custom-calendar'
+                            
+                            shouldDisableDate={(date) => {
+                                const day = date.day();
+                                
+                                return day === 0
+                            }
+                                
+                            }
+
+
                             minDate={startOfYear} maxDate={endOfYear} onChange={(newDate)=>{
                                 const formattedDate = dayjs(newDate).format('DD/MM/YYYY');  // Formato personalizado
                                 setFechaReserva(formattedDate)
@@ -108,8 +125,18 @@ function Citas(){
                             maxTime={dayjs().set('hour', 20).startOf('hour')}
 
                             shouldDisableTime={(value, view) =>{
-                                if(view === 'minutes'){ return value.minute()}      
-                                if(view === 'hours'){ return value.hour() > 11 && value.hour() < 15 }       
+                                if(servicio !== ""){
+
+                                    if(view === 'minutes'){ return value.minute()}      
+                                    if(view === 'hours'){ 
+                                        
+
+                                        return value.hour() > 11 && value.hour() < 15 
+                                    
+                                    
+                                    }    
+                                }else{return true}
+                                
                             }}                       
                             
                             onChange={(e)=>{
