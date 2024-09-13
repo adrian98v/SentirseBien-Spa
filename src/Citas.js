@@ -102,6 +102,7 @@ function Citas(){
                                 
                             }}/>
 
+
                             <TimePicker 
                             minTime={dayjs().set('hour',8).startOf('hour')}
                             maxTime={dayjs().set('hour', 20).startOf('hour')}
@@ -111,7 +112,6 @@ function Citas(){
                                 if(view === 'hours'){ return value.hour() > 11 && value.hour() < 15 }       
                             }}                       
                             
-
                             onChange={(e)=>{
                                 const formattedTime = dayjs(e).format('HH:mm');  // Formato de 12 horas con AM/PM
                                 setHoraReserva(formattedTime);}}></TimePicker>
