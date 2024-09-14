@@ -16,14 +16,12 @@ function Sign_up(){
     const [password, setPassword] = useState("")
     const [emailExists, setEmailExists] = useState(false)
     const [invalidEmail, setInvalidEmail] = useState(false)
-    const [address, setAddress] = useState("")
-    const [city, setCity] = useState("")
-    const [country, setCountry] = useState("")
+ 
     
     const {reservaCompleta, servicio} = useContext(DataContext)
 
     async function addNewDocument(){
-        await setDoc(doc(db, "clientes", email), {country, city, address, email, 
+        await setDoc(doc(db, "clientes", email), {email, 
             userName, reservaCompleta, servicio});
     }
    
@@ -35,33 +33,17 @@ function Sign_up(){
         
 
         <div className="signup_container">
-            <h2>Sign-up</h2>
+            <h2>Registrate</h2>
 
             <form>
 
-                <h4>Username</h4>
+                <h4>Usuario</h4>
 
                 <input type='text' value={userName} onChange={(e)=> {
                     setUserName(e.target.value)
                 }}/>
 
-                <h4>Address</h4>
-
-                <input type='text' value={address} onChange={(e)=> {
-                    setAddress(e.target.value)
-                }}/>
-
-                <h4>City</h4>
-
-                <input type='text' value={city} onChange={(e)=> {
-                    setCity(e.target.value)
-                }}/>
-
-                <h4>Country</h4>
-
-                <input type='text' value={country} onChange={(e)=> {
-                    setCountry(e.target.value)
-                }}/>
+                
                 <h4>E-mail</h4>
 
                 <input type='text' value={email} onChange={(e)=> {
@@ -71,16 +53,16 @@ function Sign_up(){
                 <span className="signup_mail_warning">{emailExists && "E-mail already exists"}</span>
                 <span className="signup_mail_warning">{invalidEmail && "Invalid E-mail"}</span>
 
-                <h4>Password</h4>
+                <h4>Contraseña</h4>
 
                 <input type='password' value={password} onChange={e => {
                     setPassword(e.target.value)
                 }}/>
 
-                <span>{password.length < 6 && 'Password should be at least 6 characters'}</span>
+                <span>{password.length < 6 && 'La contraseña debe tener al menos 6 caracteres'}</span>
             
 
-                <button disabled={!userName || !address || !city || !country || !password} onClick={(e)=>{
+                <button disabled={!userName || !password} onClick={(e)=>{
                     e.preventDefault()
 
                     createUserWithEmailAndPassword(auth, email, password)
@@ -94,7 +76,7 @@ function Sign_up(){
                             console.log(error)})
                             
 
-                }} className="signup_button">Sign up</button>
+                }} className="signup_button">Registrar</button>
             </form>
 
             

@@ -27,9 +27,7 @@ function Citas(){
         horariosTomados, setHorariosTomados,
         servicio, setServicio} = useContext(DataContext)
     
-    
-        //Estado para bloquear el dia
-    const [horarioFlag, setHorarioFlag] = useState(false)
+
 
     async function updateReserva(){
         const updateCliente = doc(db, "clientes", user.email);
