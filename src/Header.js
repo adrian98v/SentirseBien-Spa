@@ -13,7 +13,7 @@ function Header() {
 
     const history = useNavigate();
 
-    console.log(user)
+
     
     return (
         <div className={`header ${menuOpen ? 'active' : ''}`}>

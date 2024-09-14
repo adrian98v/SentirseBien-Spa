@@ -27,16 +27,22 @@ function Citas(){
         horariosTomados, setHorariosTomados,
         servicio, setServicio} = useContext(DataContext)
     
+    
+        //Estado para bloquear el dia
+    const [horarioFlag, setHorarioFlag] = useState(false)
 
     async function updateReserva(){
         const updateCliente = doc(db, "clientes", user.email);
 
-        await updateDoc(updateCliente, {
-            reservaCompleta: {dia: fechaReserva,
-            hora: horaReserva,
-            },
-            servicio: servicio
-        });
+        if(fechaReserva && horaReserva && servicio){
+            await updateDoc(updateCliente, {
+                reservaCompleta: {dia: fechaReserva,
+                hora: horaReserva,
+                },
+                servicio: servicio
+            });
+        }
+        
     }
 
 
@@ -54,6 +60,7 @@ function Citas(){
 
         setHorariosTomados(nuevosHorarios);
         
+        console.log(horariosTomados)
     }
     
     useEffect(() => {
@@ -107,7 +114,11 @@ function Citas(){
                             shouldDisableDate={(date) => {
                                 const day = date.day();
                                 
-                                return day === 0
+                                const objetoFecha = horariosTomados[0]
+
+                                if(objetoFecha && user) {return day === 0  }
+                               
+                                
                             }
                                 
                             }
@@ -121,20 +132,32 @@ function Citas(){
 
 
                             <TimePicker 
-                            minTime={dayjs().set('hour',8).startOf('hour')}
+                            minTime={dayjs().set('hour', 8).startOf('hour')}
                             maxTime={dayjs().set('hour', 20).startOf('hour')}
 
                             shouldDisableTime={(value, view) =>{
-                                if(servicio !== ""){
+                                if(servicio !== "" && user && horariosTomados.length > 0 && horariosTomados[0].hora){
 
                                     if(view === 'minutes'){ return value.minute()}      
                                     if(view === 'hours'){ 
                                         
+                                        const horaObjeto = horariosTomados[0].hora
 
-                                        return value.hour() > 11 && value.hour() < 15 
+                                        const horaDosNumeros = horaObjeto.substring(0, 2)
+
+                                        let valueHourFormatted = JSON.stringify(value.hour())
+
+                                        if(valueHourFormatted.length == 1){valueHourFormatted = "0" + valueHourFormatted}
                                     
-                                    
-                                    }    
+
+                                        if(fechaReserva == horariosTomados[0].dia){
+                           
+                                            return horaDosNumeros == valueHourFormatted                                          
+                                            
+                                        }
+                                        
+                                    }   
+
                                 }else{return true}
                                 
                             }}                       
