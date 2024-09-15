@@ -58,7 +58,7 @@ function Citas(){
 
         setHorariosTomados(nuevosHorarios);
         
-        console.log(horariosTomados)
+
     }
     
     useEffect(() => {
@@ -157,9 +157,6 @@ function Citas(){
                                     }   
 
                                 }
-
-
-                                
                                 
                             }}                       
                             
