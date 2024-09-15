@@ -156,7 +156,10 @@ function Citas(){
                                         
                                     }   
 
-                                }else{return true}
+                                }
+
+
+                                
                                 
                             }}                       
                             
