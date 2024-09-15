@@ -22,7 +22,7 @@ function Successful(){
 
         <p className='successful_payment_amount'><strong>Te esperamos!</strong></p>
 
-        <button className='successful_button' onClick={()=>{history('/')}}>Done</button>
+        <button className='successful_button' onClick={()=>{history('/')}}>Volver</button>
     </div>
     
 }

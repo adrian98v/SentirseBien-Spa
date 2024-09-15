@@ -9,7 +9,7 @@ function Footer() {
           <h1>Contacto:</h1>
           <p>Telefono: +555 434 3422</p>
           <p>Correo: SpaSentirsebien@gmail.com</p>
-          <p>Direccion: Julio A.Roca 1466</p>
+          <p>Direccion: Julio A.Roca 1534</p>
         </section>
 
         <section className='sector_medio'>
@@ -18,7 +18,7 @@ function Footer() {
         </section>
 
         <section className='sector_derecho'>
-          <h1>Seguinos en nuestras redes:</h1>
+        <h1>Seguinos en nuestras redes:</h1>
           <a href="https://www.youtube.com/@Sentirse-Bien-Spa" target="_blank"><p>YouTube</p></a>
           <a href="https://www.facebook.com/profile.php?id=61565586311256" target="_blank"><p>Facebook</p></a>
           <a href="https://www.instagram.com/tu_perfil" target="_blank"><p>Instagram</p></a>

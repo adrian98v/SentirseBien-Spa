@@ -216,12 +216,12 @@ function Citas(){
             </div>
 
 
-            
-        </div>
-
             <Footer></Footer>
 
             <FooterSegundo></FooterSegundo>
+            
+        </div>
+
     </div>
 }
 
