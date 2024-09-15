@@ -218,12 +218,12 @@ function Citas(){
             </div>
 
 
-            <Footer></Footer>
-
-            <FooterSegundo></FooterSegundo>
             
         </div>
 
+            <Footer></Footer>
+
+            <FooterSegundo></FooterSegundo>
     </div>
 }
 

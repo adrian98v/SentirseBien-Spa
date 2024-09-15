@@ -1,0 +1,94 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Section_1{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #69c9329f 15%, #fffae09c 1% );
+}
+.Titulo{
+    font-family: "Poppins",sans-serif;
+    font-weight: 800;
+    font-size: 5em;
+    align-self: flex-start;
+    margin-left: 1.3em;
+}
+
+.Izq {
+    
+    display: flex;
+    align-items: center; /* Alinea verticalmente el contenido */
+    gap: 2em; /* Espacio entre la imagen y el texto */
+    margin-bottom: 5em;
+    margin-top: 3em;
+  }
+  
+  .Section_1_Img{
+    flex-shrink: 0; /* Evita que la imagen se reduzca */
+    height: 20em;
+    width: 25m;
+    margin-right: 2em; /* Espacio entre la imagen y el texto */
+    border-radius: 2em; /* Radio de borde redondeado */
+    margin-bottom: 0.4em;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+  }
+  
+ .text {
+    font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+    margin: 0; /* Elimina el margen por defecto del h2 */
+    font-size: 1.7em; /* Ajusta el tamaño del texto según sea necesario */
+    line-height: 1.5; /* Mejora la legibilidad del texto */
+    max-width: 30em; /* Limita el ancho del texto para que no se extienda demasiado */
+    text-align: justify;
+}
+
+  .Der{
+    display: flex;
+    align-items: center; /* Alinea verticalmente el contenido */
+    gap: 2em; /* Espacio entre la imagen y el texto */
+    margin-bottom: 5em;
+  }
+
+  .Premios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
+    gap: 2rem; /* Espacio entre las columnas */
+    justify-items: center; /* Centra los elementos dentro de cada columna */
+    align-items: center; /* Centra verticalmente cada elemento */
+    background-color: #ffebeb9f;
+    width: 100%;
+    
+    
+  }
+  
+  .Premios div {
+    text-align: center; /* Alinea el texto y los iconos en el centro de cada columna */
+  }
+  
+  .iconos{
+    margin-top: 1em;
+    border-right-color: #69c9329f;
+  }
+
+  
+  /* Opcional: Añadir estilos a los íconos */
+  .Premios svg {
+    color: #e44879; /* Cambia el color del icono */
+  }
+  p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    margin-top: 1rem; /* Espacio entre el icono y el texto */
+    font-size: 1.2rem;
+  }

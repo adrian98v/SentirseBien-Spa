@@ -1,0 +1,80 @@
+.Contacto {
+    height: 65em;
+    width: 100%;
+   display: flex;
+    font-family: "Poppins", sans-serif;
+    background-color: rgba(255, 190, 217, 0.541);
+}
+
+.Contacto h1 {
+    font-weight: 700;
+    font-size: 3em;
+    
+}
+
+.parte_Izq {
+    width: 50%; /* Ocupa el 50% del ancho de la pantalla */
+    display: flex;
+    flex-direction :column ;
+    justify-content:center;
+    text-align: left; 
+    margin-left:3em;
+    margin-right: 2em;
+    flex:1;
+}
+
+.parte_Izq h2{
+    font-weight: 300;
+    text-align: justify;
+    align-self: flex-start;
+    max-width: 50em;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.parte_Izq h3{
+    font-weight: 300;
+    text-align: justify;
+    align-self: flex-start;
+    margin-bottom: 0;
+    max-width: 60em;
+    
+}
+
+.parte_Der {
+    width: 50%; /* Ocupa el otro 50% del ancho de la pantalla */
+    display: flex;
+    justify-content: center; /* Centra el contenido del mapa */
+    align-items: center; /* Alinea verticalmente el mapa */
+    background-color: rgba(235, 90, 223, 0.342);
+    flex-direction: column;
+    
+    
+    
+}
+.parte_Der iframe{
+    margin-right: 3em;
+    width: 50em;
+    height: 40em;
+    margin-bottom: 1em;
+    margin-left: 2em;
+}
+.redes_Sociales{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 0.8em;
+}
+.redes_Sociales svg{
+    margin-left: 8em;
+    margin-right: 8em;
+    color: #0f0f0f;
+
+}
+.FormContacto{
+    height: 60em;
+    width: 100%;
+    margin-top: 2em;
+    background-color: rgba(255, 255, 255, 0.315);
+}
+

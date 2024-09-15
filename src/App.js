@@ -6,14 +6,14 @@ import {createContext, useEffect, useState} from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import Home from './Home.js'
 import Login from './Login.js'
-import Contact from './Contact.jsx';
-import AboutUs from './AboutUs.jsx';
-import Services from './Services.js';
+import Contacto from './Contacto.jsx';
+import Services from './Services.jsx';
 import Footer from './Footer.js';
 import FooterSegundo from './OtroFooter.js';
 import SignUp from './SignUp.js'
 import Confirmation from './Confirmation.js'
 import { auth } from "./firebase.js"
+import AcercaDe from './AcercaDe.jsx';
 
 export const DataContext = createContext()
 
@@ -76,22 +76,20 @@ useEffect(()=>{
             <Route path="/servicios" element={<>
               <Header/>
               <Services/> 
-              <Footer></Footer>
-              <FooterSegundo></FooterSegundo>
+              
               
             </>}/>
             <Route path="/about" element={<>
               <Header/>
-              <AboutUs/> 
+              <AcercaDe/> 
               
-              <Footer></Footer>
-              <FooterSegundo></FooterSegundo>
               
             </>}/>
             <Route path="/contacto" element={<>
               <Header/>
-              <Contact/> 
-              
+              <Contacto/> 
+              <Footer></Footer>
+              <FooterSegundo></FooterSegundo>
               
             </>}/>
 

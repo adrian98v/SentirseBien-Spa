@@ -3,6 +3,7 @@ import React from 'react';
 import './Home.css';
 import Footer from './Footer.js';
 import FooterSegundo from './OtroFooter.js'
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -12,14 +13,17 @@ function Home() {
         
         <h1>Sentirse Bien</h1>
         <p>Recibe a quienes visitan el sitio con una presentación breve, amable y genuina.</p>
-        <button >Más Información</button>
+        <Link to="/about" className="botonMasInfo">
+        Más Información
+      </Link>
       </section>
 
       {/* Sección de Contenido 1 */}
       <section className='seccion1'>
         <article className='seccion1_articulo'>
           <h1 className='seccion1_titulo'>Más sobre nuestro SPA</h1>
-          <p className='seccion1_texto'>Cuenta quién eres, tus orígenes, tu proceso o lo que te inspira. Aprovecha tu creatividad. ¡Tú puedes! La manera en la que cuentes tu historia en línea puede marcar la diferencia. No te preocupes por sonar profesional. Suena genuino.</p>
+          <p className='seccion1_texto'>¡Bienvenido a Sentirse Bien! 🌿✨
+          Descubre un oasis de paz y renovación en nuestro spa, donde cada servicio está diseñado para ofrecerte una experiencia de bienestar inigualable. Desde masajes relajantes hasta tratamientos de belleza revitalizantes, nuestro equipo de expertos se dedica a cuidar de ti y ayudarte a alcanzar el equilibrio perfecto entre cuerpo y mente. ¡Permítenos ser parte de tu viaje hacia un tú más feliz y saludable!</p>
         </article>
         <aside className='seccion1_aside'></aside>
       </section>
@@ -32,7 +36,14 @@ function Home() {
           <p>Se agradece la amabilidad</p>
         </article>
         <aside className='seccion2_aside'>
-          <h3>Mensaje(obligatorio)</h3>
+          <h3>Escriba su nombre completo:</h3>
+        <input
+          type="text"
+          className="nombre"
+          name="nombre"
+          placeholder="Deje su nombre completo"
+        />
+        <h3>Escriba su mensaje:</h3>
         <input
           type="text"
           className="nombre"
