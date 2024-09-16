@@ -1,0 +1,40 @@
+/* Estilos del componente de noticia */
+.news-item {
+    display: flex;
+    gap: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 19px;
+    font-family: "Poppins",sans-serif
+    ;
+  }
+  
+  .news-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .news-content {
+    flex-grow: 1;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+  
+  .news-content h1 {
+    font-size: 24px;
+    margin: 0;
+    align-self: flex-start;
+    
+  }
+  
+  .news-content h3 {
+    font-size: 18px;
+    color: #555;
+    margin-top: 5px;
+    text-align: left;
+  }
+  

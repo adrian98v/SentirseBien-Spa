@@ -32,7 +32,7 @@
   margin-top: 0.625em;
   margin-bottom: 2.5em;
   font-size: 1.5625em;
-  line-height: 1.5;
+  /* line-height: 1.5; */
   max-width: 34.375em;
   text-align: center;
   color: white;
@@ -93,7 +93,7 @@
 }
 
 .seccion1_titulo {
-  font-size: 4.0625em;
+  font-size: 3.4em;
   margin-right: 0.625em;
   
 }
@@ -130,7 +130,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(0.5em);
+  filter: blur(0.1em);
   z-index: -1;
 }
 
@@ -146,12 +146,15 @@
 .seccion2_articulo h2 {
   font-size: 2.8125em;
   color: white;
+  text-align: center;
+  max-width: 100%;
 }
 
 .seccion2_articulo p {
   font-size: 1.5em;
   max-width: 37.5em;
   color: white;
+  text-align: center;
 }
 
 .seccion2_aside {
@@ -162,7 +165,7 @@
   align-items: start;
 }
 
-.nombre {
+.inputComent {
   width: 47.5em;
   height: 5em;
   border-radius: 1.5625em;
@@ -192,95 +195,214 @@
   transform: scale(1.02);
 }
 
-/* Media Queries para Responsividad */
-@media (max-width: 768px) {
-  .bienvenida {
-    height: auto;
-    
+@media (max-width: 1360px) {
+  .App {
+    font-size: 14px; /* Ajusta el tamaño base de la fuente */
   }
 
+  /* Sección de Bienvenida */
   .bienvenida h1 {
-    font-size: 2.5em;
+    font-size: 3em; /* Reduce el tamaño del título */
   }
 
   .bienvenida p {
-    font-size: 0.5em;
+    font-size: 1.25em; /* Reduce el tamaño del texto */
   }
 
+  .botonMasInfo {
+    width: 13em; /* Reduce el tamaño del botón */
+    height: 3.5em;
+    font-size: 1.1em; /* Reduce el tamaño de la letra del botón */
+  }
+
+  /* Sección 1 */
+  .seccion1_titulo {
+    font-size: 3em; /* Reduce el tamaño del título en la Sección 1 */
+  }
+
+  .seccion1_texto {
+    font-size: 1.5em; /* Reduce el tamaño del texto */
+    width: 75%; /* Ajusta el ancho para que quede más proporcional */
+  }
+
+  /* Sección 2 */
+  .seccion2_articulo h2 {
+    font-size: 2.5em; /* Ajusta el tamaño del título en la Sección 2 */
+    ;
+  }
+
+  .seccion2_articulo p {
+    font-size: 1.25em; /* Ajusta el tamaño del párrafo */
+  }
+
+  .seccion2_aside .inputComent {
+    width: 35em; /* Reduce el tamaño del input */
+    height: 4.5em;
+    font-size: 0.8em; /* Ajusta el tamaño del texto del input */
+  }
+
+  .seccion2_aside button {
+    width: 26em; /* Reduce el tamaño del botón */
+    height: 3em;
+    font-size: 1.1em; /* Ajusta el tamaño de la letra del botón */
+  }
+
+  /* Centrar los textos */
+  .bienvenida, .seccion1_articulo, .seccion2_articulo {
+    text-align: center;
+  }
+}
+
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .bienvenida {
+    height: 25em;
+    
+  }
+  
+  .bienvenida h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.4em;
+  }
+  
+  .bienvenida p {
+    font-size: 1em;
+    margin-bottom: 2em;
+    margin-top: 1em;
+  }
+  
   .botonMasInfo {
     width: 30%;
     font-size: 1em;
   }
-
+  
   .seccion1 {
     flex-direction: column;
     height: auto;
     
   }
-
+  
   .seccion1_titulo {
     font-size: 2.5em;
   }
-
+  
   .seccion1_texto {
     font-size: 1.25em;
   }
-
+  
   .seccion2 {
     flex-direction: column;
     height: auto;
     
   }
-
+  
   .seccion2_articulo, .seccion2_aside {
     width: 100%;
     margin: 0 0 2em 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
-
-  .nombre {
+  .seccion2_articulo p{
+    text-align: center;
+  }
+  .inputComent {
     width: 70%;
     margin-left: 1em;
   }
-
+  
   .seccion2_aside button {
     width: 73%;
   }
 }
-
 @media (max-width: 480px) {
+  /* Ajustes generales para la aplicación */
+  .App {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Sección de Bienvenida */
+  
   .bienvenida h1 {
-    font-size: 2em;
+    font-size: 1.5em; /* Reduce el tamaño de la letra */
+    margin-bottom: 3px;
   }
 
-  .bienvenida p {
-    font-size: 1em;
+  .bienvenida p{
+    text-align: center; /* Asegura que el texto esté centrado */
+    font-size: 0.8em;
+    margin:2em;
   }
 
   .botonMasInfo {
-    font-size: 0.875em;
+    width: 12em; /* Reduce el tamaño del botón */
+    height: 3.5em; /* Reduce la altura del botón */
+    font-size: 1em; /* Reduce el tamaño del texto del botón */
+    margin-bottom: 15px;
+    
   }
 
-  .seccion1_titulo {
-    font-size: 2em;
+  /* Sección 1 */
+  .seccion1 {
+    flex-direction: column; /* Cambia la disposición a columna */
+    align-items: center; /* Centra el contenido */
+    justify-content: center;
+  }
+
+  .seccion1_articulo, .seccion1_aside {
+    width: 100%; /* Ocupa el 100% del ancho en pantallas pequeñas */
+    margin-left:1.3em;
+  }
+
+  .seccion1_articulo h1 {
+    font-size: 3em; /* Reduce el tamaño del título */
+    margin-bottom: 0;
   }
 
   .seccion1_texto {
-    font-size: 1em;
+    font-size: 1.2em; /* Reduce el tamaño del texto */
+    text-align: justify; /* Centra el texto */
+    
   }
 
+  /* Sección 2 */
+  .seccion2 {
+    flex-direction: column; /* Cambia la disposición a columna */
+    align-items: center; /* Centra el contenido */
+  }
+  .seccion2_articulo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
   .seccion2_articulo h2 {
-    font-size: 2em;
+    font-size: 2em; /* Reduce el tamaño del título */
+    text-align: center; /* Centra el texto */
+    max-width: 20em;
   }
 
   .seccion2_articulo p {
-    font-size: 1.125em;
+    font-size: 1.2em; /* Reduce el tamaño del texto */
+    text-align: center; /* Centra el texto */
   }
-
-  .nombre {
-    font-size: 0.875em;
+  .seccion2_aside{
+    display: flex;
+    align-items: center;
+  }
+  .inputComent {
+    width: 80%; /* Hace que los inputs ocupen el 100% del ancho disponible */
+    height: 4em; /* Reduce la altura del input */
+    font-size: 0.875em; /* Reduce el tamaño del texto en el input */
+    margin-left: 0;
   }
 
   .seccion2_aside button {
-    font-size: 1em;
+    width: 70%; /* Botón ocupa el 100% del ancho */
+    height: 3em; /* Reduce la altura del botón */
+    font-size: 1em; /* Reduce el tamaño del texto del botón */
   }
 }
+

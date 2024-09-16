@@ -206,7 +206,7 @@ label {
   }
 
 /* Media Queries para hacer responsive */
-@media (max-width: 820px) {
+@media (max-width: 1360px) {
     /* Ajustes para el contenedor principal */
     .citas {
         min-width: 100%;
@@ -223,6 +223,7 @@ label {
         background-color: rgba(0, 0, 0, 0.8); /* Usa rgba para mantener la opacidad solo del fondo */
         padding-top: 1em; /* Ajusta el padding para pantallas pequeñas */
         z-index: 1; /* Asegura que el fondo esté detrás del contenido */
+        min-width: 100%;
     }
 
     /* Ajustes para el contenedor de citas */

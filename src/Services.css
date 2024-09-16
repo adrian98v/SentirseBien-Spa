@@ -7,8 +7,7 @@ body{
     
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+
 }
 .principal{
     height: 100%;
@@ -40,6 +39,9 @@ body{
     align-self: center;
     text-align: center;
   }
+  .opc_servicios h1{
+    font-size: 1.4em;
+  }
   
   .opc_servicios div {
     background-color: #3f3f3f9a; /* Color de fondo para los divs de servicios */
@@ -65,7 +67,7 @@ body{
     height:  50%;
   }
   .boton,.boton2{
-    background-color: rgb(253, 101, 152);
+    background-color: rgba(253, 101, 152, 0.781);
     width: 80%;
     height: 7%;
     border-radius: 5em;
@@ -83,7 +85,7 @@ body{
   }
 
   .DescripcionServicios{
-    background-color: rgba(245, 53, 187, 0.459);
+    background-color: #7ca8639f;
     padding-bottom: 4em;
   }
   
@@ -114,8 +116,252 @@ body{
   .imagenDeServicios{
     width: 30em;
     height: 16em;
-    border-radius: 3em 0 0 3em;
     margin-top:0.5em;
   }
   
+
+  @media (max-width: 1360px) {
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+  
+    
+  
+    .opc_servicios {
+      grid-template-columns: repeat(2, 1fr); /* Tres columnas para un diseño de tamaño medio */
+      gap: 1.5rem; /* Espacio entre los divs */
+      
+    }
+  
+    .serv {
+      flex-direction: column;
+      display: flex;
+      justify-content: center; /* Alinear verticalmente en el centro */
+      align-items: center;
+      margin-bottom: 1em; /* Espacio entre los servicios */
+    }
+  
+    h1 {
+      font-size: 2.5em; /* Ajustar el tamaño del título */
+      margin: 0; /* Eliminar márgenes innecesarios */
+      
+    }
+  
+    .opc_servicios div {
+      padding: 1rem; /* Padding dentro de los divs de servicios */
+      font-size: 1.3rem; /* Tamaño del texto ajustado */
+      width: 80%; /* Ajustar el ancho del contenedor de servicios */
+      height: 30em; /* Ajustar la altura del contenedor de servicios */
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Tamaño de la sombra */
+    }
+  
+    .img {
+      height: 50%; /* Mantener la altura de la imagen */
+    }
+  
+    .boton, .boton2 {
+      width: 85%; /* Ajustar el ancho del botón */
+      height: 8%; /* Ajustar la altura del botón */
+      font-size: 1.1rem; /* Ajustar el tamaño del texto en el botón */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .serv{
+      justify-content: space-between;
+    }
+    .boton {
+      margin-bottom: 8%; /* Ajustar el margen inferior */
+    }
+  
+    .DescripcionServicios {
+      padding-bottom: 4em; /* Ajustar el padding inferior */
+    }
+  
+    .seccion {
+      flex-direction: row; /* Mantener la disposición en fila */
+      align-items: center; /* Alinear verticalmente */
+      gap: 2rem; /* Espacio entre la imagen y el texto */
+      margin-left: 2rem; /* Ajustar el margen izquierdo */
+    }
+  
+    .Descripcion {
+      margin-top: 4em; /* Ajustar el margen superior */
+    }
+  
+    h2 {
+      font-size: 1.8em; /* Tamaño del texto en los h2 ajustado */
+      max-width: 70%; /* Ajustar el ancho máximo del texto */
+      text-align: justify; /* Alinear el texto a la izquierda */
+    }
+  
+    .imagenDeServicios {
+      width: 28em; /* Ajustar el ancho de la imagen */
+      height: 15em; /* Ajustar la altura de la imagen */
+    }
+  }
+  
+
+
+  @media (max-width: 768px) {
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+  
+    
+  
+    .opc_servicios {
+      grid-template-columns: repeat(1, 1fr); /* Dos columnas para el diseño en tabletas */
+      
+    }
+  
+    .serv {
+      flex-direction: column;
+      display: flex;
+      justify-content: center; /* Alinea verticalmente en el centro */
+      align-items: center;
+      margin-bottom: 2rem; /* Espacio entre los servicios */
+    }
+  
+    h1 {
+      font-size: 3em; /* Reducir el tamaño del título */
+      margin: 0; /* Eliminar márgenes innecesarios */
+    }
+  
+    .opc_servicios div {
+      padding: 1.5rem; /* Ajustar el padding dentro de los divs de servicios */
+      font-size: 1.1rem; /* Reducir el tamaño del texto */
+      width: 85%; /* Ajustar el ancho del contenedor de servicios */
+      height: auto; /* Ajustar la altura automáticamente */
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Reducir el tamaño de la sombra */
+    }
+  
+    .img {
+      height: 50%; /* Mantener la altura de la imagen */
+    }
+  
+    .boton, .boton2 {
+      width: 90%; /* Ajustar el ancho del botón */
+      height: 3em; /* Ajustar la altura del botón */
+      font-size: 1rem; /* Ajustar el tamaño del texto en el botón */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .boton {
+      margin-bottom: 7%; /* Reducir el margen inferior */
+    }
+  
+    .DescripcionServicios {
+      padding-bottom: 3em; /* Reducir el padding inferior */
+    }
+  
+    .seccion {
+      flex-direction: column; /* Cambiar la dirección del flex a columna */
+      align-items: center; /* Centrar los elementos horizontalmente */
+      margin-left: 1.5rem; /* Reducir el margen izquierdo */
+    }
+  
+    .Descripcion {
+      margin-top: 3em; /* Reducir el margen superior */
+    }
+    
+    h2 {
+      font-size: 1.5em; /* Reducir el tamaño del texto en los h2 */
+      max-width: 80%; /* Aumentar el ancho máximo del texto */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .imagenDeServicios {
+      width: 25em; /* Reducir el ancho de la imagen */
+      height: 14em; /* Reducir la altura de la imagen */
+    }
+  }
+  
+
+  @media (max-width: 480px) {
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+  
+    
+  
+    .opc_servicios {
+      grid-template-columns: 1fr; /* Una sola columna */
+      padding: 1rem; /* Reducir el padding alrededor de los servicios */
+    }
+  
+    .serv {
+      flex-direction: column;
+      display: flex;
+      justify-content: center; /* Alinea verticalmente en el centro */
+      align-items: center;
+      margin-bottom: 1.5rem; /* Espacio entre los servicios */
+    }
+  
+    h1 {
+      font-size: 2em; /* Reducir el tamaño del título */
+      margin: 0; /* Eliminar márgenes innecesarios */
+    }
+  
+    .opc_servicios div {
+      padding: 1rem; /* Ajustar el padding dentro de los divs de servicios */
+      font-size: 1rem; /* Reducir el tamaño del texto */
+      width: 90%; /* Aumentar el ancho del contenedor de servicios */
+      height: auto; /* Ajustar la altura automáticamente */
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Reducir el tamaño de la sombra */
+    }
+  
+    .img {
+      height: 40%; /* Reducir la altura de la imagen */
+    }
+  
+    .boton, .boton2 {
+      width: 90%; /* Ajustar el ancho del botón */
+      height: 2em; /* Reducir la altura del botón */
+      font-size: 0.9rem; /* Ajustar el tamaño del texto en el botón */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .boton {
+      margin-bottom: 5%; /* Reducir el margen inferior */
+    }
+  
+    .DescripcionServicios {
+      padding-bottom: 2em; /* Reducir el padding inferior */
+    }
+  
+    .seccion {
+      flex-direction: column; /* Cambiar la dirección del flex a columna */
+      align-items: center; /* Centrar los elementos horizontalmente */
+      margin-left: 1rem; /* Reducir el margen izquierdo */
+    }
+  
+    .Descripcion {
+      margin-top: 2em; /* Reducir el margen superior */
+    }
+  
+    h2 {
+      font-size: 1.2em; /* Reducir el tamaño del texto en los h2 */
+      max-width: 90%; /* Aumentar el ancho máximo del texto */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .imagenDeServicios {
+      width: 20em; /* Reducir el ancho de la imagen */
+      height: 12em; /* Reducir la altura de la imagen */
+    }
+  }
   

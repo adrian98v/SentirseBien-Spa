@@ -1,0 +1,27 @@
+.Contenedor_Noticias{
+    
+    
+
+}
+.news-item{
+    background-color: rgba(130, 184, 79, 0.281);
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.newsContent{
+    align-self: flex-start;
+}
+.add-news-button {
+    margin: 20px;
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-news-button:hover {
+    background-color: #45a049;
+  }
+  

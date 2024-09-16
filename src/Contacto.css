@@ -1,14 +1,15 @@
 .Contacto {
     height: 65em;
     width: 100%;
-   display: flex;
+    display: flex;
     font-family: "Poppins", sans-serif;
-    background-color: rgba(255, 190, 217, 0.541);
+    background-color: rgba(248, 243, 245, 0.541);
 }
 
 .Contacto h1 {
     font-weight: 700;
     font-size: 3em;
+    margin-top: 0;
     
 }
 
@@ -40,41 +41,258 @@
     
 }
 
-.parte_Der {
-    width: 50%; /* Ocupa el otro 50% del ancho de la pantalla */
+.red{
+    background-color: rgba(161, 146, 159, 0.226);
+    border-radius: 100%;
+    height: 13em;
+    width: 13em;
     display: flex;
-    justify-content: center; /* Centra el contenido del mapa */
-    align-items: center; /* Alinea verticalmente el mapa */
-    background-color: rgba(235, 90, 223, 0.342);
-    flex-direction: column;
-    
-    
+    justify-content: center;
+    align-items: center;
     
 }
-.parte_Der iframe{
-    margin-right: 3em;
-    width: 50em;
-    height: 40em;
-    margin-bottom: 1em;
-    margin-left: 2em;
+
+.parte_derecha{
+    background-color: rgba(151, 199, 75, 0.404);
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+}   
+
+.mapa{
+    height: 100%;
+    width: 100%;
 }
+.mapa iframe{
+    margin-top: 2em;
+    width: 90%;
+    height: 80%;
+}
+
+.FormContacto{
+    height: 100%;
+    width: 100%;
+}
+
+.FormContacto iframe{
+    margin-bottom: 2em;
+    
+    margin-left: 1em;
+    margin-right: 1em;
+    padding:0;
+    
+}
+
+
 .redes_Sociales{
     flex-direction: row;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 0.8em;
+    font-size: 0.3em;
+    margin-top: 4em;
 }
 .redes_Sociales svg{
     margin-left: 8em;
     margin-right: 8em;
-    color: #0f0f0f;
+    color: #fa60a8;
 
 }
-.FormContacto{
-    height: 60em;
-    width: 100%;
-    margin-top: 2em;
-    background-color: rgba(255, 255, 255, 0.315);
+
+@media (max-width: 1360px) {
+    .Contacto {
+      height: auto; /* Ajustar la altura para que crezca según el contenido */
+      flex-direction: column; /* Cambiar a columna para apilar los elementos */
+    }
+  
+    .Contacto h1 {
+      font-size: 3em; /* Ajustar un poco el tamaño del título */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .parte_Izq {
+      width: 100%; /* Ocupa el 100% del ancho en pantallas medianas */
+      margin-left: 0; /* Eliminar margen izquierdo */
+      margin-right: 0; /* Eliminar margen derecho */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .parte_Izq h2,
+    .parte_Izq h3 {
+      font-size: 1.5em; /* Ajustar el tamaño del texto */
+      max-width: 100%; /* Asegurarse de que el texto ocupe todo el ancho disponible */
+      margin: 0 1em 1em 1em; /* Ajustar márgenes superior e inferior */
+    }
+  
+    .red {
+      height: 5em; /* Ajustar el tamaño del círculo */
+      width: 5em; /* Ajustar el tamaño del círculo */
+      margin: 2em auto; /* Centrar el círculo con márgenes automáticos */
+    }
+  
+    .parte_derecha {
+      grid-template-rows: repeat(2, 1fr); /* Cambiar el diseño de la cuadrícula a una fila */
+      margin-top: 2em; /* Añadir espacio entre las dos secciones */
+      height: 70em; /* Ajustar la altura automáticamente */
+      gap: 2em;
+    }
+  
+    .mapa iframe {
+      width: 85%; /* Asegurarse de que el iframe ocupe casi todo el ancho */
+      height: 80%; /* Establecer una altura adecuada para pantallas medianas */
+      margin-top: 2em;
+    }
+  
+    .FormContacto iframe {
+      width: 70%; /* Asegurarse de que el formulario ocupe el 70% del ancho */
+      height: 85%; /* Establecer una altura más apropiada */
+      margin: 0 auto 2em; /* Añadir margen inferior y centrar el iframe */
+    }
+  
+    .redes_Sociales {
+      flex-direction: row; /* Mantener los iconos en fila */
+      justify-content: space-around; /* Distribuir los iconos de manera uniforme */
+      margin-top: 3em; /* Ajustar el margen superior */
+      font-size: 1.5em; /* Ajustar el tamaño de las redes sociales */
+    }
+  
+    .redes_Sociales svg {
+      margin: 1em; /* Añadir un margen uniforme alrededor de los iconos */
+      font-size: 3em; /* Ajustar el tamaño de los iconos */
+    }
 }
 
+  
+
+
+@media (max-width: 768px) {
+    .Contacto {
+      height: auto; /* Ajustar la altura para que crezca según el contenido */
+      flex-direction: column; /* Cambiar a columna para apilar los elementos */
+     
+    }
+  
+    .Contacto h1 {
+      font-size: 2.5em; /* Reducir un poco el tamaño del título */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .parte_Izq {
+      width: 100%; /* Ocupa el 100% del ancho en pantallas más pequeñas */
+      margin-left: 0; /* Eliminar margen izquierdo */
+      margin-right: 0; /* Eliminar margen derecho */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .parte_Izq h2,
+    .parte_Izq h3 {
+      font-size: 1.2em; /* Ajustar el tamaño del texto */
+      max-width: 100%; /* Asegurarse de que el texto ocupe todo el ancho disponible */
+      margin: 0 1em 1em 1em; /* Ajustar márgenes superior e inferior */
+    }
+  
+    .red {
+      height: 5em; /* Ajustar el tamaño del círculo */
+      width: 5em; /* Ajustar el tamaño del círculo */
+      margin: 1.5em auto; /* Centrar el círculo con márgenes automáticos */
+    }
+  
+    .parte_derecha {
+      grid-template-rows: (2,1fr); /* Cambiar el diseño de la cuadrícula a una fila */
+      margin-top: 2em; /* Añadir espacio entre las dos secciones */
+      height: 60em;
+      gap: 2em;
+    }
+  
+    .mapa iframe {
+      width: 90%; /* Asegurarse de que el iframe ocupe todo el ancho */
+      height: 85%; /* Establecer una altura más apropiada para tablets */
+      margin-top: 2em;
+
+    }
+  
+    .FormContacto iframe {
+      width: 70%; /* Asegurarse de que el formulario ocupe todo el ancho */
+      height: 90%; /* Establecer una altura más apropiada */
+      margin: 0 auto 2em; /* Añadir margen inferior y centrar el iframe */
+    }
+  
+    .redes_Sociales {
+      flex-direction: row; /* Mantener los iconos en fila en pantallas medianas */
+      justify-content: space-around; /* Distribuir los iconos de manera uniforme */
+      margin-top: 3em; /* Ajustar el margen superior */
+      font-size: 1.5em; /* Ajustar el tamaño de las redes sociales */
+    }
+  
+    .redes_Sociales svg {
+      margin: 1em; /* Añadir un margen uniforme alrededor de los iconos */
+      font-size: 3em; /* Ajustar el tamaño de los iconos */
+    }
+  }
+  
+
+
+@media (max-width: 480px) {
+    .Contacto {
+      height: auto; /* Ajustar la altura para que crezca según el contenido */
+      flex-direction: column; /* Cambiar a columna para apilar los elementos */
+      /* Añadir algo de padding alrededor */
+    }
+  
+    .Contacto h1 {
+      font-size: 2em; /* Reducir el tamaño del título */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .parte_Izq {
+      width: 100%; /* Ocupa el 100% del ancho en pantallas pequeñas */
+      margin-left: 0; /* Eliminar margen izquierdo */
+      margin-right: 0; /* Eliminar margen derecho */
+      text-align: justify; /* Centrar el texto */
+    }
+  
+    .parte_Izq h2,
+    .parte_Izq h3 {
+      font-size: 0.9em; /* Reducir el tamaño del texto */
+      max-width: 100%; /* Asegurarse de que el texto ocupe todo el ancho disponible */
+      margin-left: 1em;
+      margin-right: 1em;/* Ajustar márgenes superior e inferior */
+      
+    }
+  
+    .red {
+      height: 8em; /* Reducir el tamaño del círculo */
+      width: 8em; /* Reducir el tamaño del círculo */
+      margin: 1em auto; /* Centrar el círculo con márgenes automáticos */
+    }
+  
+    .parte_derecha {
+      grid-template-rows: (2,1fr); /* Cambiar el diseño de la cuadrícula a una fila */
+       /* Añadir espacio entre las dos secciones */
+      height: 60em;
+    }
+  
+    .mapa iframe {
+      width: 90%; /* Asegurarse de que el iframe ocupe todo el ancho */
+      height: 80%; /* Establecer una altura fija */
+      margin-top: 1em; /* Centrar el iframe */
+
+    }
+  
+    .FormContacto iframe {
+      width: 100%; /* Asegurarse de que el formulario ocupe todo el ancho */
+      height: 95%; /* Establecer una altura fija */
+      margin: 0 auto 2em; /* Añadir margen inferior y centrar el iframe */
+    }
+  
+    .redes_Sociales {
+      flex-direction: row; /* Cambiar a columna para apilar los iconos */
+      margin-top: 2em; /* Reducir el margen superior */
+      font-size: 1em; /* Ajustar el tamaño de las redes sociales */
+    }
+  
+    .redes_Sociales svg {
+      margin: 1em 0; /* Añadir margen superior e inferior a los iconos */
+      font-size: 2em; /* Ajustar el tamaño de los iconos */
+    }
+  }
+  
