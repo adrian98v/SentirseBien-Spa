@@ -1,0 +1,55 @@
+/* Estilos compartidos para Comentarios y Reservas */
+.admin-consultas,
+.admin-reservas {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #7ca8639f;
+}
+
+.comentario-item,
+.reserva-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin-bottom: 10px;
+}
+
+.comentario-datos,
+.reserva-datos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.comentario-texto p,
+.reserva-datos p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.comentario-datos strong,
+.reserva-datos strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.admin-consultas h3,
+.admin-reservas h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Ajustes adicionales para alinear los datos */
+.reserva-datos p,
+.comentario-datos p {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.reserva-datos strong,
+.comentario-datos strong {
+    width: 100px; /* Alinea los títulos de los datos */
+}

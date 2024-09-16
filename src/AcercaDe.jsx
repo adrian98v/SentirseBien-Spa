@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import Header from './Header';
+import React from 'react'
+
 import Footer from './Footer.js'
 import FooterSegundo from './OtroFooter.js'
 import './AcercaDe.css';
 import DraFelicidad from "./img/DraFelicidad.webp"
-import ImagenSpa from "./img/Imagen_acercaDe2.jpg"
 import { BsCalendarDate,BsStopwatch  } from "react-icons/bs";
 import { FaMedal } from "react-icons/fa6";
 
@@ -22,7 +21,17 @@ function AcercaDe(){
 
         <div className='Der'>
             <h2 className='text'>En "Sentirse Bien", creemos que cada visita debe ser un viaje hacia la renovación y el equilibrio profundo. Nuestro SPA es un santuario de tranquilidad donde el cuerpo, la mente y el espíritu se alinean para crear un estado de total armonía y bienestar.Nuestro equipo de profesionales altamente capacitados se dedica a proporcionarte un servicio excepcional, combinando conocimientos avanzados con una atención sincera a cada detalle.</h2>
-            <img src={ImagenSpa} alt="ImagenSpa" className='Section_1_Img'/>
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/yINohy8lfyY?si=5sKVJWI7X9euG1Gr" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+                className='Section_1_Video'>
+            </iframe>
+
         </div>
 
         <div className='Premios'>
@@ -33,8 +42,7 @@ function AcercaDe(){
             </div>
             <div className="horario iconos">
             <BsStopwatch size={50}></BsStopwatch>
-            <p >8hs a 12hs</p>
-            <p >16hs a 20hs</p>
+            <p >8hs a 20hs</p>
             </div>
             <div className="medalla iconos">
                 <FaMedal size={50}></FaMedal>

@@ -12,12 +12,12 @@ body{
     height: 100%;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to bottom, #69c9329f 15%, #fffae09c 1% );
+    background: linear-gradient(to bottom, #7ca8639f 12%, #fffae09c 1% );
 }
 .Titulo{
     font-family: "Poppins",sans-serif;
     font-weight: 800;
-    font-size: 5em;
+    font-size: 4.6em;
     align-self: flex-start;
     margin-left: 1.3em;
 }
@@ -30,7 +30,9 @@ body{
     margin-bottom: 5em;
     margin-top: 3em;
   }
-  
+  .Section_1 iframe{
+    width: 500px;
+  }
   .Section_1_Img{
     flex-shrink: 0; /* Evita que la imagen se reduzca */
     height: 20em;
@@ -43,8 +45,8 @@ body{
   
  .text {
     font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-weight: 400;
+    font-style: normal;
     margin: 0; /* Elimina el margen por defecto del h2 */
     font-size: 1.7em; /* Ajusta el tamaño del texto según sea necesario */
     line-height: 1.5; /* Mejora la legibilidad del texto */
@@ -91,4 +93,182 @@ body{
     font-style: normal;
     margin-top: 1rem; /* Espacio entre el icono y el texto */
     font-size: 1.2rem;
+  }
+
+  @media (max-width: 1200px) {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  
+    .Section_1 {
+      padding: 2em; /* Añadir padding para separar el contenido del borde */
+      flex-direction: column;
+      background: linear-gradient(to bottom, #7ca8639f 10%, #fffae09c 1% );
+    }
+  
+    .Titulo {
+      font-size: 4.5em; /* Reducir ligeramente el tamaño del título */
+      margin-left: 1em; /* Ajustar el margen izquierdo */
+      text-align: center; /* Centrar el título */
+    }
+  
+    .Izq, .Der {
+      flex-direction: row; /* Mantener en fila pero con menos espacio */
+      align-items: center;
+      margin-bottom: 4em;
+      margin-top: 3em;
+    }
+  
+    .Section_1_Img {
+      height: 18em; /* Ajustar el tamaño de la imagen */
+      width: 22em; /* Ajustar el ancho de la imagen */
+      margin-right: 1.5em; /* Espacio entre la imagen y el texto */
+      margin-bottom: 1em; /* Espacio entre la imagen y el texto */
+    }
+  
+    .text {
+      font-size: 1.4em; /* Ajustar el tamaño del texto */
+      max-width: 75%; /* Limitar el ancho del texto */
+      text-align: justify; /* Alinear el texto a la izquierda para mejorar la legibilidad */
+    }
+  
+    .Premios {
+      grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+      gap: 1.5rem; /* Ajustar el espacio entre columnas */
+      padding: 1.5em;
+    }
+  
+    .Premios div {
+      margin-bottom: 1.5em; /* Espacio entre los premios */
+    }
+  
+    .iconos {
+      margin-top: 1em;
+    }
+  
+    p {
+      font-size: 1.2rem; /* Ajustar el tamaño del texto en premios */
+    }
+  }
+  
+
+  @media (max-width: 768px) {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  
+    .Section_1 {
+      padding: 1.5em; /* Añadir un poco de padding para separar el contenido del borde */
+      flex-direction: column;
+      background: linear-gradient(to bottom, #7ca8639f 6%, #fffae09c 1% );
+    }
+  
+    .Titulo {
+      font-size: 3.5em; /* Reducir el tamaño del título */
+      margin-left: 0.8em; /* Ajustar el margen izquierdo */
+      text-align: center; /* Centrar el título */
+    }
+  
+    .Izq, .Der {
+      flex-direction: column; /* Colocar los elementos en columna */
+      align-items: center;
+      margin-bottom: 3em;
+      margin-top: 2.5em;
+    }
+    .Section_1 iframe{
+      width: 75%;
+    }
+  
+    .Section_1_Img {
+      height: 18em; /* Ajustar el tamaño de la imagen */
+      width: 70%; /* Mantener el ancho adaptable */
+      margin-right: 0; /* Eliminar margen derecho */
+      margin-bottom: 1.5em; /* Espacio entre la imagen y el texto */
+    }
+  
+    .text {
+      font-size: 1.3em; /* Ajustar el tamaño del texto */
+      max-width: 80%; /* Mantener el texto dentro de un ancho razonable */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .Premios {
+      grid-template-columns: repeat(3, 1fr); /* Cambiar a dos columnas */
+      gap: 0rem; /* Ajustar el espacio entre columnas */
+      padding: 1em;
+    }
+  
+    .Premios div {
+      margin-bottom: 1em; /* Espacio entre los premios */
+    }
+  
+    .iconos {
+      margin-top: 0.8em;
+    }
+  
+    p {
+      font-size: 1.1rem; /* Reducir ligeramente el tamaño del texto en premios */
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  
+    .Section_1 {
+      padding: 1em; /* Añadir padding para evitar que el contenido quede pegado al borde */
+      flex-direction: column;
+      background: linear-gradient(to bottom, #7ca8639f 5%, #fffae09c 1% );
+    }
+  
+    .Titulo {
+      font-size: 2.5em; /* Reducir el tamaño del título */
+      margin-left: 0.5em; /* Ajustar el margen izquierdo */
+      text-align: center; /* Centrar el título */
+    }
+  
+    .Izq, .Der {
+      flex-direction: column; /* Colocar los elementos uno debajo del otro */
+      align-items: center;
+      margin-bottom: 2em;
+      margin-top: 2em;
+    }
+  
+    .Section_1_Img {
+      height: 15em; /* Reducir la altura de la imagen */
+      width: 80%; /* Ajustar el ancho para pantallas más pequeñas */
+      margin-right: 0; /* Eliminar el margen derecho */
+      margin-bottom: 1em; /* Espaciado entre la imagen y el texto */
+    }
+    .Section_1 iframe{
+      width: 90%;
+    }
+    .text {
+      font-size: 1.2em; /* Reducir el tamaño del texto */
+      max-width: 90%; /* Limitar el ancho del texto */
+      text-align: center; /* Centrar el texto */
+    }
+  
+    .Premios {
+      grid-template-columns: 1fr; /* Cambiar a una sola columna */
+      gap: 1rem; /* Reducir el espacio entre los premios */
+      width: 100%;
+      padding: 1em;
+    }
+  
+    .Premios div {
+      margin-bottom: 1em; /* Añadir espacio entre los íconos */
+    }
+  
+    .iconos {
+      margin-top: 0.5em;
+    }
+  
+    p {
+      font-size: 1rem; /* Reducir el tamaño del texto en los premios */
+    }
   }

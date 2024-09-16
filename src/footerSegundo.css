@@ -1,10 +1,83 @@
-.segundo_footer{
+.segundo_footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Distribuye las secciones izquierda, centro, derecha */
+    align-items: center; /* Alinea verticalmente el contenido */
     height: 5em;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+    padding: 0 2em; /* Añade padding para evitar que el contenido esté pegado a los bordes */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten si el espacio es pequeño */
 }
 
-label{
-    margin-bottom: 10px;
+/* Sección izquierda (vacía) para mantener el balance */
+.footer-left {
+    flex: 1; /* Deja que esta parte ocupe el espacio mínimo necesario */
+}
+
+/* Sección centrada */
+.footer-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Evita que esta sección se encoja */
+}
+
+.footer-center label {
+    margin-left: 10px; /* Espacio entre el logo y el texto */
+}
+
+/* Sección derecha */
+.footer-right {
+    flex: 1; /* Asegura que esta sección ocupe el espacio necesario a la derecha */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-right label {
+    font-size: 0.9em; /* Ajusta el tamaño del texto */
+}
+
+.logo-footer {
+    height: 7.5em; /* Ajusta la altura de la imagen */
+    width: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .segundo_footer {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        height: auto; /* Ajusta la altura automáticamente */
+        padding: 1em; /* Añade un padding más ajustado */
+    }
+
+    .footer-center, .footer-right, .footer-left {
+        margin-bottom: 1em; /* Añade espacio entre las secciones cuando están apiladas */
+    }
+
+    .footer-right {
+        justify-content: center; /* Centra el contenido de la sección derecha */
+    }
+
+    .logo-footer {
+        height: 5em; /* Reduce el tamaño del logo en pantallas más pequeñas */
+    }
+
+    .footer-right label {
+        font-size: 0.8em; /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+    }
+
+    .footer-center label {
+        font-size: 0.8em; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+}
+
+/* Media query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+    .logo-footer {
+        height: 4em; /* Reduce más el tamaño del logo en pantallas muy pequeñas */
+    }
+
+    .footer-right label,
+    .footer-center label {
+        font-size: 0.7em; /* Reduce más el tamaño del texto en móviles */
+    }
 }
