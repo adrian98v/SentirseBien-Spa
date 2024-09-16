@@ -100,10 +100,23 @@ function Citas(){
                         <div class="dropdown">
                             <button class="dropdown-button">{servicio == "" ? 'Servicio' : servicio.charAt(0).toUpperCase() + servicio.slice(1)}</button>
                             <div class="dropdown-content">
-                                <button onClick={()=>{setServicio("masaje")}}>Masaje</button>
-                                <button onClick={()=>{setServicio("belleza")}}>Belleza</button>
-                                <button onClick={()=>{setServicio("facial")}}>Tratamiento facial</button>
-                                <button onClick={()=>{setServicio("corporal")}}>Tratamiento corporal</button>
+                            <button onClick={()=>{setServicio("Masaje AntiStress")}}>Masaje AntiStress</button>
+                                <button onClick={()=>{setServicio("Masaje Circulatorio")}}>Masaje Circulatorio</button>
+                                <button onClick={()=>{setServicio("Masaje Descontracturante")}}>Masaje Descontracturante</button>
+                                <button onClick={()=>{setServicio("Masaje c/Piedras")}}>Masaje c/Piedras</button>
+
+                                <button onClick={()=>{setServicio("belleza Manos y Pies")}}>Manos y Pies</button>
+                                <button onClick={()=>{setServicio("belleza Depilacion Facial")}}>Depilacion Facial</button>
+                                <button onClick={()=>{setServicio("belleza Lifting Pestaña")}}>Lifting Pestaña</button>
+
+                                <button onClick={()=>{setServicio("facial CrioFrecuencia Facial")}}>CrioFrecuencia Facial</button>
+                                <button onClick={()=>{setServicio("facial LimpiezaProfunda+Hidr")}}>LimpiezaProfunda+Hidr</button>
+                                <button onClick={()=>{setServicio("facial PuntaDiamnte")}}>PuntaDiamnte</button>
+
+                                <button onClick={()=>{setServicio("corporal CrioFrecuencia Corpo")}}>CrioFrecuencia Corpo</button>
+                                <button onClick={()=>{setServicio("corporal DermoHealth")}}>DermoHealth</button>
+                                <button onClick={()=>{setServicio("corporal Ultracavitacion")}}>Ultracavitacion</button>
+                                <button onClick={()=>{setServicio("corporal VelaSlim")}}>VelaSlim</button>
                             </div>
                         </div>
 
