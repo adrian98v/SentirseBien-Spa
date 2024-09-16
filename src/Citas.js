@@ -20,7 +20,7 @@ function Citas(){
     
     const history = useNavigate();
 
-    
+
 
     const {user, horaReserva, setHoraReserva, 
         fechaReserva, setFechaReserva,
@@ -42,6 +42,7 @@ function Citas(){
         }
         
     }
+
 
 
 
@@ -73,7 +74,7 @@ function Citas(){
 
 
 
-    
+   
 
     return <div className="citas">
 
@@ -114,6 +115,7 @@ function Citas(){
                                 
                                 const objetoFecha = horariosTomados[0]
 
+
                                 if(objetoFecha && user) {return day === 0  }
                                
                                 
@@ -129,46 +131,49 @@ function Citas(){
                             }}/>
 
 
-                            <TimePicker 
-                            minTime={dayjs().set('hour', 8).startOf('hour')}
-                            maxTime={dayjs().set('hour', 20).startOf('hour')}
+<TimePicker 
+    minTime={dayjs().set('hour', 8).startOf('hour')}
+    maxTime={dayjs().set('hour', 20).startOf('hour')}
+    view={['hours']}
 
-                            shouldDisableTime={(value, view) =>{
-                                if(servicio !== "" && user && horariosTomados.length > 0 && horariosTomados[0].hora){
+    shouldDisableTime={(value, view) => {
+        // Verifica si la vista actual es 'hours'
+        if (view === 'hours' && horariosTomados.length > 0 && fechaReserva) {
+            // Recorre las reservas existentes
+            for (let i = 0; i < horariosTomados.length; i++) {
+                const reserva = horariosTomados[i];
+                // Compara la fecha de la reserva con la fecha seleccionada
+                if (reserva.dia === fechaReserva) {
+                    // Obtén la hora reservada (primero asegurando que tiene el formato adecuado)
+                    const horaReservada = reserva.hora.substring(0, 2);  // Solo la parte de la hora
+                    // Convierte la hora actual (del TimePicker) al mismo formato de 2 dígitos
+                    let horaActual = value.hour().toString();
+                    if (horaActual.length === 1) {
+                        horaActual = "0" + horaActual;
+                    }
+                    // Si la hora del TimePicker coincide con la hora reservada, la deshabilita
+                    if (horaActual === horaReservada) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }}
+    
+    onChange={(e) => {
+        const formattedTime = dayjs(e).format('HH:mm');  // Formato de 24 horas
+        setHoraReserva(formattedTime);
+    }}
+/>
 
-                                    if(view === 'minutes'){ return value.minute()}      
-                                    if(view === 'hours'){ 
-                                        
-                                        const horaObjeto = horariosTomados[0].hora
-
-                                        const horaDosNumeros = horaObjeto.substring(0, 2)
-
-                                        let valueHourFormatted = JSON.stringify(value.hour())
-
-                                        if(valueHourFormatted.length == 1){valueHourFormatted = "0" + valueHourFormatted}
-                                    
-
-                                        if(fechaReserva == horariosTomados[0].dia){
-                           
-                                            return horaDosNumeros == valueHourFormatted                                          
-                                            
-                                        }
-                                        
-                                    }   
-
-                                }
-                                
-                            }}                       
-                            
-                            onChange={(e)=>{
-                                const formattedTime = dayjs(e).format('HH:mm');  // Formato de 12 horas con AM/PM
-                                setHoraReserva(formattedTime);}}></TimePicker>
                             
                         </LocalizationProvider>
 
                         <button className='reservar_button' disabled={!horaReserva || !fechaReserva}
                             onClick={()=>{
-                                if(user){                             
+                                if(user){                         
+                                      
                                     updateReserva()
                                     history('/confirmation')
                                 }else{

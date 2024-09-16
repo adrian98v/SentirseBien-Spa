@@ -18,13 +18,17 @@ function Sign_up(){
     const [invalidEmail, setInvalidEmail] = useState(false)
  
     
-    const {reservaCompleta, servicio} = useContext(DataContext)
+    const {reservaCompleta, servicio, horaReserva, fechaReserva} = useContext(DataContext)
 
     async function addNewDocument(){
         await setDoc(doc(db, "clientes", email), {email, 
             userName, reservaCompleta, servicio});
     }
    
+    async function addNewDocumentReservas(){
+        await setDoc(doc(db, "reservas", email), { 
+            fechaReserva, horaReserva, servicio});
+    }
 
     return <div className="sign_up_page">
         <Link to='/'>
@@ -69,6 +73,7 @@ function Sign_up(){
                         .then(()=> {         
                             history('/')
                             addNewDocument()
+                            addNewDocumentReservas()
                             })
                         .catch((error) => {
                             if(error.message.includes("auth/email-already-in-use")) {setEmailExists(true)}
