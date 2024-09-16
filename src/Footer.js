@@ -7,14 +7,14 @@ function Footer() {
 
         <section className='sector_izquierdo'>
           <h1>Contacto:</h1>
-          <p>Telefono: +555 434 3422</p>
+          <p>Telefono: +54 3624 256699</p>
           <p>Correo: sentirsebienspa004@gmail.com</p>
           <p>Direccion: Julio A.Roca 1466</p>
         </section>
 
         <section className='sector_medio'>
           <h1>Trabaja con nosotros:</h1>
-          <p>recursosHumanosSB@gmail.com</p>
+          <p>sentirsebienspa004@gmail.com</p>
         </section>
 
         <section className='sector_derecho'>
