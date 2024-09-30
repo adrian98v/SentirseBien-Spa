@@ -147,7 +147,7 @@ function Citas(){
 <TimePicker 
     minTime={dayjs().set('hour', 8).startOf('hour')}
     maxTime={dayjs().set('hour', 20).startOf('hour')}
-    view={['hours']}
+    views={['hours']}
 
     shouldDisableTime={(value, view) => {
         // Verifica si la vista actual es 'hours'
