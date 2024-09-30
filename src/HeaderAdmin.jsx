@@ -31,7 +31,7 @@ function Header() {
             
             <div className='opciones'>
                 
-                <button onClick={() => {history('/admin')}}>SECTOR PARA ADMINISTRADOR</button>
+                <button onClick={() => {history('/admin')}}>SECTOR PARA ADMINISTRADORA "DRA FELICIDAD"</button>
 
             </div>
 
