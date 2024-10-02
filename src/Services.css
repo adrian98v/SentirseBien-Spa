@@ -21,7 +21,7 @@ body{
     justify-items: center; /* Centrar los divs horizontalmente */
     align-items: center; /* Centrar los divs verticalmente */
     background-color: #fffff5e5; /* Fondo del contenedor */
-    padding: 2rem; /* Padding alrededor de los servicios */
+    padding: 1rem; /* Padding alrededor de los servicios */
    
   }
 
@@ -133,6 +133,8 @@ body{
     .opc_servicios {
       grid-template-columns: repeat(2, 1fr); /* Tres columnas para un diseño de tamaño medio */
       gap: 1.5rem; /* Espacio entre los divs */
+      padding-left: 10em;
+      padding-right: 10em;
       
     }
   
@@ -142,6 +144,7 @@ body{
       justify-content: center; /* Alinear verticalmente en el centro */
       align-items: center;
       margin-bottom: 1em; /* Espacio entre los servicios */
+      
     }
   
     h1 {
@@ -227,6 +230,7 @@ body{
       justify-content: center; /* Alinea verticalmente en el centro */
       align-items: center;
       margin-bottom: 2rem; /* Espacio entre los servicios */
+      padding: 3em;
     }
   
     h1 {
@@ -307,6 +311,7 @@ body{
       justify-content: center; /* Alinea verticalmente en el centro */
       align-items: center;
       margin-bottom: 1.5rem; /* Espacio entre los servicios */
+      
     }
   
     h1 {

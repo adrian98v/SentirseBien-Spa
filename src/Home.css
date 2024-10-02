@@ -223,6 +223,7 @@
   .seccion1_texto {
     font-size: 1.5em; /* Reduce el tamaño del texto */
     width: 75%; /* Ajusta el ancho para que quede más proporcional */
+    text-align: center;
   }
 
   /* Sección 2 */
@@ -290,6 +291,7 @@
   
   .seccion1_texto {
     font-size: 1.25em;
+    text-align: center;
   }
   
   .seccion2 {
@@ -320,9 +322,7 @@
 }
 @media (max-width: 480px) {
   /* Ajustes generales para la aplicación */
-  .App {
-    font-family: Arial, sans-serif;
-  }
+
   
   /* Sección de Bienvenida */
   
@@ -354,17 +354,18 @@
 
   .seccion1_articulo, .seccion1_aside {
     width: 100%; /* Ocupa el 100% del ancho en pantallas pequeñas */
-    margin-left:1.3em;
+    
   }
 
   .seccion1_articulo h1 {
-    font-size: 3em; /* Reduce el tamaño del título */
+    font-size: 2.6em; /* Reduce el tamaño del título */
     margin-bottom: 0;
   }
 
   .seccion1_texto {
-    font-size: 1.2em; /* Reduce el tamaño del texto */
-    text-align: justify; /* Centra el texto */
+    font-size: 1.15em; /* Reduce el tamaño del texto */
+    text-align: center; /* Centra el texto */
+    
     
   }
 

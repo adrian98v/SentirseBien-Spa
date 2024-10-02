@@ -21,7 +21,7 @@
 }
 
 .news-item {
-  background-color: rgba(130, 184, 79, 0.281);
+  background-color: rgba(130, 184, 79, 0.425);
   width: 100%;
   max-width: 350px; /* Ajusta el tamaño máximo para pantallas más grandes */
   margin: 0.5em;
@@ -56,6 +56,7 @@
 @media (max-width: 768px) {
   .Noticias {
       flex-direction: column; /* Alinea los elementos en columna en pantallas pequeñas */
+      
   }
 
   .TituloNoticias {
@@ -71,7 +72,13 @@
   .TituloNoticias {
       font-size: 1.2em;
   }
-
+  
+  .news-item{
+    padding: 0;
+    margin:0;
+    margin-bottom: 7px;
+  }  
+  
   .add-news-button {
       width: 100%;
       padding: 12px;

@@ -51,7 +51,7 @@ body{
     font-size: 1.7em; /* Ajusta el tamaño del texto según sea necesario */
     line-height: 1.5; /* Mejora la legibilidad del texto */
     max-width: 30em; /* Limita el ancho del texto para que no se extienda demasiado */
-    text-align: justify;
+    text-align: center;
 }
 
   .Der{
@@ -67,7 +67,7 @@ body{
     gap: 2rem; /* Espacio entre las columnas */
     justify-items: center; /* Centra los elementos dentro de cada columna */
     align-items: center; /* Centra verticalmente cada elemento */
-    background-color: #ffebeb9f;
+    background-color: #c9a2a29f;
     width: 100%;
     
     
