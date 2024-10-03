@@ -183,10 +183,10 @@ function Citas(){
                             
                         </LocalizationProvider>
 
-                        <button className='reservar_button' disabled={!horaReserva || !fechaReserva}
+                        <button className='reservar_button' disabled={!horaReserva || !fechaReserva || servicio == ""}
                             onClick={()=>{
                                 if(user){                         
-                                      
+                                    
                                     updateReserva()
                                     history('/confirmation')
                                 }else{

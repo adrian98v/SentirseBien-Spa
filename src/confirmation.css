@@ -40,3 +40,19 @@
 .successful_button:active{
     background-color: #bb2a5a;
 }
+
+.confirmation_buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.payment_link{
+
+    text-decoration: none;
+    margin-top: 2em;
+    padding: 0.6em 3em;
+    border-radius: 1.5em;
+    border: 1px solid #97284d;
+    background-color: #da376d;
+    color: rgb(255, 255, 255);
+}
