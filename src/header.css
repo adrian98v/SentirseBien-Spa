@@ -22,6 +22,10 @@
     height: 30%;
 }
 
+.opciones button:hover{
+    text-decoration: underline;
+}
+
 .login{
     display: flex;
     align-items: center;
@@ -63,6 +67,7 @@ button{
     .icono {
         height: 30%; /* Reduce la altura del ícono en pantallas pequeñas */
         margin-bottom: 1em; /* Agrega un margen inferior para separación */
+        width: 70%;
     }
 
     .icono img {
@@ -110,7 +115,7 @@ button{
     /* Ajustes para el botón de login */
     .login {
         margin-top: 1em;
-        width: 80%;
+        width: 60%;
         height: 2.5em;
         font-size: 0.9em;
         border-radius: 2em;

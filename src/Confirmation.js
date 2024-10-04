@@ -46,8 +46,9 @@ function Successful(){
         <p className='successful_payment_amount'><strong>Te esperamos!</strong></p>
 
         <div className='confirmation_buttons'>
-            <button className='successful_button' onClick={()=>{history('/')}}>Volver</button>
             <a className='payment_link' href={serviceLink}>Pagar ahora</a>
+            <button className='successful_button' onClick={()=>{history('/')}}>Volver</button>
+            
         </div>
         
     </div>
