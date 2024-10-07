@@ -14,8 +14,19 @@ function Header() {
 
     // Verifica si el usuario es administrador
     const isAdmin = user && userName === "admin1@gmail.com";
-    // Verifica si el usuario es un profesional
-    const isProfesional = user && userName === "profesional1@gmail.com";
+
+    // Verificar si el usuario es un masajista
+    const isMasajista = userName === "profesional1@gmail.com";
+
+    // Verificar si el usuario es de belleza
+    const isBelleza = userName === "profesional2@gmail.com";
+
+    // Verificar si el usuario es de tratamiento corporal
+    const isTratamientoCorporal = userName === "profesional3@gmail.com";
+
+    // Verificar si el usuario es de tratamiento facial
+    const isTratamientoFacial = userName === "profesional4@gmail.com";
+
     // Verifica si el usuario es secretaria
     const isSecretaria = user && userName === "secre1@gmail.com";
 
@@ -43,9 +54,21 @@ function Header() {
                     <button onClick={() => { history('/admin') }}>Admin</button>
                 )}
 
-                {/* Botón "Profesionales" que solo aparece si el usuario es un profesional */}
-                {isProfesional && (
-                    <button onClick={() => { history('/profesionales') }}>Profesionales</button>
+                {/* Botones por profesional que solo aparecen si el usuario es del área correspondiente */}
+                {isMasajista && (
+                    <button onClick={() => { history('/profesionales') }}>Profesional - Masajista</button>
+                )}
+
+                {isBelleza && (
+                    <button onClick={() => { history('/profesionales') }}>Profesional - Belleza</button>
+                )}
+
+                {isTratamientoCorporal && (
+                    <button onClick={() => { history('/profesionales') }}>Profesional - Tratamiento Corporal</button>
+                )}
+
+                {isTratamientoFacial && (
+                    <button onClick={() => { history('/profesionales') }}>Profesional - Tratamiento Facial</button>
                 )}
 
                 {/* Botón "Secretaria" que solo aparece si el usuario es una secretaria */}

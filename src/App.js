@@ -56,13 +56,21 @@ function App() {
     return children;
   };
 
-  // Componente para ruta protegida (Profesional)
   const ProtectedRouteProfesional = ({ children }) => {
+    const allowedEmails = [
+      "profesional1@gmail.com",
+      "profesional2@gmail.com",
+      "profesional3@gmail.com",
+      "profesional4@gmail.com"
+    ];
+  
     if (!user) {
       return <Navigate to="/login" />;
-    } else if (userName !== "profesional1@gmail.com") { // Reemplaza con el email del usuario Profesional
+    } else if (!allowedEmails.includes(userName)) {
+      // Verifica si el email del usuario está en la lista de correos permitidos
       return <Navigate to="/" />;
     }
+  
     return children;
   };
 
