@@ -2,6 +2,7 @@
   "name": "sentirse_bien",
   "version": "0.1.0",
   "private": true,
+  
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -35,6 +36,12 @@
       "react-app/jest"
     ]
   },
+
+  "engines": {
+  "node": ">=12.13.0",
+  "npm": ">=6"
+},
+
   "browserslist": {
     "production": [
       ">0.2%",
