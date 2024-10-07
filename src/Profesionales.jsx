@@ -93,7 +93,7 @@ function Profesionales() {
                 {/* Mostrar las reservas de Masajes */}
                 {reservasMasajes.length > 0 && (
                     <div>
-                        <h4>Masajes</h4>
+                        <h4>Para el profesional dedicado al area de Masajes</h4>
                         {reservasMasajes.map((reserva) => (
                             <div key={reserva.id} className="reserva-item">
                                 <div className="reserva-datos">
@@ -116,7 +116,7 @@ function Profesionales() {
                 {/* Mostrar las reservas de Belleza */}
                 {reservasBelleza.length > 0 && (
                     <div>
-                        <h4>Belleza</h4>
+                        <h4>Para el profesional dedicado al area de Belleza</h4>
                         {reservasBelleza.map((reserva) => (
                             <div key={reserva.id} className="reserva-item">
                                 <div className="reserva-datos">
@@ -139,7 +139,7 @@ function Profesionales() {
                 {/* Mostrar las reservas de Tratamiento Corporal */}
                 {reservasCorporal.length > 0 && (
                     <div>
-                        <h4>Tratamientos Corporales</h4>
+                        <h4>Para el profesional dedicado al area de Tratamientos Corporales</h4>
                         {reservasCorporal.map((reserva) => (
                             <div key={reserva.id} className="reserva-item">
                                 <div className="reserva-datos">
@@ -162,7 +162,7 @@ function Profesionales() {
                 {/* Mostrar las reservas de Tratamiento Facial */}
                 {reservasFacial.length > 0 && (
                     <div>
-                        <h4>Tratamientos Faciales</h4>
+                        <h4>Para el profesional dedicado al area de Tratamientos Faciales</h4>
                         {reservasFacial.map((reserva) => (
                             <div key={reserva.id} className="reserva-item">
                                 <div className="reserva-datos">
