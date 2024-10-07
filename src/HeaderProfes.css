@@ -1,0 +1,122 @@
+.header{
+    display: flex;
+    height: 6em;
+    background-color: rgb(247, 238, 243);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em 0 1em;
+    min-width: 650px;
+}
+
+.icono{
+    height: 85%;
+    align-content: center;
+    
+}
+
+.opciones{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 4em;
+    align-items: center;
+    height: 30%;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7em;
+    background-color: #da376d;
+    color: white;
+    height: 3em;
+    border-radius: 2em;
+    font-size: medium;
+}
+
+button{
+    all: unset; 
+    cursor: pointer;
+}
+
+/* Estilos originales */
+.menu-toggle {
+    display: none; /* El botón no se muestra en pantallas grandes */
+}
+
+
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 700px) {
+
+    /* Ajustes para el contenedor principal */
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 0em;
+        padding-bottom: 2em ;
+        min-width: 100%;
+        position: relative;
+    }
+
+    /* Ajustes para el ícono */
+    .icono {
+        height: 30%; /* Reduce la altura del ícono en pantallas pequeñas */
+        margin-bottom: 1em; /* Agrega un margen inferior para separación */
+    }
+
+    .icono img {
+        max-width: 80%; /* Ajusta el ancho máximo de la imagen */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
+
+    /* Mostrar el botón solo en pantallas pequeñas */
+    .menu-toggle {
+        display: block;
+        background-color: #da376d;
+        color: white;
+        border: none;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        cursor: pointer;
+        width: 80%;
+        text-align: center;
+        border-radius: 2em;
+        margin-bottom: 1em;
+    }
+
+    /* Opciones de navegación */
+    .opciones {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    .opciones button {
+        width: 100%;
+        padding: 0.5em;
+        font-size: 0.9em;
+        background-color: rgb(247, 238, 243);
+        border-bottom: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+
+    .header.active .opciones {
+        display: flex;
+    }
+
+    /* Ajustes para el botón de login */
+    .login {
+        margin-top: 1em;
+        width: 80%;
+        height: 2.5em;
+        font-size: 0.9em;
+        border-radius: 2em;
+        background-color: #da376d;
+        color: white;
+        border: none;
+        padding: 0.5em;
+    }
+}

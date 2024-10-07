@@ -17,8 +17,8 @@ import { auth } from "./firebase.js"
 import AcercaDe from './AcercaDe.jsx';
 import Noticias from './Noticias.jsx';
 import Admin from './admin.jsx'; 
-
-
+import Profesionales from './Profesionales.jsx'; // Importa el nuevo componente para profesionales
+import Secretaria from './Secretaria.jsx'; // Importa el nuevo componente para secretaria
 
 export const DataContext = createContext()
 
@@ -45,17 +45,37 @@ function App() {
       }
     });
   }, [userFlag]);
-  
 
-  // Componente para ruta protegida
-  const ProtectedRoute = ({ children }) => {
+  // Componente para ruta protegida (Admin)
+  const ProtectedRouteAdmin = ({ children }) => {
     if (!user) {
       return <Navigate to="/login" />;
-    } else if (userName !== "admin1@gmail.com") { // Reemplaza con el email del usuario "Admin"
+    } else if (userName !== "admin1@gmail.com") { // Reemplaza con el email del usuario Admin
       return <Navigate to="/" />;
     }
     return children;
   };
+
+  // Componente para ruta protegida (Profesional)
+  const ProtectedRouteProfesional = ({ children }) => {
+    if (!user) {
+      return <Navigate to="/login" />;
+    } else if (userName !== "profesional1@gmail.com") { // Reemplaza con el email del usuario Profesional
+      return <Navigate to="/" />;
+    }
+    return children;
+  };
+
+   // Componente para ruta protegida (Secretaria)
+   const ProtectedRouteSecretaria = ({ children }) => {
+    if (!user) {
+      return <Navigate to="/login" />;
+    } else if (userName !== "secre1@gmail.com") { 
+      return <Navigate to="/" />;
+    }
+    return children;
+  };
+  
 
   return (
     <DataContext.Provider value={{
@@ -70,11 +90,10 @@ function App() {
 
         <div className="App">
           <Routes>
-  
+
             <Route path="/citas" element={<>
               <Header/>
               <Citas/> 
-              
             </>}/>
 
             <Route path="/login" element={<>
@@ -84,49 +103,60 @@ function App() {
             <Route path="/" element={<>
               <Header/>
               <Home/> 
-              
             </>}/>
+
             <Route path="/servicios" element={<>
               <Header/>
               <Services/> 
-              
-              
             </>}/>
+
             <Route path="/about" element={<>
               <Header/>
               <AcercaDe/> 
-              
-              
             </>}/>
+
             <Route path="/contacto" element={<>
               <Header/>
-              <Contacto></Contacto>
-              <Footer></Footer>
-              <FooterSegundo></FooterSegundo>
-              
+              <Contacto/>
+              <Footer/>
+              <FooterSegundo/>
             </>}/>
+
             <Route path="/noticias" element={<>
               <Header/>
-              <Noticias></Noticias>
-              <Footer></Footer>
-              <FooterSegundo></FooterSegundo>
-              
+              <Noticias/>
+              <Footer/>
+              <FooterSegundo/>
             </>}/>
-              
 
-            <Route path="/signup" element={<><SignUp/></>}/>
+            <Route path="/signup" element={<>
+              <SignUp/>
+            </>}/>
 
             <Route path="/confirmation" element={<>
               <Header/>
               <Confirmation/> 
-              
             </>}/>
 
-          {/* Ruta protegida para la página Admin */}
-          <Route path="/admin" element={
-              <ProtectedRoute>
+            {/* Ruta protegida para la página Admin */}
+            <Route path="/admin" element={
+              <ProtectedRouteAdmin>
                 <Admin />
-              </ProtectedRoute>
+              </ProtectedRouteAdmin>
+            } />
+
+            {/* Ruta protegida para la página Profesionales */}
+            <Route path="/profesionales" element={
+              <ProtectedRouteProfesional>
+                <Profesionales />
+              </ProtectedRouteProfesional>
+            } />
+
+            {/* Ruta protegida para la página Secretaria */}
+            <Route path="/secretaria" element={
+              <ProtectedRouteSecretaria>
+                <Secretaria />
+              </ProtectedRouteSecretaria>
             } />
 
           </Routes>

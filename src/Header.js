@@ -1,3 +1,4 @@
+//Header.js
 import './header.css';
 import Icono from './assets/Logo_VerdeOscuro-removebg-preview.png';
 import { useState, useContext } from 'react';
@@ -11,8 +12,12 @@ function Header() {
     const { setUserFlag, userFlag, user, userName } = useContext(DataContext);
     const history = useNavigate();
 
-    // Verifica si el usuario está logueado y su email es el especificado
-    const isAdmin = user && userName === "admin1@gmail.com"; // Reemplaza con el email del administrador
+    // Verifica si el usuario es administrador
+    const isAdmin = user && userName === "admin1@gmail.com";
+    // Verifica si el usuario es un profesional
+    const isProfesional = user && userName === "profesional1@gmail.com";
+    // Verifica si el usuario es secretaria
+    const isSecretaria = user && userName === "secre1@gmail.com";
 
     return (
         <div className={`header ${menuOpen ? 'active' : ''}`}>
@@ -32,8 +37,20 @@ function Header() {
                 <button onClick={() => { history('/servicios') }}>Servicios</button>
                 <button onClick={() => { history('/contacto') }}>Contacto</button>
                 <button onClick={() => { history('/noticias') }}>Noticias</button>
+
+                {/* Botón "Admin" que solo aparece si el usuario es administrador */}
                 {isAdmin && (
                     <button onClick={() => { history('/admin') }}>Admin</button>
+                )}
+
+                {/* Botón "Profesionales" que solo aparece si el usuario es un profesional */}
+                {isProfesional && (
+                    <button onClick={() => { history('/profesionales') }}>Profesionales</button>
+                )}
+
+                {/* Botón "Secretaria" que solo aparece si el usuario es una secretaria */}
+                {isSecretaria && (
+                    <button onClick={() => { history('/secretaria') }}>Secretaria</button>
                 )}
             </div>
 
