@@ -27,7 +27,7 @@ function Sign_up(){
    
     async function addNewDocumentReservas(){
         await setDoc(doc(db, "reservas", email), { 
-            fechaReserva, horaReserva, servicio});
+            fechaReserva, horaReserva, servicio, estado: "pendiente"});
     }
 
     return <div className="sign_up_page">

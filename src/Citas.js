@@ -21,6 +21,7 @@ function Citas(){
     const history = useNavigate();
 
     const [serviceLink, setServiceLink] = useState("")
+    
 
     const {user, horaReserva, setHoraReserva, 
         fechaReserva, setFechaReserva,
@@ -40,11 +41,58 @@ function Citas(){
                 servicio: servicio
             });
         }
-        
+      
     }
 
 
 
+
+    async function updateReservas(){
+
+        const updateReservas = doc(db, "reservas", user.email);
+
+        if(fechaReserva && horaReserva && servicio){
+            await updateDoc(updateReservas, {
+                fechaReserva,
+                horaReserva, 
+                servicio, 
+                estado:"pendiente"
+            });
+        }
+    }
+
+
+
+    async function changeEstadoPendiente() {
+            await updateReservas(); // Espera a que termine la actualización
+        }
+
+
+
+
+    async function handleReserva() {
+        if (!user) {
+            setFechaReserva(null);
+            setHoraReserva(null);
+        } else {
+            
+            await updateReserva(); // Espera a que termine la actualización
+            await changeEstadoPendiente();
+            // Abre el popup para Stripe con la URL del servicio
+        const stripePopup = window.open(serviceLink, '_blank', 'width=500,height=600');
+
+        // Monitorea el cierre del popup cada 1000ms
+        const checkPopupClosed = setInterval(() => {
+            if (stripePopup.closed) {
+                clearInterval(checkPopupClosed); // Deja de monitorear el popup
+
+                // Aquí puedes redirigir a la página de confirmación o mostrar el mensaje de éxito
+                history('/confirmation'); // Esto redirige a la página de confirmación
+            }
+        }, 1000); // Cada 1000 ms se verifica si el popup fue cerrado
+        }
+    }
+    
 
     async function getReservas(){
         setHorariosTomados([])
@@ -201,24 +249,17 @@ function Citas(){
                             
                         </LocalizationProvider>
 
-                        <a 
+                        <button 
     className='reservar_button' 
-    href={user ? serviceLink : '/login'} 
-    onClick={(e) => {
-        if (!user) {
-            setFechaReserva(null);
-            setHoraReserva(null);
-        } else {
-            updateReserva();
-        }
-    }}
+    onClick={handleReserva}
     style={{ 
         pointerEvents: (!horaReserva || !fechaReserva || servicio === "") ? "none" : "auto",
         opacity: (!horaReserva || !fechaReserva || servicio === "") ? 0.5 : 1 
     }} 
 >
     Reservar
-</a>
+</button>
+
 
 
                     </div>
