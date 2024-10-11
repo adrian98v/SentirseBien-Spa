@@ -1,4 +1,4 @@
-.header{
+.header {
     display: flex;
     height: 6em;
     background-color: rgb(247, 238, 243);
@@ -8,13 +8,12 @@
     min-width: 650px;
 }
 
-.icono{
+.icono {
     height: 85%;
     align-content: center;
-    
 }
 
-.opciones{
+.opciones {
     display: flex;
     justify-content: space-evenly;
     gap: 4em;
@@ -22,11 +21,24 @@
     height: 30%;
 }
 
-.opciones button:hover{
-    text-decoration: underline;
+/* Añadir estilos para los botones dentro de .opciones */
+.opciones button {
+    background-color: #f9e0e0; /* Color interior rosa pálido */
+    border: 1px solid #ccc; /* Borde de color gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado dentro de los botones */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el efecto flotante */
+    transition: all 0.3s ease; /* Transición suave en hover */
 }
 
-.login{
+/* Efecto hover para mejorar la interacción */
+.opciones button:hover {
+    background-color: #f4c2c2; /* Cambia el color interior al hacer hover (un tono más oscuro de rosa) */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta la sombra en hover */
+    transform: translateY(-2px); /* Eleva el botón ligeramente */
+}
+
+.login {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +50,7 @@
     font-size: medium;
 }
 
-button{
+button {
     all: unset; 
     cursor: pointer;
 }
@@ -48,80 +60,92 @@ button{
     display: none; /* El botón no se muestra en pantallas grandes */
 }
 
-
-
-/* Media Queries para pantallas pequeñas */
-@media (max-width: 700px) {
-
-    /* Ajustes para el contenedor principal */
+/* Media Queries para dispositivos de 700px a 769px */
+@media (max-width: 769px) and (min-width: 701px) {
     .header {
-        flex-direction: column;
-        height: auto;
-        padding: 0em;
-        padding-bottom: 2em ;
-        min-width: 100%;
-        position: relative;
+        padding: 0 1em; /* Ajustar el padding en pantallas medianas */
     }
 
-    /* Ajustes para el ícono */
-    .icono {
-        height: 30%; /* Reduce la altura del ícono en pantallas pequeñas */
-        margin-bottom: 1em; /* Agrega un margen inferior para separación */
-        width: 70%;
-    }
-
-    .icono img {
-        max-width: 80%; /* Ajusta el ancho máximo de la imagen */
-        height: auto; /* Mantiene la proporción de la imagen */
-    }
-
-    /* Mostrar el botón solo en pantallas pequeñas */
-    .menu-toggle {
-        display: block;
-        background-color: #da376d;
-        color: white;
-        border: none;
-        padding: 0.5em 1em;
-        font-size: 1em;
-        cursor: pointer;
-        width: 80%;
-        text-align: center;
-        border-radius: 2em;
-        margin-bottom: 1em;
-    }
-
-    /* Opciones de navegación */
     .opciones {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        margin-top: 1em;
+        gap: 2em; /* Reducir el espacio entre los botones */
     }
 
     .opciones button {
-        width: 100%;
-        padding: 0.5em;
+        padding: 8px 16px; /* Ajustar el padding de los botones */
         font-size: 0.9em;
-        background-color: rgb(247, 238, 243);
-        border-bottom: 1px solid #ddd;
-        box-sizing: border-box;
     }
 
-    .header.active .opciones {
-        display: flex;
-    }
-
-    /* Ajustes para el botón de login */
     .login {
-        margin-top: 1em;
-        width: 60%;
+        width: 6em;
         height: 2.5em;
-        font-size: 0.9em;
-        border-radius: 2em;
-        background-color: #da376d;
-        color: white;
-        border: none;
+        font-size: small;
+    }
+}
+
+/* Media Queries para dispositivos de 700px o menos */
+@media (max-width: 700px) {
+    .header {
+        flex-direction: column;
+        height: auto;
         padding: 0.5em;
+    }
+
+    .icono {
+        height: 60px; /* Ajustar el tamaño del logo en pantallas pequeñas */
+        width: 100px;
+    }
+
+    .opciones {
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+        width: 100%;
+    }
+
+    .opciones button {
+        width: 80%;
+        padding: 10px;
+        font-size: 0.8em;
+    }
+
+    .login {
+        width: 6em;
+        height: 2.5em;
+        font-size: small;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Mejora para evitar que los botones queden apilados de manera incorrecta en pantallas intermedias */
+@media (max-width: 1200px) {
+    .opciones {
+        gap: 2em; /* Reduce el espacio entre los botones */
+    }
+
+    .opciones button {
+        padding: 8px 12px;
+        font-size: 0.8em; /* Ajuste fino para pantallas medianas */
+    }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 400px) {
+    .header {
+        padding: 0.3em;
+    }
+
+    .opciones button {
+        width: 95%;
+        padding: 6px 10px;
+        font-size: 0.7em;
+    }
+
+    .login {
+        width: 4em;
+        height: 1.8em;
+        font-size: 0.6em;
     }
 }
