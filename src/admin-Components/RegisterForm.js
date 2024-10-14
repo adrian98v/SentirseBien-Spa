@@ -1,11 +1,11 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "./firebase.js";
+import { auth, db } from "../firebase.js";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Icono from './assets/Logo_VerdeOscuro-removebg-preview.png';
-import './signup.css';
+import Icono from '../assets/Logo_VerdeOscuro-removebg-preview.png';
 import { doc, setDoc } from "firebase/firestore";
-import { DataContext } from './App.js';
+import { DataContext } from '../App.js';
+import "./RegisterForm.css";
 
 function Sign_up() {
     const history = useNavigate();
@@ -13,7 +13,7 @@ function Sign_up() {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState("user"); // Nuevo estado para el rol
+    const [role, setRole] = useState(""); // Nuevo estado para el rol
     const [emailExists, setEmailExists] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
 
@@ -45,7 +45,7 @@ function Sign_up() {
             </Link>
 
             <div className="signup_container">
-                <h2>Regístrate</h2>
+                <h2 className="titulo_form">Crear nuevo usuario:</h2>
 
                 <form>
                     <h4>Usuario</h4>
@@ -60,6 +60,16 @@ function Sign_up() {
                     <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
                     <span>{password.length < 6 && 'La contraseña debe tener al menos 6 caracteres'}</span>
 
+                    <h4>Rol</h4>
+                    <select value={role} onChange={(e) => setRole(e.target.value)}>
+                        <option value="">Seleccione un rol</option>
+                        <option value="Masajista">Masajista</option>
+                        <option value="Belleza">Belleza</option>
+                        <option value="TratamientoCorporal">Tratamiento Corporal</option>
+                        <option value="TratamientoFacial">Tratamiento Facial</option>
+                        <option value="Secretaria">Secretaria</option>
+                    </select>
+                    <span>{!role && 'Debe seleccionar un rol'}</span>
 
                     <button
                         disabled={!userName || !password || !role}

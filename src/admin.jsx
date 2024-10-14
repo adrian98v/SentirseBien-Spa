@@ -5,6 +5,7 @@ import { collection, query, orderBy, onSnapshot, getDocs } from 'firebase/firest
 import Header from './HeaderAdmin';  
 import Footer from './OtroFooter'; // Asegúrate de importar Footer si lo estás utilizando
 import './admin.css';
+import RegisterForm from "./admin-Components/RegisterForm";
 
 function Admin() {
     const [comentarios, setComentarios] = useState([]);
@@ -86,6 +87,8 @@ useEffect(() => {
                     </div>
                 )) : <p>No hay reservas hechas.</p>}
             </div>
+
+            <RegisterForm></RegisterForm>
 
             
             <Footer />

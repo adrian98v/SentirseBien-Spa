@@ -1,4 +1,4 @@
-//Header.js
+// Header.js
 import './header.css';
 import Icono from './assets/Logo_VerdeOscuro-removebg-preview.png';
 import { useState, useContext } from 'react';
@@ -9,26 +9,18 @@ import { auth } from './firebase.js';
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { setUserFlag, userFlag, user, userName } = useContext(DataContext);
+    const { setUserFlag, userFlag, user, userName, role } = useContext(DataContext); // Obtener el userRole del contexto
     const history = useNavigate();
 
     // Verifica si el usuario es administrador
     const isAdmin = user && userName === "admin1@gmail.com";
 
-    // Verificar si el usuario es un masajista
-    const isMasajista = userName === "profesional1@gmail.com";
-
-    // Verificar si el usuario es de belleza
-    const isBelleza = userName === "profesional2@gmail.com";
-
-    // Verificar si el usuario es de tratamiento corporal
-    const isTratamientoCorporal = userName === "profesional3@gmail.com";
-
-    // Verificar si el usuario es de tratamiento facial
-    const isTratamientoFacial = userName === "profesional4@gmail.com";
-
-    // Verifica si el usuario es secretaria
-    const isSecretaria = user && userName === "secre1@gmail.com";
+    // Verificaciones de rol en lugar de correos electrónicos específicos
+    const isMasajista = user && role === "Masajista"; // Agregado "user &&" para verificar si está logueado
+    const isBelleza = user && role === "Belleza"; // Agregado "user &&" para verificar si está logueado
+    const isTratamientoCorporal = user && role === "TratamientoCorporal"; // Agregado "user &&" para verificar si está logueado
+    const isTratamientoFacial = user && role === "TratamientoFacial"; // Agregado "user &&" para verificar si está logueado
+    const isSecretaria = user && role === "Secretaria"; // Agregado "user &&" para verificar si está logueado
 
     return (
         <div className={`header ${menuOpen ? 'active' : ''}`}>
@@ -54,7 +46,7 @@ function Header() {
                     <button onClick={() => { history('/admin') }}>Admin</button>
                 )}
 
-                {/* Botones por profesional que solo aparecen si el usuario es del área correspondiente */}
+                {/* Botones por profesional que solo aparecen si el usuario está logueado y es del área correspondiente */}
                 {isMasajista && (
                     <button onClick={() => { history('/profesionales') }}>Profesional - Masajista</button>
                 )}
