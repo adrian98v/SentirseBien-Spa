@@ -14,7 +14,7 @@ dayjs.extend(customParseFormat);
 
 function Successful(){
 
-    const {setFechaReserva, setHoraReserva, fechaReserva, horaReserva, servicio, user, userName, setUserFlag} = useContext(DataContext)
+    const {setFechaReserva, setHoraReserva, fechaReserva, horaReserva, setUserFlag} = useContext(DataContext)
     const history = useNavigate()
   
     async function updateReservas() {
@@ -22,6 +22,7 @@ function Successful(){
         const passwordCifrado = sessionStorage.getItem('password');
         const fechaReservaDeStorage = sessionStorage.getItem('fechaReserva');
         const horaReservaDeStorage = sessionStorage.getItem('horaReserva');
+        const servicioDeStorage = sessionStorage.getItem('servicio');
     
         // Desencriptar el email y la contraseña
         const emailDesencriptado = CryptoJS.AES.decrypt(emailCifrado, process.env.REACT_APP_CONFIRMATION_KEY).toString(CryptoJS.enc.Utf8);
@@ -57,7 +58,7 @@ function Successful(){
             email: emailDesencriptado,
             estadoPago: "pagado",
             hora: horaReserva,
-            servicio: servicio,
+            servicio: servicioDeStorage,
             userName: emailDesencriptado
         });
     }

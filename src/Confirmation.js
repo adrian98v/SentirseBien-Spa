@@ -33,6 +33,7 @@ function Successful(){
         sessionStorage.setItem('horaReserva', horaReserva);
         sessionStorage.setItem('email', emailCifrado);
         sessionStorage.setItem('password', passwordCifrado);
+        sessionStorage.setItem('servicio', servicio);
     }
 
 
