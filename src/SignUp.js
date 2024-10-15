@@ -4,20 +4,20 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Icono from './assets/Logo_VerdeOscuro-removebg-preview.png';
 import './signup.css';
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, collection, addDoc } from "firebase/firestore";
 import { DataContext } from './App.js';
 
 function Sign_up() {
     const history = useNavigate();
 
-    const [userName, setUserName] = useState("");
+    // const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("user"); // Nuevo estado para el rol
     const [emailExists, setEmailExists] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
 
-    const { reservaCompleta, servicio, horaReserva, fechaReserva } = useContext(DataContext);
+    const { reservaCompleta, servicio, horaReserva, fechaReserva, userName, setUserName } = useContext(DataContext);
 
     async function addNewDocument() {
         await setDoc(doc(db, "clientes", email), {
@@ -29,15 +29,7 @@ function Sign_up() {
         });
     }
 
-    async function addNewDocumentReservas() {
-        await setDoc(doc(db, "reservas", email), {
-            fechaReserva,
-            horaReserva,
-            servicio,
-            estado: "pendiente"
-        });
-    }
-
+    
     return (
         <div className="sign_up_page">
             <Link to='/'>
@@ -70,7 +62,7 @@ function Sign_up() {
                                 .then(() => {
                                     history('/');
                                     addNewDocument();
-                                    addNewDocumentReservas();
+
                                 })
                                 .catch((error) => {
                                     if (error.message.includes("auth/email-already-in-use")) { setEmailExists(true); }

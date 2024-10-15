@@ -69,3 +69,13 @@
 .successful_button{
     width: 20%;
 }
+
+.pay_button{
+    margin-top: 2em;
+    padding: 0.5em 4em;
+    border-radius: 1.5em;
+    border: 1px solid #97284d;
+    background-color: #da376d;
+    color: rgb(255, 255, 255);
+    width: 40%;
+}

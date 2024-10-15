@@ -77,7 +77,7 @@ function Header() {
                     history('/login');
                 }
             }}>
-                {user ? "Cerrar sesión" : "Iniciar sesión"}
+                {userFlag ? "Cerrar sesión" : "Iniciar sesión"}
             </button>
         </div>
     );

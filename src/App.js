@@ -33,6 +33,7 @@ function App() {
   const [reservaCompleta, setReservaCompleta] = useState({})
   const [horariosTomados, setHorariosTomados] = useState([])
   const [servicio, setServicio] = useState("")
+  
 
   // Authorization observer to know when a user is logged in
   useEffect(() => {
