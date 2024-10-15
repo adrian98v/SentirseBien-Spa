@@ -20,6 +20,7 @@ import Noticias from './Noticias.jsx';
 import Admin from './admin.jsx';
 import Profesionales from './Profesionales.jsx';
 import Secretaria from './Secretaria.jsx';
+import PaymentConfirmation from './PaymentConfirmation.js'
 
 export const DataContext = createContext()
 
@@ -33,13 +34,15 @@ function App() {
   const [reservaCompleta, setReservaCompleta] = useState({})
   const [horariosTomados, setHorariosTomados] = useState([])
   const [servicio, setServicio] = useState("")
-  
+  const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
   // Authorization observer to know when a user is logged in
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
       if (authUser !== null) {
         setUser(authUser);
+        sessionStorage.setItem('user', user);
         setUserName(authUser.email);
 
         // Obtener el documento del usuario desde Firebase
@@ -104,7 +107,7 @@ function App() {
       fechaReserva, setFechaReserva,
       horaReserva, setHoraReserva, reservaCompleta, setReservaCompleta,
       horariosTomados, setHorariosTomados,
-      servicio, setServicio
+      servicio, setServicio, email, setEmail, password, setPassword
     }}>
       <Router>
         <div className="App">
@@ -113,6 +116,11 @@ function App() {
               <Header />
               <Citas />
             </>} />
+
+            <Route path='/paymentConfirmation' element={<>
+              <Header />
+              <PaymentConfirmation />
+            </>}></Route>
 
             <Route path="/login" element={<>
               <Login />

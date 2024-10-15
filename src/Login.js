@@ -10,10 +10,9 @@ import { doc, getDoc } from "firebase/firestore";
 function Login() {
     const history = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    
     const [boolLogin, setBoolLogin] = useState(false);
-    const { setUserFlag } = useContext(DataContext);
+    const { setUserFlag, email, password, setEmail, setPassword } = useContext(DataContext);
 
     const auth = getAuth();
 

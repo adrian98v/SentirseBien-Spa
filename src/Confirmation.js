@@ -6,73 +6,35 @@ import { useNavigate } from 'react-router-dom'
 import { doc, updateDoc,  collection, addDoc } from "firebase/firestore";
 import { db } from "./firebase.js"
 import dayjs from 'dayjs';
+import CryptoJS from 'crypto-js';
+
 
 function Successful(){
 
-    const {fechaReserva, horaReserva, servicio, user, userName} = useContext(DataContext)
+    const {fechaReserva, horaReserva, servicio, user, email, password} = useContext(DataContext)
     const history = useNavigate()
     const [serviceLink, setServiceLink] = useState("")
-
-
-    async function updateReservas(){
-
-        // Obtener referencia a la colección 'reservas'
-        const reservasRef = collection(db, "reservaCompleta");
-
-        // Convertir fechaReserva a un objeto de fecha si es un string
-        const fecha = fechaReserva ? dayjs(fechaReserva, 'DD/MM/YYYY') : null;
-        
-        const fechaConHora = fecha && horaReserva 
-        ? fecha.set('hour', parseInt(horaReserva.split(':')[0])).set('minute', 0)
-        : null;
-
-    // Usar addDoc para agregar un nuevo documento sin especificar el ID
-    await addDoc(reservasRef, {
-        dia: fechaConHora ? fechaConHora.toDate() : null, 
-                email: user.email,
-                estadoPago: "pagado",
-                hora: horaReserva,
-                servicio: servicio,
-                userName: userName
-            }
-        );
-    }
-
-
-
-    async function handlePago() {
-        
-            await updateReservas(); // Espera a que termine la actualización
-            // Abre el popup para Stripe con la URL del servicio
-        const stripePopup = window.open(serviceLink, '_blank', 'width=500,height=600');
-
-
-        // Monitorea el cierre del popup cada 1000ms
-        const checkPopupClosed = setInterval(() => {
-            if (stripePopup.closed) {
-
-                clearInterval(checkPopupClosed); // Deja de monitorear el popup
-
-                // Aquí puedes redirigir a la página de confirmación o mostrar el mensaje de éxito
-                history('/'); // Esto redirige a la página de confirmación
-            }
-        }, 1000); // Cada 1000 ms se verifica si el popup fue cerrado
-        
-    }
-
-
-
-
-    async function handleReserva() {
-            await updateReservas(); // Espera a que termine la actualización
-        }
-
-
-    useEffect(()=>{
-
-        handleReserva()
     
-    },[])
+
+    const bytes = CryptoJS.AES.decrypt(email, process.env.REACT_APP_CONFIRMATION_KEY);
+
+ 
+    const textoDescifrado = bytes.toString(CryptoJS.enc.Utf8);
+
+    
+
+    async function saveInfo(){
+
+        const emailCifrado = CryptoJS.AES.encrypt(email, process.env.REACT_APP_CONFIRMATION_KEY).toString();
+        const passwordCifrado = CryptoJS.AES.encrypt(password, process.env.REACT_APP_CONFIRMATION_KEY).toString();
+
+        // Guarda los detalles de la reserva y del usuario en sessionStorage
+        sessionStorage.setItem('fechaReserva', fechaReserva);
+        sessionStorage.setItem('horaReserva', horaReserva);
+        sessionStorage.setItem('email', emailCifrado);
+        sessionStorage.setItem('password', passwordCifrado);
+    }
+
 
 
     useEffect(()=>{
@@ -110,7 +72,10 @@ function Successful(){
         <p className='successful_payment_amount'><strong>Te esperamos!</strong></p>
 
         <div className='confirmation_buttons'>
-            <button className='pay_button' onClick={handlePago}>Pagar ahora</button>
+            <button className='pay_button' onClick={()=>{
+                saveInfo()
+                window.location.href = serviceLink; // Redirigir en la misma pestaña
+                }}>Pagar ahora</button>
             <button className='successful_button' onClick={()=>{history('/')}}>Volver</button> 
         </div>
         

@@ -2,7 +2,6 @@
   "name": "sentirse_bien",
   "version": "0.1.0",
   "private": true,
-  
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -13,7 +12,9 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.12",
+    "dotenv": "^16.4.5",
     "firebase": "^10.13.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -36,12 +37,10 @@
       "react-app/jest"
     ]
   },
-
   "engines": {
-  "node": ">=12.13.0",
-  "npm": ">=6"
-},
-
+    "node": ">=12.13.0",
+    "npm": ">=6"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
