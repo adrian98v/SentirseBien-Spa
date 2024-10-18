@@ -1,83 +1,100 @@
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import './login.css';
-import Icono from './assets/Logo_VerdeOscuro-removebg-preview.png';
-import { auth } from './firebase.js';
-import { DataContext } from "./App.js";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useEffect, useState, useContext } from 'react'; 
+import { db } from './firebase'; 
+import { collection, query, orderBy, getDocs, updateDoc, doc } from 'firebase/firestore';
+import Header from './HeaderProfes';  
+import Footer from './OtroFooter'; 
+import './admin.css';
+import { DataContext } from './App';
 
-function Login() {
-    const history = useNavigate();
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [boolLogin, setBoolLogin] = useState(false);
-    const { setUserFlag } = useContext(DataContext);
+function Profesionales() {
+    const [reservas, setReservas] = useState([]); // Estado para almacenar las reservas
     const { role } = useContext(DataContext); // Obtener el rol del contexto
 
-    const auth = getAuth();
+    // Obtener reservas desde Firebase
+    useEffect(() => {
+        async function obtenerReservas() {
+            const q = query(collection(db, "clientes"), orderBy('reservaCompleta.dia', 'asc')); // Ordenar por fecha ascendente
+            const querySnapshot = await getDocs(q);
+            const reservasData = [];
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then(res => {
-                setUserFlag(true);
-
-                // Verificar el rol y redirigir en función de este
-                if (role === "Admin") {
-                    history('/admin'); // Redirigir a la página de admin
-                } else if (["Masajista", "Belleza", "TratamientoFacial", "TratamientoCorporal"].includes(role)) {
-                    history('/profesionales'); // Redirigir a la página de profesionales
-                } else if (role === "Secretaria") {
-                    history('/secretaria'); // Redirigir a la página de secretaria
-                } else {
-                    history('/'); // Redirigir a la página principal para otros usuarios
+            querySnapshot.forEach((doc) => {
+                const reserva = doc.data().reservaCompleta;
+                if (reserva) {
+                    const servicio = doc.data().servicio || '';
+                    const servicioTipo = servicio.split(' ')[0].toLowerCase(); // Obtener la primera palabra del servicio
+                    // Filtrar reservas según el rol del profesional
+                    if (
+                        (role === 'Masajista' && servicioTipo === 'masaje') ||
+                        (role === 'Belleza' && servicioTipo === 'belleza') ||
+                        (role === 'TratamientoCorporal' && servicio.includes('corporal')) ||
+                        (role === 'TratamientoFacial' && servicio.includes('facial'))
+                    ) {
+                        reservasData.push({
+                            id: doc.id,
+                            ...reserva,
+                            servicio
+                        });
+                    }
                 }
-            })
-            .catch(error => {
-                setBoolLogin(true);
             });
+            
+            setReservas(reservasData);
+        }
+        if (role) {
+            obtenerReservas(); // Solo obtener reservas cuando ya tenemos el rol del profesional
+        }
+    }, [role]);
+    // Función para cancelar una reserva
+    const cancelarReserva = async (idReserva) => {
+        try {
+            const reservaRef = doc(db, "clientes", idReserva); // Referencia al documento de la reserva
+            await updateDoc(reservaRef, {
+                reservaCompleta: null, // Establecer reservaCompleta en null
+                servicio: null // Establecer servicio en null
+            }); // Actualizar el estado para reflejar el cambio
+            setReservas(reservas.filter((reserva) => reserva.id !== idReserva));
+            alert("La cita ha sido cancelada.");
+        } catch (error) {
+            console.error("Error al cancelar la cita: ", error);
+            alert("Hubo un error al cancelar la cita.");
+        }
     };
 
     return (
-        <div className="login_page">
-            <Link to='/'>
-                <img src={Icono} className="login_logo" alt='Logo'></img>
-            </Link>
-
-            {/* Login form */}
-            <div className="login_container">
-                <h2>Iniciar sesión</h2>
-
-                <form onSubmit={handleLogin}>
-                    <h4>E-mail</h4>
-                    <input
-                        type='text'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-
-                    <h4>Contraseña</h4>
-                    <input
-                        type='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-
-                    <button type="submit" className="login_button">Iniciar sesión</button>
-                </form>
-
-                <div className="login_fail">
-                    <span>{boolLogin && 'E-mail o contraseña incorrectos'}</span>
+        <div className="admin-page">
+        <Header />
+        <div className="admin-reservas">
+            <h3>LISTADO DE RESERVAS ORDENADO POR SERVICIO Y FECHA</h3>
+             {/* Mostrar las reservas filtradas por rol */}
+             {reservas.length > 0 ? (
+                    <div>
+                        {role === 'Masajista' && (
+                            <h4>Reservas para el profesional de Masajes</h4>
+                        )}
+                        {reservas.map((reserva) => (
+                            <div key={reserva.id} className="reserva-item">
+                                <div className="reserva-datos">
+                                    <p><strong>Email del Cliente:</strong> {reserva.id}</p>
+                                    <p><strong>Servicio:</strong> {reserva.servicio}</p>
+                                    <p><strong>Día:</strong> {reserva.dia}</p>
+                                    <p><strong>Hora:</strong> {reserva.hora}</p>
+                                    <button 
+                                        className="btn-cancelar"
+                                        onClick={() => cancelarReserva(reserva.id)}
+                                    >
+                                        Cancelar Cita
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>No hay reservas para mostrar.</p>
+                )}
                 </div>
-            </div>
-
-            <button className="login_create_account_button" onClick={() => history('/signup')}>
-                Crear una cuenta
-            </button>
-        </div>
+                <Footer />
+                </div>
     );
 }
 
-export default Login;
+export default Profesionales;

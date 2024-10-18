@@ -1,15 +1,13 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase.js";
 import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Icono from '../assets/Logo_VerdeOscuro-removebg-preview.png';
 import { doc, setDoc } from "firebase/firestore";
 import { DataContext } from '../App.js';
 import "./RegisterForm.css";
 
 function Sign_up() {
-    const history = useNavigate();
-
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -41,7 +39,7 @@ function Sign_up() {
     return (
         <div className="sign_up_page">
             <Link to='/'>
-                <img src={Icono} className="signup_logo" alt='amazon logo' />
+                <img src={Icono} className="signup_logo" alt='logo' />
             </Link>
 
             <div className="signup_container">
@@ -78,9 +76,9 @@ function Sign_up() {
 
                             createUserWithEmailAndPassword(auth, email, password)
                                 .then(() => {
-                                    history('/');
                                     addNewDocument();
                                     addNewDocumentReservas();
+                                    alert("Usuario creado correctamente");
                                 })
                                 .catch((error) => {
                                     if (error.message.includes("auth/email-already-in-use")) { setEmailExists(true); }
