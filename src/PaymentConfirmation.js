@@ -54,12 +54,7 @@ function Successful(){
         setEmail(emailDesencriptado)
         setPassword(passwordDesencriptado)
 
-        // const encryptedEmail = sjcl.encrypt(key, emailDesencriptado);
-        // const encryptedPassword = sjcl.encrypt(key, passwordDesencriptado);
-
-        // sessionStorage.setItem('email', encryptedEmail);
-        // sessionStorage.setItem('password', encryptedPassword);
-
+       
     
         // Obtener referencia a la colección 'reservas'
         const reservasRef = collection(db, "reservaCompleta");
@@ -78,7 +73,7 @@ function Successful(){
             dia: fechaConHora ? fechaConHora.toDate() : null, 
             email: emailDesencriptado,
             estadoPago: "pagado",
-            hora: horaReserva,
+            hora: horaReservaDeStorage,
             servicio: servicioDeStorage,
             userName: emailDesencriptado
         });
