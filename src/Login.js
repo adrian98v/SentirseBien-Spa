@@ -9,30 +9,33 @@ import { doc, getDoc } from "firebase/firestore";
 
 function Login() {
     const history = useNavigate();
-
     
-    const [boolLogin, setBoolLogin] = useState(false);
-    const { setUserFlag, email, password, setEmail, setPassword } = useContext(DataContext);
-
+    const { setUserFlag, email, password, setEmail, setPassword, boolLogin, setBoolLogin } = useContext(DataContext);
     const auth = getAuth();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then(async (res) => {
-                setUserFlag(true);
+        try {
+            // Primero iniciar sesión usando Firebase Auth
+            const res = await signInWithEmailAndPassword(auth, email, password);
+            setUserFlag(true);
 
-                // Obtener el rol del usuario desde Firestore
-                const userDoc = await getDoc(doc(db, "clientes", email));
-                if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    const userRole = userData.role;
+            // Ahora obtener el documento del usuario usando el email exacto
+            const userDocRef = doc(db, "clientes", email);
+            const userDoc = await getDoc(userDocRef);
 
-                    // Redireccionar según el rol
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                const userRole = userData.role;
+                const storedEmail = userDoc.id; // El ID del documento es el email almacenado
+                
+                // Verificar si el email es exactamente igual (case-sensitive)
+                if (storedEmail === email) {
+                    // Redireccionar según el rol del usuario
                     if (email === "admin1@gmail.com") {
                         history('/admin'); // Redirigir a la página de admin
-                    } else if (userRole === "Masajista" || userRole === "Belleza" || userRole === "TratamientoCorporal" || userRole === "TratamientoFacial") {
+                    } else if (["Masajista", "Belleza", "TratamientoCorporal", "TratamientoFacial"].includes(userRole)) {
                         history('/profesionales'); // Redirigir a la página de profesionales
                     } else if (userRole === "Secretaria") {
                         history('/secretaria'); // Redirigir a la página de secretaria
@@ -40,20 +43,23 @@ function Login() {
                         history('/'); // Redirigir a la página principal para otros usuarios
                     }
                 } else {
-                    console.log("El usuario no tiene información de rol en la base de datos.");
-                    history('/'); // Redirigir a la página principal en caso de error
+                    console.log("El email no coincide exactamente (case-sensitive).");
+                    setBoolLogin(true); // Mostrar error de inicio de sesión
                 }
-            })
-            .catch((error) => {
-                setBoolLogin(true);
-                console.log("Error de inicio de sesión:", error);
-            });
+            } else {
+                console.log("El usuario no tiene información de rol en la base de datos.");
+                setBoolLogin(true); // Mostrar error de inicio de sesión
+            }
+        } catch (error) {
+            console.log("Error de inicio de sesión:", error);
+            setBoolLogin(true); // Mostrar error de inicio de sesión
+        }
     };
 
     return (
         <div className="login_page">
             <Link to='/'>
-                <img src={Icono} className="login_logo" alt='amazon logo' />
+                <img src={Icono} className="login_logo" alt='logo' />
             </Link>
 
             <div className="login_container">

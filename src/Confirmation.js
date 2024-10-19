@@ -6,34 +6,33 @@ import { useNavigate } from 'react-router-dom'
 import { doc, updateDoc,  collection, addDoc } from "firebase/firestore";
 import { db } from "./firebase.js"
 import dayjs from 'dayjs';
-import CryptoJS from 'crypto-js';
+import sjcl from 'sjcl';
 
 
 function Successful(){
 
-    const {fechaReserva, horaReserva, servicio, user, email, password} = useContext(DataContext)
+    const {fechaReserva, horaReserva, servicio, user, email, password, IDPendienteState} = useContext(DataContext)
     const history = useNavigate()
     const [serviceLink, setServiceLink] = useState("")
     
 
-    const bytes = CryptoJS.AES.decrypt(email, process.env.REACT_APP_CONFIRMATION_KEY);
-
- 
-    const textoDescifrado = bytes.toString(CryptoJS.enc.Utf8);
-
-    
 
     async function saveInfo(){
 
-        const emailCifrado = CryptoJS.AES.encrypt(email, process.env.REACT_APP_CONFIRMATION_KEY).toString();
-        const passwordCifrado = CryptoJS.AES.encrypt(password, process.env.REACT_APP_CONFIRMATION_KEY).toString();
+        const key = process.env.REACT_APP_CONFIRMATION_KEY;
+
+        const encryptedEmail = sjcl.encrypt(key, email);
+        const encryptedPassword = sjcl.encrypt(key, password);
+
 
         // Guarda los detalles de la reserva y del usuario en sessionStorage
         sessionStorage.setItem('fechaReserva', fechaReserva);
         sessionStorage.setItem('horaReserva', horaReserva);
-        sessionStorage.setItem('email', emailCifrado);
-        sessionStorage.setItem('password', passwordCifrado);
+        sessionStorage.setItem('email', encryptedEmail);
+        sessionStorage.setItem('password', encryptedPassword);
         sessionStorage.setItem('servicio', servicio);
+        sessionStorage.setItem('IDPendiente', IDPendienteState);
+
     }
 
 
@@ -73,8 +72,8 @@ function Successful(){
         <p className='successful_payment_amount'><strong>Te esperamos!</strong></p>
 
         <div className='confirmation_buttons'>
-            <button className='pay_button' onClick={()=>{
-                saveInfo()
+            <button className='pay_button' onClick={async()=>{
+                await saveInfo()
                 window.location.href = serviceLink; // Redirigir en la misma pestaña
                 }}>Pagar ahora</button>
             <button className='successful_button' onClick={()=>{history('/')}}>Volver</button> 

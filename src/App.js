@@ -35,7 +35,9 @@ function App() {
   const [horariosTomados, setHorariosTomados] = useState([])
   const [servicio, setServicio] = useState("")
   const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [IDPendienteState, setIDPendienteState] = useState(null)
+  const [boolLogin, setBoolLogin] = useState(false);
 
   // Authorization observer to know when a user is logged in
   useEffect(() => {
@@ -107,7 +109,8 @@ function App() {
       fechaReserva, setFechaReserva,
       horaReserva, setHoraReserva, reservaCompleta, setReservaCompleta,
       horariosTomados, setHorariosTomados,
-      servicio, setServicio, email, setEmail, password, setPassword
+      servicio, setServicio, email, setEmail, password, setPassword,
+      IDPendienteState, setIDPendienteState, boolLogin, setBoolLogin
     }}>
       <Router>
         <div className="App">

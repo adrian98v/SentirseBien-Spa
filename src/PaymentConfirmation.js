@@ -3,19 +3,21 @@ import Check from './assets/Eo_circle_green_checkmark.svg.png'
 import { DataContext } from './App.js'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { doc, updateDoc,  collection, addDoc } from "firebase/firestore";
+import { doc, updateDoc,  collection, addDoc, deleteDoc } from "firebase/firestore";
 import dayjs from 'dayjs';
 import { auth, db } from './firebase.js';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import CryptoJS from 'crypto-js';
+import sjcl from 'sjcl';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
 
 function Successful(){
 
-    const {setFechaReserva, setHoraReserva, fechaReserva, horaReserva, setUserFlag} = useContext(DataContext)
+    const {setFechaReserva, setHoraReserva, fechaReserva, horaReserva, setUserFlag, setEmail, setPassword} = useContext(DataContext)
     const history = useNavigate()
+
+    
   
     async function updateReservas() {
         const emailCifrado = sessionStorage.getItem('email');
@@ -23,21 +25,40 @@ function Successful(){
         const fechaReservaDeStorage = sessionStorage.getItem('fechaReserva');
         const horaReservaDeStorage = sessionStorage.getItem('horaReserva');
         const servicioDeStorage = sessionStorage.getItem('servicio');
+        const IDDeStorage = sessionStorage.getItem('IDPendiente');
     
+        const key = process.env.REACT_APP_CONFIRMATION_KEY;
         // Desencriptar el email y la contraseña
-        const emailDesencriptado = CryptoJS.AES.decrypt(emailCifrado, process.env.REACT_APP_CONFIRMATION_KEY).toString(CryptoJS.enc.Utf8);
-        const passwordDesencriptado = CryptoJS.AES.decrypt(passwordCifrado, process.env.REACT_APP_CONFIRMATION_KEY).toString(CryptoJS.enc.Utf8);
-    
+        const emailDesencriptado = sjcl.decrypt(key, emailCifrado);
+        const passwordDesencriptado = sjcl.decrypt(key, passwordCifrado);
+
+        console.log("no se que pasa")
+        console.log(typeof emailDesencriptado, typeof passwordDesencriptado)
+        console.log(emailDesencriptado, passwordDesencriptado)
+
+
+
+
         // Iniciar sesión en Firebase con el email y contraseña desencriptados
         await signInWithEmailAndPassword(auth, emailDesencriptado, passwordDesencriptado)
             .then(async (res) => {
                 setUserFlag(true);
-            });
+                
+            }).catch((error)=>{console.log(error)});
     
-        
+            
     
         setFechaReserva(fechaReservaDeStorage);
         setHoraReserva(horaReservaDeStorage);
+        
+        setEmail(emailDesencriptado)
+        setPassword(passwordDesencriptado)
+
+        // const encryptedEmail = sjcl.encrypt(key, emailDesencriptado);
+        // const encryptedPassword = sjcl.encrypt(key, passwordDesencriptado);
+
+        // sessionStorage.setItem('email', encryptedEmail);
+        // sessionStorage.setItem('password', encryptedPassword);
 
     
         // Obtener referencia a la colección 'reservas'
@@ -61,6 +82,11 @@ function Successful(){
             servicio: servicioDeStorage,
             userName: emailDesencriptado
         });
+
+        console.log(IDDeStorage.id)
+
+        // const reservaPendienteRef = await doc(db, "reservasPendientes", IDDeStorage);
+        // await deleteDoc(reservaPendienteRef);
     }
     
 
