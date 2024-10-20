@@ -56,11 +56,11 @@
 }
 
 .btn-cancelar {
-    background-color: #ff4d4d;
+    background-color: #da376d;
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 2em;
     cursor: pointer;
     margin-top: 10px;
 }

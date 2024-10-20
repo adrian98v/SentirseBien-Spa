@@ -21,9 +21,13 @@ import Admin from './admin.jsx';
 import Profesionales from './Profesionales.jsx';
 import Secretaria from './Secretaria.jsx';
 import PaymentConfirmation from './PaymentConfirmation.js'
+<<<<<<< HEAD
 import AdminComments from './admin-Pages/AdminComments.jsx';
 import AdminReservas from './admin-Pages/AdminReservas.jsx';
 import AdminCreateUser from './admin-Pages/AdminCreateUser.jsx';
+=======
+import ReservasCliente from './ReservasCliente.jsx';  
+>>>>>>> 821d3816d3248ae0a802335a66104d432dda957e
 
 export const DataContext = createContext()
 
@@ -105,6 +109,8 @@ function App() {
     return children;
   };
 
+
+ 
   return (
     <DataContext.Provider value={{
       user, userFlag, setUserFlag,
@@ -206,11 +212,34 @@ function App() {
                 <Secretaria />
               </ProtectedRouteSecretaria>
             } />
+
+            < Route path="/misreservas" element={<ReservasCliente />} />
+
           </Routes>
         </div>
       </Router>
     </DataContext.Provider>
   );
+
+  return (
+    <DataContext.Provider value={{
+      // el resto de los valores que pasas al contexto
+    }}>
+      <Router>
+        <div className="App">
+          <Routes>
+            {/* Otras rutas existentes */}
+
+            {/* Nueva ruta para el cliente logueado */}
+            <Route path="/misreservas" element={<ReservasCliente />} />
+
+          </Routes>
+        </div>
+      </Router>
+    </DataContext.Provider>
+  );
+
+
 }
 
 export default App;
