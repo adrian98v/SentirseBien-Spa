@@ -7,6 +7,7 @@ import './admin.css';
 import { DataContext } from './App.js';
 import dayjs from 'dayjs'; 
 import jsPDF from 'jspdf';
+
 function ReservasCliente() {
     const [reservasPagadas, setReservasPagadas] = useState([]);  
     const [reservasPendientes, setReservasPendientes] = useState([]);  
@@ -56,7 +57,6 @@ function ReservasCliente() {
         // Guardar el PDF
         doc.save(`comprobante_reserva_${reserva.id}.pdf`);
     };
-
 
     // Función para obtener reservas pendientes desde la colección "reservasPendientes"
     const obtenerReservasPendientes = useCallback(async () => {
@@ -130,6 +130,18 @@ function ReservasCliente() {
         }
     };
 
+    // Función para cancelar manualmente una reserva pagada
+    const cancelarReservaPagada = async (idReserva) => {
+        try {
+            await deleteDoc(doc(db, "reservaCompleta", idReserva)); // Elimina de la colección de reservas pagadas
+            setReservasPagadas(reservasPagadas.filter((reserva) => reserva.id !== idReserva));
+            alert("La cita pagada ha sido cancelada.");
+        } catch (error) {
+            console.error("Error al cancelar la cita pagada: ", error);
+            alert("Hubo un error al cancelar la cita.");
+        }
+    };
+
     return (
         <div className="admin-page">
             <Header />  
@@ -144,7 +156,7 @@ function ReservasCliente() {
                             <p><strong>Estado del Pago:</strong> {reserva.estadoPago ? reserva.estadoPago : 'Pagado'}</p>
                             <button 
                                 className="btn-cancelar"
-                                onClick={() => cancelarReservaPendiente(reserva.id)}
+                                onClick={() => cancelarReservaPagada(reserva.id)}
                             >
                                 Cancelar Cita
                             </button>
