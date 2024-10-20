@@ -25,7 +25,7 @@ function Citas(){
     const {user, horaReserva, setHoraReserva, 
         fechaReserva, setFechaReserva,
         horariosTomados, setHorariosTomados,
-        servicio, setServicio, userName} = useContext(DataContext)
+        servicio, setServicio, userName, setIDPendienteState} = useContext(DataContext)
     
 
 
@@ -59,7 +59,7 @@ function Citas(){
         : null;
 
     // Usar addDoc para agregar un nuevo documento sin especificar el ID
-    await addDoc(reservasRef, {
+    const reservaPendiente = await addDoc(reservasRef, {
         dia: fechaConHora ? fechaConHora.toDate() : null, 
                 email: user.email,
                 estadoPago: "pendiente",
@@ -68,6 +68,8 @@ function Citas(){
                 userName: userName
             }
         );
+
+        setIDPendienteState(reservaPendiente)
     }
 
 
