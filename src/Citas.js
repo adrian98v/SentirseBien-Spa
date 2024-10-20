@@ -20,7 +20,7 @@ function Citas(){
     
     const history = useNavigate();
 
-    
+    const [montoServicio, setMontoServicio] = useState(0)
 
     const {user, horaReserva, setHoraReserva, 
         fechaReserva, setFechaReserva,
@@ -58,6 +58,23 @@ function Citas(){
         ? fecha.set('hour', parseInt(horaReserva.split(':')[0])).set('minute', 0)
         : null;
 
+        let monto = 0;
+            switch(servicio){
+                case "Masaje AntiStress": monto = 8000; break;
+                case "Masaje Circulatorio": monto = 7000; break;
+                case "Masaje Descontracturante": monto = 9000; break;
+                case "Masaje c/Piedras": monto = 10000; break;
+                case "belleza Manos y Pies": monto = 15000; break;
+                case "belleza Depilacion Facial": monto = 5000; break;
+                case "belleza Lifting Pestaña": monto = 8000; break;
+                case "facial CrioFrecuencia Facial": monto = 11000; break;
+                case "facial LimpiezaProfunda+Hidr": monto = 8000; break;
+                case "facial PuntaDiamnte": monto = 8500; break;
+                case "corporal CrioFrecuencia Corpo": monto = 14000; break;
+                case "corporal DermoHealth": monto = 7500; break;
+                case "corporal Ultracavitacion": monto = 12500; break;
+                case "corporal VelaSlim": monto = 12000; break;
+            }
     // Usar addDoc para agregar un nuevo documento sin especificar el ID
     const reservaPendiente = await addDoc(reservasRef, {
         dia: fechaConHora ? fechaConHora.toDate() : null, 
@@ -65,7 +82,8 @@ function Citas(){
                 estadoPago: "pendiente",
                 hora: horaReserva,
                 servicio: servicio,
-                userName: userName
+                userName: userName,
+                Monto: monto
             }
         );
 
