@@ -7,6 +7,7 @@ import Footer from '../OtroFooter';
 import '../admin.css';
 import { DataContext } from '../App';
 import ProfesionalMenuDesplegable from '../profesional-componentes-paginas/ProfesionalMenuDesplegable';
+import jsPDF from 'jspdf';
 
 function ProfesionalesReservas() {
     const [reservas, setReservas] = useState([]); // Estado para almacenar las reservas
@@ -53,6 +54,28 @@ function ProfesionalesReservas() {
         }
     }, [role]);
 
+    const generarPDF = (reserva) => {
+        const doc = new jsPDF();
+        const { width, height } = doc.internal.pageSize;
+
+        // Configurar el diseño del PDF como un ticket
+        doc.setFontSize(16);
+        doc.text("COMPROBANTE DE RESERVA", width / 2, 10, { align: "center" });
+        doc.setFontSize(12);
+        
+        // Agregar detalles de la reserva
+        doc.text(`Email: ${reserva.email}`, width / 2, 30, { align: "center" });
+        doc.text(`Servicio: ${reserva.servicio}`, width / 2, 40, { align: "center" });
+        doc.text(`Fecha: ${reserva.dia}`, width / 2, 50, { align: "center" });
+        doc.text(`Monto: $${reserva.monto}`, width / 2, 60, { align: "center" }); // Asegúrate de que 'monto' esté disponible en la reserva
+
+        // Agregar un borde al ticket
+        doc.rect(5, 5, width - 10, height - 10);
+
+        // Guardar el PDF
+        doc.save(`comprobante_reserva_${reserva.id}.pdf`);
+    };
+
     // Función para eliminar una reserva
     const eliminarReserva = async (idReserva) => {
         try {
@@ -92,6 +115,12 @@ function ProfesionalesReservas() {
                                     >
                                         Cancelar Cita
                                     </button>
+                                    <button
+                                    className="btn-generar-pdf"
+                                    onClick={() => generarPDF(reserva)}
+                                >
+                                    Generar PDF
+                                </button>
                                 </div>
                             </div>
                         ))}

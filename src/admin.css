@@ -93,13 +93,13 @@
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 2em;
+    border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
 }
 
 .btn-cancelar:hover {
-    background-color: #ff1a1a;
+    background-color: #f5749f;
 }
 
 /* Estilo para el separador entre las listas */
@@ -110,4 +110,23 @@
     border-radius: 4px; /* Bordes redondeados */
     width: 100%;
 
+}
+
+/*PDF*/
+.btn-generar-pdf {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado */
+    text-align: center; /* Centrar texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como un bloque en línea */
+    margin-top:10px;
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-left: 10px;
+}
+
+.btn-generar-pdf:hover {
+    background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
 }

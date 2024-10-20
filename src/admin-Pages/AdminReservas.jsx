@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, orderBy, query, deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../firebase'; // Asegúrate de importar tu configuración de Firebase
-import '../admin.css'; // Importa los estilos personalizados
+import { db } from '../firebase';
+import { jsPDF } from 'jspdf';
+import '../admin.css'; 
 import SidebarMenu from '../admin-Components/MenuDesplegableAdmin';
 import Header from '../HeaderAdmin';
 import Footer from '../OtroFooter';
@@ -22,10 +23,9 @@ const AdminReservas = () => {
                 if (reserva.dia && reserva.dia.seconds) {
                     reserva.dia = dayjs(reserva.dia.toDate()).format('DD/MM/YYYY HH:mm');
                 }
-                // Asegúrate de que el email se esté obteniendo correctamente
                 reservasDataConfirmadas.push({
                     id: doc.id,
-                    email: reserva.email, // Asumiendo que 'email' es el campo que contiene el correo del cliente
+                    email: reserva.email,
                     ...reserva
                 });
             });
@@ -39,10 +39,9 @@ const AdminReservas = () => {
                 if (reserva.dia && reserva.dia.seconds) {
                     reserva.dia = dayjs(reserva.dia.toDate()).format('DD/MM/YYYY HH:mm');
                 }
-                // Asegúrate de que el email se esté obteniendo correctamente
                 reservasDataPendientes.push({
                     id: doc.id,
-                    email: reserva.email, // Asegúrate de que el campo sea correcto
+                    email: reserva.email,
                     ...reserva
                 });
             });
@@ -69,6 +68,28 @@ const AdminReservas = () => {
         }
     };
 
+    const generarPDF = (reserva) => {
+        const doc = new jsPDF();
+        const { width, height } = doc.internal.pageSize;
+
+        // Configurar el diseño del PDF como un ticket
+        doc.setFontSize(16);
+        doc.text("COMPROBANTE DE RESERVA", width / 2, 10, { align: "center" });
+        doc.setFontSize(12);
+        
+        // Agregar detalles de la reserva
+        doc.text(`Email: ${reserva.email}`, width / 2, 30, { align: "center" });
+        doc.text(`Servicio: ${reserva.servicio}`, width / 2, 40, { align: "center" });
+        doc.text(`Fecha: ${reserva.dia}`, width / 2, 50, { align: "center" });
+        doc.text(`Monto: $${reserva.monto}`, width / 2, 60, { align: "center" }); // Asegúrate de que 'monto' esté disponible en la reserva
+
+        // Agregar un borde al ticket
+        doc.rect(5, 5, width - 10, height - 10);
+
+        // Guardar el PDF
+        doc.save(`comprobante_reserva_${reserva.id}.pdf`);
+    };
+
     return (
         <div>
             <Header />
@@ -79,7 +100,7 @@ const AdminReservas = () => {
                     reservasConfirmadas.map((reserva) => (
                         <div key={reserva.id} className="reserva-item">
                             <div className="reserva-datos">
-                                <p><strong>Email del Cliente:</strong> {reserva.email}</p> {/* Mostrar el email correcto */}
+                                <p><strong>Email del Cliente:</strong> {reserva.email}</p>
                                 <p><strong>Servicio:</strong> {reserva.servicio}</p>
                                 <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
                                 <button
@@ -87,6 +108,12 @@ const AdminReservas = () => {
                                     onClick={() => eliminarReserva(reserva.id, "reservaCompleta")}
                                 >
                                     Cancelar Reserva
+                                </button>
+                                <button
+                                    className="btn-generar-pdf"
+                                    onClick={() => generarPDF(reserva)} // Generar PDF al hacer click
+                                >
+                                    Generar Comprobante
                                 </button>
                             </div>
                         </div>
@@ -103,7 +130,7 @@ const AdminReservas = () => {
                     reservasPendientes.map((reserva) => (
                         <div key={reserva.id} className="reserva-item">
                             <div className="reserva-datos">
-                                <p><strong>Email del Cliente:</strong> {reserva.email}</p> {/* Mostrar el email correcto */}
+                                <p><strong>Email del Cliente:</strong> {reserva.email}</p>
                                 <p><strong>Servicio:</strong> {reserva.servicio}</p>
                                 <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
                                 <button
