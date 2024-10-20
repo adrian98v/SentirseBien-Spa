@@ -1,4 +1,4 @@
-/*admin.css*/
+/* admin.css */
 /* Estilos compartidos para Comentarios y Reservas */
 .admin-consultas,
 .admin-reservas {
@@ -54,6 +54,7 @@
 .comentario-datos strong {
     width: 100px; /* Alinea los títulos de los datos */
 }
+
 .btn-cancelar {
     background-color: #ff4d4d;
     color: white;
@@ -67,3 +68,4 @@
 .btn-cancelar:hover {
     background-color: #ff1a1a;
 }
+

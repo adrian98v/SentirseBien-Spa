@@ -21,6 +21,9 @@ import Admin from './admin.jsx';
 import Profesionales from './Profesionales.jsx';
 import Secretaria from './Secretaria.jsx';
 import PaymentConfirmation from './PaymentConfirmation.js'
+import AdminComments from './admin-Pages/AdminComments.jsx';
+import AdminReservas from './admin-Pages/AdminReservas.jsx';
+import AdminCreateUser from './admin-Pages/AdminCreateUser.jsx';
 
 export const DataContext = createContext()
 
@@ -119,7 +122,7 @@ function App() {
               <Header />
               <Citas />
             </>} />
-
+            
             <Route path='/paymentConfirmation' element={<>
               <Header />
               <PaymentConfirmation />
@@ -133,6 +136,7 @@ function App() {
               <Header />
               <Home />
             </>} />
+            
 
             <Route path="/servicios" element={<>
               <Header />
@@ -171,6 +175,21 @@ function App() {
             <Route path="/admin" element={
               <ProtectedRouteAdmin>
                 <Admin />
+              </ProtectedRouteAdmin>
+            } />
+            <Route path="/comentarios" element={
+              <ProtectedRouteAdmin>
+                <AdminComments />
+              </ProtectedRouteAdmin>
+            } />
+            <Route path="/reservas" element={
+              <ProtectedRouteAdmin>
+                <AdminReservas/>
+              </ProtectedRouteAdmin>
+            } />
+            <Route path="/createUser" element={
+              <ProtectedRouteAdmin>
+                <AdminCreateUser />
               </ProtectedRouteAdmin>
             } />
 

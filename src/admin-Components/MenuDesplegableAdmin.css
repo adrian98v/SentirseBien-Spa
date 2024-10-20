@@ -1,0 +1,63 @@
+/* Estilos para el botón del menú */
+.menu-button, .close-menu-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute; /* Posiciona el botón de forma absoluta */
+    left: 0; /* Alinea el botón al lado izquierdo */
+     /* Ajusta la posición superior según sea necesario */
+    z-index: 1;
+}
+
+.menu-button:hover, .close-menu-button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para el menú desplegable */
+.menu-desplegable {
+    position: absolute; /* Posiciona el menú de forma absoluta */
+    /* Comienza desde la parte superior de la pantalla */
+    /* Alinea el menú al lado izquierdo */
+    height: 100%; /* Ocupa todo el largo de la pantalla */
+    width: 20%; /* Ocupa el 20% del ancho de la pantalla */
+    background-color: #f0f0f0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    z-index: 0;
+    overflow-y: auto;
+}
+
+/* Estilos para las opciones de navegación */
+.menu-opciones {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-opciones a {
+    margin: 10px 0;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu-opciones a:hover {
+    color: #4CAF50;
+}
+@media (max-width: 768px) {
+    .menu-button, .close-menu-button {
+        font-size: 14px; /* Reduce el tamaño de la fuente en 2px */
+    }
+    
+    .menu-desplegable {
+        width: 30%; /* Hacer que el menú ocupe el 100% del ancho */
+        height: 100%;
+    }
+
+    .menu-opciones a {
+        font-size: 12px; /* Reduce el tamaño de la fuente de las opciones a 8px */
+    }
+}
