@@ -7,7 +7,6 @@ import Footer from './OtroFooter';
 import './admin.css';
 import SidebarMenu from './admin-Components/MenuDesplegableAdmin';
 
-
 function Admin() {
     const [comentarios, setComentarios] = useState([]);
     const [reservas, setReservas] = useState([]);
@@ -18,31 +17,23 @@ function Admin() {
         setMenuAbierto(!menuAbierto);
     };
 
-
-    useEffect(() => {
-        async function obtenerReservas() {
-            const q = query(collection(db, "clientes"), orderBy('reservaCompleta.dia', 'desc'));
-            const querySnapshot = await getDocs(q);
-            const reservasData = [];
-            querySnapshot.forEach((doc) => {
-                if (doc.data().reservaCompleta) {
-                    reservasData.push({
-                        id: doc.id,
-                        ...doc.data().reservaCompleta,
-                        servicio: doc.data().servicio
-                    });
-                }
-            });
-            setReservas(reservasData);
-        }
-        obtenerReservas();
-    }, []);
-
     return (
         <div className="admin-page">
             <Header />
+            <SidebarMenu />
 
-            <SidebarMenu></SidebarMenu>
+            
+            {/* Introducción de la página de administración */}
+            <div className="admin-intro">
+            <h1>BIENVENIDO ADMINISTRADOR: Dra. Felicidad</h1>
+                <p>
+                    En esta sección, podrás gestionar y supervisar todas las actividades relacionadas con los 
+                    comentarios y reservas de tus clientes. Aquí tendrás acceso a un listado completo de los 
+                    comentarios recibidos y las reservas realizadas, lo que te permitirá brindar un servicio 
+                    más eficiente y personalizado. Utiliza el menú de la izquierda para navegar entre las diferentes 
+                    secciones y mantener todo organizado y accesible.
+                </p>
+            </div>
             
             <Footer />
         </div>

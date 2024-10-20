@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs, orderBy, query, deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../firebase'; // Asegúrate de importar tu configuración de Firebase
-import '../admin.css'; // Importa los estilos personalizados
-import SidebarMenu from '../admin-Components/MenuDesplegableAdmin';
-import Header from '../HeaderAdmin';
+import { db } from '../firebase';
+import { collection, query, orderBy, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import Header from '../HeaderSecre';
 import Footer from '../OtroFooter';
+import '../admin.css'; // ADMIN, PROFES y SECRES usan el mismo CSS
+import SecretariaMenuDesplegable from './SecretariaMenuDesplegable';
 import dayjs from 'dayjs';
 
-const AdminReservas = () => {
+function SecretariaReservas() {
     const [reservasConfirmadas, setReservasConfirmadas] = useState([]); 
     const [reservasPendientes, setReservasPendientes] = useState([]); 
 
     useEffect(() => {
         async function obtenerReservas() {
-            // Obtener reservas confirmadas
             const qConfirmadas = query(collection(db, "reservaCompleta"), orderBy('dia', 'asc'));
             const querySnapshotConfirmadas = await getDocs(qConfirmadas);
             const reservasDataConfirmadas = [];
@@ -22,15 +21,12 @@ const AdminReservas = () => {
                 if (reserva.dia && reserva.dia.seconds) {
                     reserva.dia = dayjs(reserva.dia.toDate()).format('DD/MM/YYYY HH:mm');
                 }
-                // Asegúrate de que el email se esté obteniendo correctamente
                 reservasDataConfirmadas.push({
                     id: doc.id,
-                    email: reserva.email, // Asumiendo que 'email' es el campo que contiene el correo del cliente
                     ...reserva
                 });
             });
 
-            // Obtener reservas pendientes
             const qPendientes = query(collection(db, "reservasPendientes"), orderBy('dia', 'asc'));
             const querySnapshotPendientes = await getDocs(qPendientes);
             const reservasDataPendientes = [];
@@ -39,10 +35,8 @@ const AdminReservas = () => {
                 if (reserva.dia && reserva.dia.seconds) {
                     reserva.dia = dayjs(reserva.dia.toDate()).format('DD/MM/YYYY HH:mm');
                 }
-                // Asegúrate de que el email se esté obteniendo correctamente
                 reservasDataPendientes.push({
                     id: doc.id,
-                    email: reserva.email, // Asegúrate de que el campo sea correcto
                     ...reserva
                 });
             });
@@ -62,31 +56,32 @@ const AdminReservas = () => {
             } else {
                 setReservasPendientes(reservasPendientes.filter((reserva) => reserva.id !== idReserva));
             }
-            alert("La reserva ha sido eliminada.");
+            alert("La cita ha sido eliminada.");
         } catch (error) {
-            console.error("Error al eliminar la reserva: ", error);
-            alert("Hubo un error al eliminar la reserva.");
+            console.error("Error al eliminar la cita: ", error);
+            alert("Hubo un error al eliminar la cita.");
         }
     };
 
     return (
-        <div>
+        <div className="admin-page">
             <Header />
-            <SidebarMenu />
+            <SecretariaMenuDesplegable />
             <div className="admin-reservas">
                 <h3>LISTA DE RESERVAS CONFIRMADAS</h3>
                 {reservasConfirmadas.length > 0 ? (
                     reservasConfirmadas.map((reserva) => (
                         <div key={reserva.id} className="reserva-item">
                             <div className="reserva-datos">
-                                <p><strong>Email del Cliente:</strong> {reserva.email}</p> {/* Mostrar el email correcto */}
+                                <p><strong>Email del Cliente:</strong> {reserva.email}</p>
                                 <p><strong>Servicio:</strong> {reserva.servicio}</p>
                                 <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
+                                <p><strong>Estado:</strong> {reserva.estadoPago}</p>
                                 <button
                                     className="btn-cancelar"
                                     onClick={() => eliminarReserva(reserva.id, "reservaCompleta")}
                                 >
-                                    Cancelar Reserva
+                                    Cancelar Cita
                                 </button>
                             </div>
                         </div>
@@ -103,14 +98,14 @@ const AdminReservas = () => {
                     reservasPendientes.map((reserva) => (
                         <div key={reserva.id} className="reserva-item">
                             <div className="reserva-datos">
-                                <p><strong>Email del Cliente:</strong> {reserva.email}</p> {/* Mostrar el email correcto */}
+                                <p><strong>Email del Cliente:</strong> {reserva.email}</p>
                                 <p><strong>Servicio:</strong> {reserva.servicio}</p>
                                 <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
                                 <button
                                     className="btn-cancelar"
                                     onClick={() => eliminarReserva(reserva.id, "reservasPendientes")}
                                 >
-                                    Cancelar Reserva
+                                    Cancelar Cita
                                 </button>
                             </div>
                         </div>
@@ -122,6 +117,6 @@ const AdminReservas = () => {
             <Footer />
         </div>
     );
-};
+}
 
-export default AdminReservas;
+export default SecretariaReservas;

@@ -1,48 +1,33 @@
-import React, { useEffect, useState } from 'react'; 
-import { db } from './firebase'; 
-import { collection, query, orderBy, getDocs } from 'firebase/firestore';
-import Header from './HeaderSecre';  
-import Footer from './OtroFooter'; 
-import './admin.css'; // ADMIN .. PROFES y SECRES usan mismo css!!
+// Secretaria.jsx
+import React from 'react';
+import Header from './HeaderSecre';
+import Footer from './OtroFooter';
+import SecretariaMenuDesplegable from './secretaria-componentes-paginas/SecretariaMenuDesplegable';
+import './admin.css'; // Usamos el mismo CSS para mantener el estilo consistente
 
 function Secretaria() {
-    const [reservas, setReservas] = useState([]); // Estado para almacenar las reservas
-
-    // Obtener reservas desde Firebase
-    useEffect(() => {
-        async function obtenerReservas() {
-            const q = query(collection(db, "clientes"), orderBy('reservaCompleta.dia', 'desc'));
-            const querySnapshot = await getDocs(q);
-            const reservasData = [];
-            querySnapshot.forEach((doc) => {
-                if (doc.data().reservaCompleta) {
-                    reservasData.push({
-                        id: doc.id,
-                        ...doc.data().reservaCompleta,
-                        servicio: doc.data().servicio
-                    });
-                }
-            });
-            setReservas(reservasData);
-        }
-        obtenerReservas();
-    }, []);
-
     return (
         <div className="admin-page">
             <Header />
-            <div className="admin-reservas">
-                <h3>LISTADO DE RESERVAS ORDENADO POR FECHA</h3>
-                {reservas.length > 0 ? reservas.map((reserva) => (
-                    <div key={reserva.id} className="reserva-item">
-                        <div className="reserva-datos">
-                            <p><strong>Email del Cliente:</strong> {reserva.id}</p>
-                            <p><strong>Servicio:</strong> {reserva.servicio}</p>
-                            <p><strong>Día:</strong> {reserva.dia}</p>
-                            <p><strong>Hora:</strong> {reserva.hora}</p>
-                        </div>
-                    </div>
-                )) : <p>No hay reservas hechas.</p>}
+            <SecretariaMenuDesplegable />
+            <div className="admin-intro">
+                <h1>Bienvenida, Secretaria</h1>
+                <p>
+                    Nos complace darte la bienvenida a tu espacio de trabajo. Aquí podrás gestionar 
+                    las reservas de nuestros clientes, coordinar citas y garantizar que los servicios 
+                    se programen de manera eficiente para mantener una operación fluida. Este portal 
+                    está diseñado para facilitarte la organización de las tareas diarias, brindándote 
+                    herramientas para revisar detalles de las citas, actualizar información y hacer 
+                    cambios cuando sea necesario.
+                </p>
+                <p>
+                    Tu papel es fundamental para asegurar que cada cliente reciba la mejor atención. 
+                    Al gestionar las reservas y coordinar con los profesionales, estás contribuyendo 
+                    a que cada sesión se lleve a cabo sin inconvenientes y en el horario adecuado. 
+                    Aprovecha este espacio para optimizar tu trabajo y mantener la comunicación abierta 
+                    con el equipo y los clientes.
+                </p>
+                
             </div>
             <Footer />
         </div>

@@ -21,14 +21,12 @@ import Admin from './admin.jsx';
 import Profesionales from './Profesionales.jsx';
 import Secretaria from './Secretaria.jsx';
 import PaymentConfirmation from './PaymentConfirmation.js'
-<<<<<<< HEAD
 import AdminComments from './admin-Pages/AdminComments.jsx';
 import AdminReservas from './admin-Pages/AdminReservas.jsx';
 import AdminCreateUser from './admin-Pages/AdminCreateUser.jsx';
-=======
 import ReservasCliente from './ReservasCliente.jsx';  
->>>>>>> 821d3816d3248ae0a802335a66104d432dda957e
-
+import ProfesionalesReeservas from './profesional-componentes-paginas/ProfesionalReservas.jsx'; 
+import SecretariaReservas from './secretaria-componentes-paginas/SecretariaReservas.jsx';
 export const DataContext = createContext()
 
 function App() {
@@ -205,11 +203,22 @@ function App() {
                 <Profesionales />
               </ProtectedRouteProfesional>
             } />
+            {/* Ruta protegida para la página Profesionales */}
+            <Route path="/reservasProfesionales" element={
+              <ProtectedRouteProfesional>
+                <ProfesionalesReeservas />
+              </ProtectedRouteProfesional>
+            } />
 
             {/* Ruta protegida para la página Secretaria */}
             <Route path="/secretaria" element={
               <ProtectedRouteSecretaria>
                 <Secretaria />
+              </ProtectedRouteSecretaria>
+            } />
+            <Route path="/secretariaReservas" element={
+              <ProtectedRouteSecretaria>
+                <SecretariaReservas />
               </ProtectedRouteSecretaria>
             } />
 
