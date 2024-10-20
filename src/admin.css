@@ -5,43 +5,11 @@
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
-
     border-radius: 10px;
     background-color: #7ca8639f;
 }
 
-
-/* admin.css */
-
-.admin-intro {
-    margin: 20px auto; /* Espaciado superior e inferior y centrado horizontal */
-    padding: 15px; /* Espaciado interno */
-    background-color: #69aa55ab; /* Fondo claro */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.5); /* Sombra sutil */
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    text-align: center; /* Centrar el contenido */
-    max-width: 800px; /* Ancho máximo para limitar el tamaño */
-    
-}
-
-.admin-intro h1 {
-    font-size: 3em; /* Tamaño de fuente para el encabezado */
-    color: #504d4d; /* Color del texto del encabezado */
-    margin-bottom: 15px; /* Espacio inferior para separación */
-}
-
-.admin-intro p {
-    font-size: 1.8em; /* Tamaño de fuente */
-    line-height: 1.5; /* Altura de línea */
-    color: #000000; /* Color del texto */
-    text-align: center; /* Justificar el texto */
-    padding-left: 1em; /* Espaciado lateral */
-    padding-right: 1em; /* Espaciado lateral */
-}
-
-
+/* Estilos para Reservas y Consultas */
 .comentario-item,
 .reserva-item {
     border-bottom: 1px solid #ddd;
@@ -102,16 +70,6 @@
     background-color: #f5749f;
 }
 
-/* Estilo para el separador entre las listas */
-.separador-listas {
-    margin: 0;
-    height: 5em; /* Grosor del separador */
-    background-color: #e4ffce; /* Color de fondo del separador */
-    border-radius: 4px; /* Bordes redondeados */
-    width: 100%;
-
-}
-
 /*PDF*/
 .btn-generar-pdf {
     background-color: #4CAF50; /* Color de fondo verde */
@@ -121,7 +79,7 @@
     text-align: center; /* Centrar texto */
     text-decoration: none; /* Sin subrayado */
     display: inline-block; /* Mostrar como un bloque en línea */
-    margin-top:10px;
+    margin-top: 10px;
     cursor: pointer; /* Cambiar cursor al pasar el mouse */
     border-radius: 5px; /* Bordes redondeados */
     margin-left: 10px;
@@ -129,4 +87,58 @@
 
 .btn-generar-pdf:hover {
     background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+/* Estilo para el separador entre las listas */
+.separador-listas {
+    margin: 0;
+    height: 5em; /* Grosor del separador */
+    background-color: #e4ffce; /* Color de fondo del separador */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 100%;
+}
+
+/* Media Queries para hacer la página responsive */
+
+/* Para pantallas menores a 768px (tabletas y móviles grandes) */
+@media (max-width: 768px) {
+    .admin-reservas, .admin-consultas {
+        padding: 15px;
+    }
+
+    .reserva-datos {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reserva-datos p, .reserva-datos strong {
+        padding: 5px 0;
+        width: 100%; /* Que ocupe toda la pantalla en móviles */
+    }
+
+    /* Ajustes en botones */
+    .btn-cancelar, .btn-generar-pdf {
+        width: 100%; /* Que los botones ocupen todo el ancho en móviles */
+        margin: 10px 0;
+    }
+}
+
+/* Para pantallas menores a 576px (móviles pequeños) */
+@media (max-width: 576px) {
+    .admin-reservas h3, .admin-consultas h3 {
+        font-size: 20px; /* Reducir el tamaño del encabezado en móviles */
+    }
+
+    .reserva-datos p, .reserva-datos strong {
+        font-size: 12px; /* Reducir el tamaño de las fuentes en móviles */
+    }
+
+    .btn-cancelar, .btn-generar-pdf {
+        padding: 8px 15px; /* Ajustar el espaciado de los botones */
+        font-size: 14px; /* Ajustar el tamaño del texto en los botones */
+    }
+
+    .separador-listas {
+        height: 3em; /* Reducir la altura del separador en móviles */
+    }
 }
