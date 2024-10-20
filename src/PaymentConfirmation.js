@@ -91,10 +91,10 @@ function Successful(){
             Monto: monto
         });
 
-        console.log(IDDeStorage.id)
+        console.log(IDDeStorage)
 
-        // const reservaPendienteRef = await doc(db, "reservasPendientes", IDDeStorage);
-        // await deleteDoc(reservaPendienteRef);
+        const reservaPendienteRef = await doc(db, "reservasPendientes", IDDeStorage);
+        await deleteDoc(reservaPendienteRef);
     }
     
 

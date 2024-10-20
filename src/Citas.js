@@ -25,7 +25,7 @@ function Citas(){
     const {user, horaReserva, setHoraReserva, 
         fechaReserva, setFechaReserva,
         horariosTomados, setHorariosTomados,
-        servicio, setServicio, userName, setIDPendienteState, userFlag} = useContext(DataContext)
+        servicio, setServicio, userName, setIDPendienteState, userFlag, IDPendienteState} = useContext(DataContext)
     
 
 
@@ -87,7 +87,11 @@ function Citas(){
             }
         );
 
-        setIDPendienteState(reservaPendiente)
+        const idReserva = reservaPendiente.id;
+
+        setIDPendienteState(idReserva)
+
+
     }
 
 

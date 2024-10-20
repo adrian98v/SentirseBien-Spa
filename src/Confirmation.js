@@ -32,8 +32,8 @@ function Successful(){
         sessionStorage.setItem('password', encryptedPassword);
         sessionStorage.setItem('servicio', servicio);
         sessionStorage.setItem('IDPendiente', IDPendienteState);
-        
 
+        
     }
 
 
