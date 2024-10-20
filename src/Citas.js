@@ -25,7 +25,7 @@ function Citas(){
     const {user, horaReserva, setHoraReserva, 
         fechaReserva, setFechaReserva,
         horariosTomados, setHorariosTomados,
-        servicio, setServicio, userName, setIDPendienteState} = useContext(DataContext)
+        servicio, setServicio, userName, setIDPendienteState, userFlag} = useContext(DataContext)
     
 
 
@@ -233,7 +233,9 @@ function Citas(){
 
                         <button 
     className='reservar_button' 
-    onClick={handleReserva}
+    onClick={()=>{
+        userFlag ? handleReserva() : history('/login')
+    }}
     style={{ 
         pointerEvents: (!horaReserva || !fechaReserva || servicio === "") ? "none" : "auto",
         opacity: (!horaReserva || !fechaReserva || servicio === "") ? 0.5 : 1 

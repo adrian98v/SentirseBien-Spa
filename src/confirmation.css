@@ -1,9 +1,9 @@
 .successful_payment_container{
-    min-width: 30em;
+    /* min-width: 20em; */
     width: 60vw;
     background-color: white;
     margin: 0 auto;
-    height: 25em;
+    /* height: 25em; */
     padding-right: 1.2em;
     padding-left: 1.2em;
     margin-top: 2em;
@@ -79,3 +79,4 @@
     color: rgb(255, 255, 255);
     width: 40%;
 }
+

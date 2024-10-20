@@ -12,6 +12,7 @@ function Header() {
     const { setUserFlag, userFlag, user, userName, role } = useContext(DataContext); // Obtener el userRole del contexto
     const history = useNavigate();
 
+
     // Verifica si el usuario es administrador
     const isAdmin = user && userName === "admin1@gmail.com";
 
@@ -35,41 +36,41 @@ function Header() {
             </button>
 
             <div className='opciones'>
-                <button onClick={() => { history('/about') }}>Acerca de</button>
-                <button onClick={() => { history('/citas') }}>Citas</button>
-                <button onClick={() => { history('/servicios') }}>Servicios</button>
-                <button onClick={() => { history('/contacto') }}>Contacto</button>
-                <button onClick={() => { history('/noticias') }}>Noticias</button>
+                <button onClick={() => { history('/about'); setMenuOpen(!menuOpen)}}>Sobre nosotros</button>
+                <button onClick={() => { history('/citas'); setMenuOpen(!menuOpen) }}>Citas</button>
+                <button onClick={() => { history('/servicios'); setMenuOpen(!menuOpen) }}>Servicios</button>
+                <button onClick={() => { history('/contacto'); setMenuOpen(!menuOpen) }}>Contacto</button>
+                <button onClick={() => { history('/noticias'); setMenuOpen(!menuOpen) }}>Noticias</button>
 
                 {user && (
-                <button onClick={() => { history('/misreservas') }}>Mis Reservas</button>
+                <button onClick={() => { history('/misreservas'); setMenuOpen(!menuOpen) }}>Mis Reservas</button>
                 )}
                 
                 {/* Botón "Admin" que solo aparece si el usuario es administrador */}
                 {isAdmin && (
-                    <button onClick={() => { history('/admin') }}>Admin</button>
+                    <button onClick={() => { history('/admin'); setMenuOpen(!menuOpen) }}>Admin</button>
                 )}
 
                 {/* Botones por profesional que solo aparecen si el usuario está logueado y es del área correspondiente */}
                 {isMasajista && (
-                    <button onClick={() => { history('/profesionales') }}>Profesional - Masajista</button>
+                    <button onClick={() => { history('/profesionales'); setMenuOpen(!menuOpen) }}>Profesional - Masajista</button>
                 )}
 
                 {isBelleza && (
-                    <button onClick={() => { history('/profesionales') }}>Profesional - Belleza</button>
+                    <button onClick={() => { history('/profesionales'); setMenuOpen(!menuOpen) }}>Profesional - Belleza</button>
                 )}
 
                 {isTratamientoCorporal && (
-                    <button onClick={() => { history('/profesionales') }}>Profesional - Tratamiento Corporal</button>
+                    <button onClick={() => { history('/profesionales'); setMenuOpen(!menuOpen) }}>Profesional - Tratamiento Corporal</button>
                 )}
 
                 {isTratamientoFacial && (
-                    <button onClick={() => { history('/profesionales') }}>Profesional - Tratamiento Facial</button>
+                    <button onClick={() => { history('/profesionales'); setMenuOpen(!menuOpen) }}>Profesional - Tratamiento Facial</button>
                 )}
 
                 {/* Botón "Secretaria" que solo aparece si el usuario es una secretaria */}
                 {isSecretaria && (
-                    <button onClick={() => { history('/secretaria') }}>Secretaria</button>
+                    <button onClick={() => { history('/secretaria'); setMenuOpen(!menuOpen) }}>Secretaria</button>
                 )}
             </div>
 
