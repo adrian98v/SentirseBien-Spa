@@ -41,6 +41,10 @@ function Header() {
                 <button onClick={() => { history('/contacto') }}>Contacto</button>
                 <button onClick={() => { history('/noticias') }}>Noticias</button>
 
+                {user && (
+                <button onClick={() => { history('/misreservas') }}>Mis Reservas</button>
+                )}
+                
                 {/* Botón "Admin" que solo aparece si el usuario es administrador */}
                 {isAdmin && (
                     <button onClick={() => { history('/admin') }}>Admin</button>

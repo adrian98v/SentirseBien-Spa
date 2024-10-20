@@ -44,6 +44,7 @@ function Profesionales() {
             obtenerReservas(); // Solo obtener reservas cuando ya tenemos el rol del profesional
         }
     }, [role]);
+    
     // Función para cancelar una reserva
     const cancelarReserva = async (idReserva) => {
         try {
