@@ -96,6 +96,21 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    
+}
+
+.btn-pagar{
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado */
+    text-align: center; /* Centrar texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como un bloque en línea */
+    margin-top:10px;
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-left: 10px;
 }
 
 .btn-cancelar:hover {
@@ -129,4 +144,17 @@
 
 .btn-generar-pdf:hover {
     background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+
+@media (max-width: 380px) {
+    .reserva-datos {
+        flex-direction: column; /* Cambia la dirección del flex a columna */
+        align-items: center; /* Centra los elementos */
+        justify-content: center; /* Centra el contenido verticalmente */
+        margin-bottom: 5px; /* Ajusta el margen si es necesario */
+    }
+    .btn-pagar, .btn-generar-pdf{
+        margin-left: 0px;
+    }
 }

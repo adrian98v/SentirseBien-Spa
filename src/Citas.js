@@ -77,7 +77,7 @@ function Citas(){
             }
     // Usar addDoc para agregar un nuevo documento sin especificar el ID
     const reservaPendiente = await addDoc(reservasRef, {
-        dia: fechaConHora ? fechaConHora.toDate() : null, 
+                dia: fechaConHora ? fechaConHora.toDate() : null, 
                 email: user.email,
                 estadoPago: "pendiente",
                 hora: horaReserva,

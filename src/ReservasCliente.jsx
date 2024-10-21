@@ -7,11 +7,14 @@ import './admin.css';
 import { DataContext } from './App.js';
 import dayjs from 'dayjs'; 
 import jsPDF from 'jspdf';
+import { useNavigate } from 'react-router-dom'
+import sjcl from 'sjcl';
 
 function ReservasCliente() {
     const [reservasPagadas, setReservasPagadas] = useState([]);  
     const [reservasPendientes, setReservasPendientes] = useState([]);  
-    const { user } = useContext(DataContext); 
+    const { user, password } = useContext(DataContext); 
+    const history = useNavigate()
 
     // Función para obtener reservas pagadas desde la colección "reservaCompleta"
     const obtenerReservasPagadas = useCallback(async () => {
@@ -142,6 +145,9 @@ function ReservasCliente() {
         }
     };
 
+
+    
+
     return (
         <div className="admin-page">
             <Header />  
@@ -186,7 +192,52 @@ function ReservasCliente() {
                             >
                                 Cancelar Cita
                             </button>
-                            
+
+                            <button 
+                                className="btn-pagar"
+                                    onClick={async () => {
+
+                                        const fechaDeReserva = reserva.dia.toString()
+
+                                        const soloFecha = fechaDeReserva.slice(0, -5).trim();
+
+                                        const key = process.env.REACT_APP_CONFIRMATION_KEY;
+
+                                        const encryptedEmail = sjcl.encrypt(key, reserva.email);
+                                        const encryptedPassword = sjcl.encrypt(key, password);
+
+                                        // Guarda los detalles de la reserva y del usuario en sessionStorage
+                                        sessionStorage.setItem('fechaReserva', soloFecha);
+                                        sessionStorage.setItem('horaReserva', reserva.hora);
+                                        sessionStorage.setItem('email', encryptedEmail);
+                                        sessionStorage.setItem('password', encryptedPassword);
+                                        sessionStorage.setItem('servicio', reserva.servicio);
+                                        sessionStorage.setItem('IDPendiente', reserva.id);
+
+                                        const miServicio = reserva.servicio;
+                                        switch(miServicio){
+                                            case "Masaje AntiStress": window.location.href = "https://buy.stripe.com/test_aEUcPQaSm8NB5uE000"; break;
+                                            case "Masaje Circulatorio": window.location.href = "https://buy.stripe.com/test_28o7vwaSm8NB7CM5kl"; break;
+                                            case "Masaje Descontracturante": window.location.href = "https://buy.stripe.com/test_28o7vw7Ga5Bp0ak7su"; break;
+                                            case "Masaje c/Piedras": window.location.href = "https://buy.stripe.com/test_9AQ034gcG8NBf5e5kn"; break;
+                                            case "belleza Manos y Pies": window.location.href = "https://buy.stripe.com/test_6oEeXYf8C3thf5e5kq"; break;
+                                            case "belleza Depilacion Facial": window.location.href = "https://buy.stripe.com/test_eVa1781hMaVJf5e004"; break;
+                                            case "belleza Lifting Pestaña": window.location.href = "https://buy.stripe.com/test_5kAg22f8CfbZ1eo4gl"; break;
+                                            case "facial CrioFrecuencia Facial": window.location.href = "https://buy.stripe.com/test_7sI8zAe4ygg3bT2fZ5"; break;
+                                            case "facial LimpiezaProfunda+Hidr": window.location.href = "https://buy.stripe.com/test_9AQ4jkd0u1l96yIcMU"; break;
+                                            case "facial PuntaDiamnte": window.location.href = "https://buy.stripe.com/test_8wM8zA8Ke4xl3mw28h"; break;
+                                            case "corporal CrioFrecuencia Corpo": window.location.href = "https://buy.stripe.com/test_dR64jk5y29RF6yI5kx"; break;
+                                            case "corporal DermoHealth": window.location.href = "https://buy.stripe.com/test_5kAdTU4tY3th6yI00a"; break;
+                                            case "corporal Ultracavitacion": window.location.href = "https://buy.stripe.com/test_5kAeXY7Gad3RcX68wH"; break;
+                                            case "corporal VelaSlim": window.location.href = "https://buy.stripe.com/test_6oEeXYf8CbZNf5e00c"; break;
+                                        }
+
+
+                                        
+                                    }} // Asegúrate de implementar esta función
+                                    >
+                                Pagar Reserva
+                            </button>
                         </div>
                     </div>
                 )) : <p>No tienes reservas pendientes de pago.</p>}
