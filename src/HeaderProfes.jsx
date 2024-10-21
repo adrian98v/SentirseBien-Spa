@@ -18,11 +18,8 @@ function Header() {
     return (
         <div className={`header ${menuOpen ? 'active' : ''}`}>
             <div className='icono'>
-                
-            <Link to='/'>
+                {/* Elimina el Link para que el logo no redirija */}
                 <img src={Icono} className='icono' alt='logo'></img>
-            </Link>
-                
             </div>
             
             <button className='menu-toggle' onClick={() => setMenuOpen(!menuOpen)}>
@@ -31,7 +28,7 @@ function Header() {
             
             <div className='opciones'>
                 
-                <button onClick={() => {history('/admin')}}>SECTOR PROFESIONALES </button>
+                <button onClick={() => {history('/profesionales')}}>SECTOR PROFESIONALES </button>
 
             </div>
 

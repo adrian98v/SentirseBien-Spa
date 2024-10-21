@@ -27,6 +27,7 @@ function SidebarMenu() {
                         <Link to="/createUser" onClick={toggleMenu}>Crear Usuario</Link>
                         <Link to="/reservas" onClick={toggleMenu}>Reservas</Link>
                         <Link to="/comentarios" onClick={toggleMenu}>Comentarios</Link>
+                        <Link to="/ingresos" onClick={toggleMenu}>Ingresos</Link>
                     </nav>
                 </div>
             )}
