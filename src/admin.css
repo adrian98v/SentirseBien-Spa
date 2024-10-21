@@ -169,7 +169,7 @@
 /* Media Queries para hacer la página responsive */
 
 /* Para pantallas menores a 768px (tabletas y móviles grandes) */
-@media (max-width: 1360px) {
+@media (max-width: 850px) {
     .admin-reservas, .admin-consultas {
         padding: 15px;
     }
@@ -185,32 +185,14 @@
     }
 
     /* Ajustes en botones */
-    .btn-cancelar, .btn-generar-pdf {
+    .btn-cancelar, .btn-generar-pdf, .btn-pagar {
         width: 100%; /* Que los botones ocupen todo el ancho en móviles */
         margin: 10px 0;
         padding: 10px 1px;
     }
 }
 
-/* Para pantallas menores a 576px (móviles pequeños) */
-@media (max-width: 576px) {
-    .admin-reservas h3, .admin-consultas h3 {
-        font-size: 20px; /* Reducir el tamaño del encabezado en móviles */
-    }
 
-    .reserva-datos p, .reserva-datos strong {
-        font-size: 12px; /* Reducir el tamaño de las fuentes en móviles */
-    }
-
-    .btn-cancelar, .btn-generar-pdf {
-        padding: 8px 1px; /* Ajustar el espaciado de los botones */
-        font-size: 14px; /* Ajustar el tamaño del texto en los botones */
-    }
-
-    .separador-listas {
-        height: 3em; /* Reducir la altura del separador en móviles */
-    }
-}
 
 
 @media (max-width: 380px) {
