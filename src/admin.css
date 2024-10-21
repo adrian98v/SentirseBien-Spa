@@ -98,10 +98,63 @@
     width: 100%;
 }
 
+/* admin.css */
+
+.admin-intro {
+    margin: 20px auto; /* Espaciado superior e inferior y centrado horizontal */
+    padding: 15px; /* Espaciado interno */
+    background-color: #63ad6da9; /* Fondo claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    text-align: center; /* Centrar el contenido */
+    max-width: 800px; /* Ancho máximo para limitar el tamaño */
+    font-size: 1.11em;
+}
+
+.admin-intro h1 {
+    font-size: 2.5em; /* Tamaño de fuente para el encabezado */
+    color: #636568d7; /* Color del texto del encabezado */
+    margin-bottom: 15px; /* Espacio inferior para separación */
+}
+
+.admin-intro p {
+    font-size: 1.5em; /* Tamaño de fuente */
+    line-height: 1.5; /* Altura de línea */
+    color: #020202; /* Color del texto */
+    text-align: justify; /* Justificar el texto */
+    padding-left: 1em; /* Espaciado lateral */
+    padding-right: 1em; /* Espaciado lateral */
+    padding-bottom: 5em;
+}
+.seccion-filtro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.seccion-filtro input{
+    width: 20em;
+}
+.btn-filtrar {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado */
+    text-align: center; /* Centrar texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como un bloque en línea */
+    margin-top: 10px;
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-left: 10px;
+}
 /* Media Queries para hacer la página responsive */
 
 /* Para pantallas menores a 768px (tabletas y móviles grandes) */
-@media (max-width: 768px) {
+@media (max-width: 1360px) {
     .admin-reservas, .admin-consultas {
         padding: 15px;
     }
@@ -120,6 +173,7 @@
     .btn-cancelar, .btn-generar-pdf {
         width: 100%; /* Que los botones ocupen todo el ancho en móviles */
         margin: 10px 0;
+        padding: 10px 1px;
     }
 }
 
@@ -134,7 +188,7 @@
     }
 
     .btn-cancelar, .btn-generar-pdf {
-        padding: 8px 15px; /* Ajustar el espaciado de los botones */
+        padding: 8px 1px; /* Ajustar el espaciado de los botones */
         font-size: 14px; /* Ajustar el tamaño del texto en los botones */
     }
 

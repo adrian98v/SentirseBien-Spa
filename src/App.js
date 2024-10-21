@@ -27,6 +27,7 @@ import AdminCreateUser from './admin-Pages/AdminCreateUser.jsx';
 import ReservasCliente from './ReservasCliente.jsx';  
 import ProfesionalesReeservas from './profesional-componentes-paginas/ProfesionalReservas.jsx'; 
 import SecretariaReservas from './secretaria-componentes-paginas/SecretariaReservas.jsx';
+import AdminIngresos from './admin-Pages/AdminIngresosFecha.jsx';
 export const DataContext = createContext()
 
 function App() {
@@ -194,6 +195,11 @@ function App() {
             <Route path="/createUser" element={
               <ProtectedRouteAdmin>
                 <AdminCreateUser />
+              </ProtectedRouteAdmin>
+            } />
+            <Route path="/ingresos" element={
+              <ProtectedRouteAdmin>
+                <AdminIngresos />
               </ProtectedRouteAdmin>
             } />
 

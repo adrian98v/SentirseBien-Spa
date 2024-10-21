@@ -7,7 +7,7 @@ import SidebarMenu from '../admin-Components/MenuDesplegableAdmin';
 import Header from '../HeaderAdmin';
 import Footer from '../OtroFooter';
 import dayjs from 'dayjs';
-
+import img_logo from '../assets/Logo_SPA-removebg-preview.png';
 const AdminReservas = () => {
     const [reservasConfirmadas, setReservasConfirmadas] = useState([]); 
     const [reservasPendientes, setReservasPendientes] = useState([]); 
@@ -69,27 +69,36 @@ const AdminReservas = () => {
     };
 
     const generarPDF = (reserva) => {
-        const doc = new jsPDF();
+        // Crear un nuevo documento con tamaño personalizado (A6 en lugar de A4)
+        const doc = new jsPDF({
+            format: [105, 148], // A6 tamaño en mm (más pequeño que A4)
+        });
         const { width, height } = doc.internal.pageSize;
-
+    
+        const logoWidth = 40; // Reducir el ancho del logotipo
+        const logoHeight = 30; // Reducir el alto del logotipo
+    
+        // Agregar la imagen al PDF
+        doc.addImage(img_logo, 'PNG', width / 2 - logoWidth / 2, 10, logoWidth, logoHeight);
+    
         // Configurar el diseño del PDF como un ticket
-        doc.setFontSize(16);
-        doc.text("COMPROBANTE DE RESERVA", width / 2, 10, { align: "center" });
-        doc.setFontSize(12);
-        
+        doc.setFontSize(14); // Reducir el tamaño de la fuente para que se ajuste al tamaño del documento
+        doc.text("COMPROBANTE DE RESERVA", width / 2, 50, { align: "center" });
+        doc.setFontSize(10); // Reducir el tamaño de la fuente para los detalles
+    
         // Agregar detalles de la reserva
-        doc.text(`Email: ${reserva.email}`, width / 2, 30, { align: "center" });
-        doc.text(`Servicio: ${reserva.servicio}`, width / 2, 40, { align: "center" });
-        doc.text(`Fecha: ${reserva.dia}`, width / 2, 50, { align: "center" });
-        doc.text(`Monto: $${reserva.monto}`, width / 2, 60, { align: "center" }); // Asegúrate de que 'monto' esté disponible en la reserva
-
+        doc.text(`Email: ${reserva.email}`, width / 2, 65, { align: "center" });
+        doc.text(`Servicio: ${reserva.servicio}`, width / 2, 75, { align: "center" });
+        doc.text(`Fecha: ${reserva.dia}`, width / 2, 85, { align: "center" });
+        doc.text(`Monto: $${reserva.Monto}`, width / 2, 95, { align: "center" });
+    
         // Agregar un borde al ticket
         doc.rect(5, 5, width - 10, height - 10);
-
+    
         // Guardar el PDF
         doc.save(`comprobante_reserva_${reserva.id}.pdf`);
     };
-
+    
     return (
         <div>
             <Header />
