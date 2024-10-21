@@ -43,7 +43,8 @@ function ProfesionalesReservas() {
                         fecha: reserva.dia, // Fecha formateada
                         email: reserva.email,
                         servicio: reserva.servicio,
-                        estado: reserva.estadoPago
+                        estado: reserva.estadoPago,
+                        Monto: reserva.Monto
                     });
                 }
             });
@@ -76,7 +77,7 @@ function ProfesionalesReservas() {
         // Agregar detalles de la reserva
         doc.text(`Email: ${reserva.email}`, width / 2, 65, { align: "center" });
         doc.text(`Servicio: ${reserva.servicio}`, width / 2, 75, { align: "center" });
-        doc.text(`Fecha: ${reserva.dia}`, width / 2, 85, { align: "center" });
+        doc.text(`Fecha: ${reserva.fecha}`, width / 2, 85, { align: "center" });
         doc.text(`Monto: $${reserva.Monto}`, width / 2, 95, { align: "center" });
     
         // Agregar un borde al ticket
