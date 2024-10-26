@@ -39,6 +39,8 @@ function Login() {
                         history('/profesionales'); // Redirigir a la página de profesionales
                     } else if (userRole === "Secretaria") {
                         history('/secretaria'); // Redirigir a la página de secretaria
+                    }  else if (userRole === "user") {
+                    history('/clientes'); // Redirigir a la página de cliente
                     } else {
                         history('/'); // Redirigir a la página principal para otros usuarios
                     }

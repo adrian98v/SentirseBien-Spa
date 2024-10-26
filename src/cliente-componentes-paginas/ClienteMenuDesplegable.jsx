@@ -1,4 +1,3 @@
-//ProfesionalMenuDespegable.jsx
 import React, { useState } from 'react';
 import { HiOutlineMenu } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
@@ -24,8 +23,8 @@ function SidebarMenu() {
                 <div className="menu-desplegable">
                     {/* Opciones de navegación */}
                     <nav className="menu-opciones">
-                        <Link to="/profesionales" onClick={toggleMenu}>Inicio</Link>
-                        <Link to="/reservasProfesionales" onClick={toggleMenu}>Reservas</Link>
+                        <Link to="/clientes" onClick={toggleMenu}>Inicio</Link>
+                        <Link to="/reservasClientes" onClick={toggleMenu}>Reservas</Link>
                     </nav>
                 </div>
             )}

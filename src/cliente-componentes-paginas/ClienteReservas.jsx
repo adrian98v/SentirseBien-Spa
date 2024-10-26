@@ -1,27 +1,20 @@
-// SECCION COMPLETA REEMPLAZADA POR PAGINA CLIENTES 
 
-
-
-
-
-
-
-/*
+//ReservasCliente.jsx
 import React, { useEffect, useState, useContext, useCallback } from 'react'; 
-import { db } from './firebase'; 
+import { db } from '../firebase'; 
 import { collection, query, where, orderBy, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import Header from './Header';  
-import Footer from './Footer'; 
-import './admin.css'; 
-import { DataContext } from './App.js';
+import Header from '../HeaderCliente';  
+import Footer from '../OtroFooter'; 
+import '../admin.css'; 
+import { DataContext } from '../App.js';
 import { useNavigate } from 'react-router-dom'
 import dayjs from 'dayjs'; 
 import jsPDF from 'jspdf';
 import sjcl from 'sjcl';
-import img_logo from './assets/Logo_SPA-removebg-preview.png';
+import img_logo from '../assets/Logo_SPA-removebg-preview.png';
 
 
-function ReservasCliente() {
+function ClienteReservas() {
     const [reservasPagadas, setReservasPagadas] = useState([]);  
     const [reservasPendientes, setReservasPendientes] = useState([]);  
     const { user, password } = useContext(DataContext); 
@@ -268,5 +261,4 @@ function ReservasCliente() {
     );
 }
 
-export default ReservasCliente;
-*/
+export default ClienteReservas;

@@ -81,3 +81,12 @@
         font-size: 0.7em; /* Reduce más el tamaño del texto en móviles */
     }
 }
+
+
+...{
+    display: grid;
+    
+    min-height: 100vh;
+	grid-template-rows: auto 1fr auto;
+}
+
