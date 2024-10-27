@@ -43,7 +43,7 @@ function Header() {
                 <button onClick={() => { history('/noticias'); setMenuOpen(!menuOpen) }}>Noticias</button>
 
                 {user && (
-                <button onClick={() => { history('/misreservas'); setMenuOpen(!menuOpen) }}>Mis Reservas</button>
+                <button onClick={() => { history('/misreservas'); setMenuOpen(!menuOpen) }}>Ir a Pagina Cliente</button>
                 )}
                 
                 {/* Botón "Admin" que solo aparece si el usuario es administrador */}

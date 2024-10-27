@@ -28,7 +28,9 @@ function Header() {
             
             <div className='opciones'>
                 
+                <button onClick={() => { history('/citas'); setMenuOpen(!menuOpen) }}>RESERVAR CITAS </button>
                 <button onClick={() => {history('/clientes')}}>SECTOR CLIENTES </button>
+                
 
             </div>
 
