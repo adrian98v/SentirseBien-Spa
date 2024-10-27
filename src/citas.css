@@ -60,11 +60,14 @@ label {
 .seccion_reservas_parrafo {
     color: white;
     width: 35%;
+
 }
 
 .seccion_reservas_parrafo p {
     font-size: large;
+    font-weight: 300;
     margin-top: 2em;
+    color: white;
 }
 
 .politicas {
@@ -85,20 +88,23 @@ label {
     display: flex;
     justify-content: space-between;
     margin-top: 3em;
-    
+
 }
 
 .politica_cancelacion {
     max-width: 20em;
+
 }
 
 .politica_retraso {
     max-width: 20em;
+    
 }
 
 .politica_edad {
     max-width: 20em;
     margin-right: 5em;
+  
 }
 
 .politicas_container label {
@@ -109,6 +115,22 @@ label {
 .politicas_container p {
     font-weight: 300;
     color: black;
+}
+
+.retraso_parrafo{
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.edad_parrafo{
+    margin-top: 30px;
+    font-size: 20px;
+
+}
+
+.cancelacion_parrafo{
+    margin-top: 30px;
+    font-size: 20px;
 }
 
 .reservar_button{

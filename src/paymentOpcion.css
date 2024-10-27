@@ -1,0 +1,85 @@
+/* paymentOpcion.css */
+
+.payment_container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.imagen_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/pexels-pixabay-161737.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.paymentOption {
+    position: relative;
+    z-index: 1;
+    margin-top: 7em;
+    text-align: center;
+    color: white; /* Ajusta el color según el fondo */
+}
+
+.text_container {
+    margin-bottom: 2em;
+}
+
+.creditoDebito_container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 10em;
+    height: 15em;
+}
+
+.debitoButton, .creditoButton {
+    width: 20em;
+    height: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: black;
+    /* border-radius: 50px; */
+    background-color: rgba(255, 255, 255, 0.342); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Desenfoque */
+    border: 1px solid rgba(78, 78, 78, 0.5); /* Borde en todos los lados */
+    margin: 0px 5px 0px 5px;
+    font-size: 20px;
+    transition: transform 0.3s; /* Suaviza el efecto de transición */
+}
+
+
+p{
+    color: black;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.debitoButton:hover, .creditoButton:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al 105% */
+}
+
+
+@media (max-width: 700px) {
+    .creditoDebito_container {
+        flex-direction: column; /* Cambia la dirección del flex a columna */
+        align-items: center;
+        padding: 0; /* Elimina el padding lateral */
+    }
+
+    .debitoButton, .creditoButton {
+        width: 50%; /* Aumenta el ancho a un 90% para ocupar más espacio */
+        margin: 10px 0; /* Margen vertical entre los botones */
+        font-size: 1em; /* Ajusta el tamaño de fuente si es necesario */
+    }
+
+    .text_container {
+        margin-bottom: 3em; /* Ajusta el margen inferior del texto */
+    }
+}

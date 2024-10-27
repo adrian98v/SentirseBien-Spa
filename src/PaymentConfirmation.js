@@ -26,6 +26,7 @@ function Successful(){
         const horaReservaDeStorage = sessionStorage.getItem('horaReserva');
         const servicioDeStorage = sessionStorage.getItem('servicio');
         const IDDeStorage = sessionStorage.getItem('IDPendiente');
+        const MetodoDeStorage = sessionStorage.getItem('metodo');
     
         const key = process.env.REACT_APP_CONFIRMATION_KEY;
         // Desencriptar el email y la contraseña
@@ -88,10 +89,10 @@ function Successful(){
             hora: horaReservaDeStorage,
             servicio: servicioDeStorage,
             userName: emailDesencriptado,
-            Monto: monto
+            Monto: monto,
+            metodo: MetodoDeStorage
         });
 
-        console.log(IDDeStorage)
 
         const reservaPendienteRef = await doc(db, "reservasPendientes", IDDeStorage);
         await deleteDoc(reservaPendienteRef);

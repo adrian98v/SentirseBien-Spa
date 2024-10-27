@@ -29,6 +29,7 @@ import SecretariaReservas from './secretaria-componentes-paginas/SecretariaReser
 import ClienteReservas from './cliente-componentes-paginas/ClienteReservas.jsx';
 import AdminIngresos from './admin-Pages/AdminIngresosFecha.jsx';
 import Clientes from './Cliente.jsx';
+import PaymentOptions from './PaymentOpcion.js';
 
 export const DataContext = createContext();
 
@@ -46,6 +47,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [IDPendienteState, setIDPendienteState] = useState(null);
   const [boolLogin, setBoolLogin] = useState(false);
+  const [metodoPago, setMetodoPago] = useState("")
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
@@ -115,7 +117,8 @@ function App() {
       horaReserva, setHoraReserva, reservaCompleta, setReservaCompleta,
       horariosTomados, setHorariosTomados,
       servicio, setServicio, email, setEmail, password, setPassword,
-      IDPendienteState, setIDPendienteState, boolLogin, setBoolLogin
+      IDPendienteState, setIDPendienteState, boolLogin, setBoolLogin,
+      metodoPago, setMetodoPago
     }}>
       <Router>
         <div className="App">
@@ -142,6 +145,10 @@ function App() {
 
             <Route path="/secretaria" element={<ProtectedRouteSecretaria><Secretaria /></ProtectedRouteSecretaria>} />
             <Route path="/secretariaReservas" element={<ProtectedRouteSecretaria><SecretariaReservas /></ProtectedRouteSecretaria>} />
+
+            <Route path="/opcionPago" element={
+              <PaymentOptions/>
+            } />
 
             <Route path="/clientes" element={<ProtectedRouteCliente><Clientes /></ProtectedRouteCliente>} />
             <Route path="/reservasClientes" element={<ProtectedRouteCliente><ClienteReservas /></ProtectedRouteCliente>} />
