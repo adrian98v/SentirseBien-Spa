@@ -66,6 +66,8 @@ function ClienteReservas() {
         doc.text(`Servicio: ${reserva.servicio}`, width / 2, 75, { align: "center" });
         doc.text(`Fecha: ${reserva.dia}`, width / 2, 85, { align: "center" });
         doc.text(`Monto: $${reserva.Monto}`, width / 2, 95, { align: "center" });
+        doc.text(`Método de pago: ${reserva.metodo}`, width / 2, 105, { align: "center" }); // Añadir el método de pago
+        doc.text(`ID reserva: ${reserva.id}`, width / 2, 115, { align: "center" }); // Añadir el ID de la reserva
     
         // Agregar un borde al ticket
         doc.rect(5, 5, width - 10, height - 10);
@@ -174,6 +176,8 @@ function ClienteReservas() {
                             <p><strong>Día:</strong> {reserva.dia}</p>
                             <p><strong>Hora:</strong> {reserva.hora}</p>
                             <p><strong>Estado del Pago:</strong> {reserva.estadoPago ? reserva.estadoPago : 'Pagado'}</p>
+                            <p><strong>Monto:</strong> ${reserva.Monto}</p>
+                            <p>Método de Pago: {reserva.metodo}</p>
                             <button 
                                 className="btn-cancelar"
                                 onClick={() => cancelarReservaPagada(reserva.id)}
@@ -200,6 +204,7 @@ function ClienteReservas() {
                             <p><strong>Día:</strong> {reserva.dia}</p>
                             <p><strong>Hora:</strong> {reserva.hora}</p>
                             <p><strong>Estado del Pago:</strong> {reserva.estadoPago ? reserva.estadoPago : 'Pendiente'}</p>
+                            <p><strong>Monto:</strong> ${reserva.Monto}</p>
                             <button 
                                 className="btn-cancelar"
                                 onClick={() => cancelarReservaPendiente(reserva.id)}

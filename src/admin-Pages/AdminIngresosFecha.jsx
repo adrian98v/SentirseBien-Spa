@@ -15,7 +15,10 @@ const AdminIngresos = () => {
     const [ingresoTotal, setIngresoTotal] = useState(0);
     const [fechaInicio, setFechaInicio] = useState('');
     const [fechaFin, setFechaFin] = useState('');
+    const [metodoPagoFiltro, setMetodoPagoFiltro] = useState('cualquiera'); // Nueva variable para el filtro
+   
 
+    
     useEffect(() => {
         obtenerReservas();
     }, []);
@@ -24,6 +27,7 @@ const AdminIngresos = () => {
         const qConfirmadas = query(collection(db, "reservaCompleta"), orderBy('dia', 'asc'));
         const querySnapshotConfirmadas = await getDocs(qConfirmadas);
         const reservasDataConfirmadas = [];
+        let total = 0;
         querySnapshotConfirmadas.forEach((doc) => {
             const reserva = doc.data();
             if (reserva.dia && reserva.dia.seconds) {
@@ -33,8 +37,10 @@ const AdminIngresos = () => {
                 id: doc.id,
                 email: reserva.email,
                 monto: reserva.monto || 0, // Asegurarse de que el monto sea un número
+                metodo: reserva.metodo || 'No especificado', // Añadir el atributo metodo
                 ...reserva
             });
+            total += reserva.Monto;
         });
 
         // Obtener reservas pendientes
@@ -49,12 +55,14 @@ const AdminIngresos = () => {
             reservasDataPendientes.push({
                 id: doc.id,
                 email: reserva.email,
+                metodo:reserva.metodo,
                 ...reserva
             });
         });
 
         setReservasConfirmadas(reservasDataConfirmadas);
         setReservasPendientes(reservasDataPendientes);
+        setIngresoTotal(total);
     };
 
     const filtrarReservasPorFechas = async () => {
@@ -62,21 +70,21 @@ const AdminIngresos = () => {
             alert("Por favor, seleccione ambas fechas.");
             return;
         }
-
+    
         const startDate = dayjs(fechaInicio).startOf('day').toDate();
         const endDate = dayjs(fechaFin).endOf('day').toDate();
-
+    
+        // Define la consulta base sin el filtro de metodo
         const qConfirmadas = query(
             collection(db, "reservaCompleta"),
             where('dia', '>=', startDate),
             where('dia', '<=', endDate),
             orderBy('dia', 'asc')
         );
-
+    
         const querySnapshotConfirmadas = await getDocs(qConfirmadas);
         const reservasDataConfirmadas = [];
-        let total = 0;
-
+        
         querySnapshotConfirmadas.forEach((doc) => {
             const reserva = doc.data();
             if (reserva.dia && reserva.dia.seconds) {
@@ -85,16 +93,93 @@ const AdminIngresos = () => {
             reservasDataConfirmadas.push({
                 id: doc.id,
                 email: reserva.email,
-                monto: reserva.monto || 0, // Asegurarse de que el monto sea un número
+                monto: reserva.monto || 0,
+                metodo: reserva.metodo || 'No especificado',
+                tipoServicio: reserva.servicio || 'No especificado', // Asegúrate de que 'tipoServicio' esté presente
+                
                 ...reserva
             });
-
-            total += reserva.Monto || 0;
         });
-
-        setReservasConfirmadas(reservasDataConfirmadas);
+    
+        // Filtrar los resultados en el cliente
+        const reservasFiltradas = metodoPagoFiltro !== "cualquiera" ? reservasDataConfirmadas.filter(reserva => reserva.metodo === metodoPagoFiltro)  : reservasDataConfirmadas;
+        
+        let total = 0;
+        // Itera sobre reservasFiltradas y suma los montos
+        reservasFiltradas.forEach(reserva => {
+            total += reserva.Monto || 0; // Asegúrate de que 'monto' sea un número
+        });
+    
+        console.log("Reservas filtradas:", reservasFiltradas); // Para depuración
+        console.log("Ingreso total calculado:", total); // Para depuración
+    
+        setReservasConfirmadas(reservasFiltradas);
         setIngresoTotal(total);
     };
+
+
+const generarPDFGeneral = () => {
+    const doc = new jsPDF({
+        format: 'a4', // Puedes ajustar el tamaño según tus necesidades
+    });
+    const { width, height } = doc.internal.pageSize;
+
+    // Configuración del logo
+    const logoWidth = 50; // Ancho del logo
+    const logoHeight = 30; // Alto del logo
+
+    // Añadir el logo
+    doc.addImage(img_logo, 'PNG', width / 2 - logoWidth / 2, 10, logoWidth, logoHeight);
+    
+    // Título
+    doc.setFontSize(14);
+    doc.text("COMPROBANTE DE RESERVAS", width / 2, 50, { align: "center" });
+    
+    // Separador
+    doc.setDrawColor(200); // Color del separador
+    doc.setLineWidth(0.5);
+    doc.line(10, 55, width - 10, 55); // Línea horizontal
+    
+    // Establecer el tamaño de fuente para los datos
+    doc.setFontSize(10);
+    
+    // Encabezados de la tabla
+    const headers = ["Email", "Fecha", "Monto", "Método de Pago", "Tipo de Servicio"];
+    
+    // Posición de los encabezados
+    headers.forEach((header, index) => {
+        doc.text(header, 14 + (index * 40), 65);
+    });
+    
+    // Añadir datos de reservas
+    let currentY = 75; // Comienza a dibujar reservas en esta posición vertical
+    const reservasData = reservasConfirmadas.map(reserva => [
+        reserva.email,
+        reserva.dia,
+        `$${reserva.Monto.toFixed(2)}`, // Asegúrate de formatear el monto
+        reserva.metodo,
+        reserva.servicio || 'No especificado',
+    ]);
+    
+    reservasData.forEach((row) => {
+        row.forEach((item, colIndex) => {
+            doc.text(item, 14 + (colIndex * 40), currentY);
+        });
+        // Dibuja una línea horizontal después de cada reserva
+        currentY += 10; // Espaciado entre la línea y la siguiente reserva
+        doc.setDrawColor(0 , 0 ,0); // Color de la línea
+        doc.setLineWidth(0.7);
+        doc.line(10, currentY, width - 10, currentY); // Línea horizontal
+        currentY += 5; // Espacio adicional después de la línea
+    });
+
+    // Total
+    doc.text(`Ingreso Total: $${ingresoTotal.toFixed(2)}`, width - 50, currentY + 10);
+
+    // Guardar el PDF
+    doc.save("reservas.pdf");
+};
+
 
     const eliminarReserva = async (idReserva, coleccion) => {
         try {
@@ -130,6 +215,8 @@ const AdminIngresos = () => {
         doc.text(`Servicio: ${reserva.servicio}`, width / 2, 75, { align: "center" });
         doc.text(`Fecha: ${reserva.dia}`, width / 2, 85, { align: "center" });
         doc.text(`Monto: $${reserva.Monto}`, width / 2, 95, { align: "center" });
+        doc.text(`Método de pago: ${reserva.metodo}`, width / 2, 105, { align: "center" }); // Añadir el método de pago
+        doc.text(`ID reserva: ${reserva.id}`, width / 2, 115, { align: "center" }); // Añadir el ID de la reserva
 
         doc.rect(5, 5, width - 10, height - 10);
         doc.save(`comprobante_reserva_${reserva.id}.pdf`);
@@ -154,9 +241,18 @@ const AdminIngresos = () => {
                     value={fechaFin} 
                     onChange={(e) => setFechaFin(e.target.value)} 
                 />
+                <p>Método de Pago:</p>
+                    <select value={metodoPagoFiltro} onChange={(e) => setMetodoPagoFiltro(e.target.value)}>
+                        <option value="cualquiera">Cualquiera</option>
+                        <option value="credito">Credito</option>
+                        <option value="debito">Debito</option>
+                    </select>
                 <button onClick={filtrarReservasPorFechas} className='btn-filtrar'>Filtrar Reservas</button>
 
                 <h3>Ingreso Total: ${ingresoTotal}</h3>
+                <button onClick={generarPDFGeneral} disabled={reservasConfirmadas.length === 0} className='btn-filtrar'>
+                 Descargar PDF de Reservas
+                </button>
                 </div>
 
                 {reservasConfirmadas.length > 0 ? (
@@ -167,6 +263,7 @@ const AdminIngresos = () => {
                                 <p><strong>Servicio:</strong> {reserva.servicio}</p>
                                 <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
                                 <p><strong>Monto:</strong> ${reserva.Monto}</p>
+                                <p>Método de Pago: {reserva.metodo}</p>
                                 <button
                                     className="btn-cancelar"
                                     onClick={() => eliminarReserva(reserva.id, "reservaCompleta")}
@@ -185,6 +282,30 @@ const AdminIngresos = () => {
                 ) : (
                     <p>No hay reservas confirmadas.</p>
                 )}
+            {/* Separador distintivo entre las dos listas */}
+            <div className="separador-listas"></div>
+
+            <h3>LISTA DE RESERVAS PENDIENTES DE PAGO</h3>
+            {reservasPendientes.length > 0 ? (
+                reservasPendientes.map((reserva) => (
+                    <div key={reserva.id} className="reserva-item">
+                        <div className="reserva-datos">
+                            <p><strong>Email del Cliente:</strong> {reserva.email}</p>
+                            <p><strong>Servicio:</strong> {reserva.servicio}</p>
+                            <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
+                            <p><strong>Monto:</strong> ${reserva.Monto}</p>
+                            <button
+                                className="btn-cancelar"
+                                onClick={() => eliminarReserva(reserva.id, "reservasPendientes")}
+                            >
+                                Cancelar Reserva
+                            </button>
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <p>No hay reservas pendientes de pago.</p>
+            )}
             </div>
             <Footer />
         </div>

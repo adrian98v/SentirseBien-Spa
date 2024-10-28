@@ -46,7 +46,7 @@
     cursor: pointer;
     color: black;
     /* border-radius: 50px; */
-    background-color: rgba(255, 255, 255, 0.342); /* Fondo semi-transparente */
+    background-color: rgba(133, 132, 132, 0.342); /* Fondo semi-transparente */
     backdrop-filter: blur(10px); /* Desenfoque */
     border: 1px solid rgba(78, 78, 78, 0.5); /* Borde en todos los lados */
     margin: 0px 5px 0px 5px;

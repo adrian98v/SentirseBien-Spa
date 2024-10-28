@@ -26,6 +26,8 @@ const AdminReservas = () => {
                 reservasDataConfirmadas.push({
                     id: doc.id,
                     email: reserva.email,
+                    monto: reserva.monto,
+                    metodo: reserva.metodo || 'No especificado', // Añadir el atributo metodo
                     ...reserva
                 });
             });
@@ -42,6 +44,7 @@ const AdminReservas = () => {
                 reservasDataPendientes.push({
                     id: doc.id,
                     email: reserva.email,
+                    Monto: reserva.monto || 'No especificado',
                     ...reserva
                 });
             });
@@ -91,7 +94,8 @@ const AdminReservas = () => {
         doc.text(`Servicio: ${reserva.servicio}`, width / 2, 75, { align: "center" });
         doc.text(`Fecha: ${reserva.dia}`, width / 2, 85, { align: "center" });
         doc.text(`Monto: $${reserva.Monto}`, width / 2, 95, { align: "center" });
-    
+        doc.text(`Método de pago: ${reserva.metodo}`, width / 2, 105, { align: "center" }); // Añadir el método de pago
+        doc.text(`ID reserva: ${reserva.id}`, width / 2, 115, { align: "center" }); // Añadir el ID de la reserva
         // Agregar un borde al ticket
         doc.rect(5, 5, width - 10, height - 10);
     
@@ -112,6 +116,9 @@ const AdminReservas = () => {
                                 <p><strong>Email del Cliente:</strong> {reserva.email}</p>
                                 <p><strong>Servicio:</strong> {reserva.servicio}</p>
                                 <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
+                                <p><strong>Monto:</strong> ${reserva.Monto}</p>
+                                <p>Método de Pago: {reserva.metodo}</p>
+                                
                                 <button
                                     className="btn-cancelar"
                                     onClick={() => eliminarReserva(reserva.id, "reservaCompleta")}
@@ -142,6 +149,7 @@ const AdminReservas = () => {
                                 <p><strong>Email del Cliente:</strong> {reserva.email}</p>
                                 <p><strong>Servicio:</strong> {reserva.servicio}</p>
                                 <p><strong>Fecha y Hora:</strong> {reserva.dia}</p>
+                                <p><strong>Monto:</strong> ${reserva.Monto}</p>
                                 <button
                                     className="btn-cancelar"
                                     onClick={() => eliminarReserva(reserva.id, "reservasPendientes")}

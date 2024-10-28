@@ -23,7 +23,6 @@ import PaymentConfirmation from './PaymentConfirmation.js';
 import AdminComments from './admin-Pages/AdminComments.jsx';
 import AdminReservas from './admin-Pages/AdminReservas.jsx';
 import AdminCreateUser from './admin-Pages/AdminCreateUser.jsx';
-import ReservasCliente from './ReservasCliente.jsx';
 import ProfesionalesReeservas from './profesional-componentes-paginas/ProfesionalReservas.jsx';
 import SecretariaReservas from './secretaria-componentes-paginas/SecretariaReservas.jsx';
 import ClienteReservas from './cliente-componentes-paginas/ClienteReservas.jsx';
@@ -151,7 +150,7 @@ function App() {
             } />
 
             <Route path="/clientes" element={<ProtectedRouteCliente><Clientes /></ProtectedRouteCliente>} />
-            <Route path="/reservasClientes" element={<ProtectedRouteCliente><ClienteReservas /></ProtectedRouteCliente>} />
+            
             <Route
               path="*"
               element={role === "user" ? <Navigate to="/clientes" /> : <Navigate to="/" />}
