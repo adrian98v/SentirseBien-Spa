@@ -13,6 +13,8 @@ function PaymentOption(){
 
 
     useEffect(()=>{
+        
+
         switch(servicio){
             case "Masaje AntiStress": setServiceLink("https://buy.stripe.com/test_aEUcPQaSm8NB5uE000"); break;
             case "Masaje Circulatorio": setServiceLink("https://buy.stripe.com/test_28o7vwaSm8NB7CM5kl"); break;
@@ -45,14 +47,14 @@ function PaymentOption(){
         </div>
             <div className="creditoDebito_container">
                 <button className="debitoButton" onClick={ ()=>{
-                    setMetodoPago("debito")
+                    // setMetodoPago("debito")
                     sessionStorage.setItem('metodo', "debito");
                     
                     window.location.href = serviceLink;
 
                 }}>Débito</button>
                 <button className="creditoButton" onClick={ ()=>{
-                    setMetodoPago("credito")
+                    // setMetodoPago("credito")
                     sessionStorage.setItem('metodo', "credito");
                     
                     window.location.href = serviceLink;

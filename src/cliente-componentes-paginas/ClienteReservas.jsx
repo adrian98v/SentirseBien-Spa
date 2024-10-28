@@ -17,7 +17,7 @@ import img_logo from '../assets/Logo_SPA-removebg-preview.png';
 function ClienteReservas() {
     const [reservasPagadas, setReservasPagadas] = useState([]);  
     const [reservasPendientes, setReservasPendientes] = useState([]);  
-    const { user, password } = useContext(DataContext); 
+    const { user, password, setServicio} = useContext(DataContext); 
     const history = useNavigate()
 
     // Función para obtener reservas pagadas desde la colección "reservaCompleta"
@@ -229,6 +229,7 @@ function ClienteReservas() {
                                         sessionStorage.setItem('IDPendiente', reserva.id);
 
                                         const miServicio = reserva.servicio;
+                                        setServicio(miServicio)
                                         // switch(miServicio){
                                         //     case "Masaje AntiStress": window.location.href = "https://buy.stripe.com/test_aEUcPQaSm8NB5uE000"; break;
                                         //     case "Masaje Circulatorio": window.location.href = "https://buy.stripe.com/test_28o7vwaSm8NB7CM5kl"; break;
