@@ -150,7 +150,7 @@ function App() {
             } />
 
             <Route path="/clientes" element={<ProtectedRouteCliente><Clientes /></ProtectedRouteCliente>} />
-            
+            <Route path="/reservasClientes" element={<ProtectedRouteCliente><ClienteReservas /></ProtectedRouteCliente>} />
             <Route
               path="*"
               element={role === "user" ? <Navigate to="/clientes" /> : <Navigate to="/" />}
