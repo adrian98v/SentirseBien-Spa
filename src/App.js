@@ -29,6 +29,7 @@ import ClienteReservas from './cliente-componentes-paginas/ClienteReservas.jsx';
 import AdminIngresos from './admin-Pages/AdminIngresosFecha.jsx';
 import Clientes from './Cliente.jsx';
 import PaymentOptions from './PaymentOpcion.js';
+import PaymentRedirect from './redirect.js'
 
 export const DataContext = createContext();
 
@@ -147,6 +148,10 @@ function App() {
 
             <Route path="/opcionPago" element={
               <PaymentOptions/>
+            } />
+
+            <Route path="/redirect" element={
+              <PaymentRedirect/>
             } />
 
             <Route path="/clientes" element={<ProtectedRouteCliente><Clientes /></ProtectedRouteCliente>} />
