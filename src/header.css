@@ -31,12 +31,27 @@
     transition: all 0.3s ease; /* Transición suave en hover */
 }
 
+
+
+
+
 /* Efecto hover para mejorar la interacción */
 .opciones button:hover {
     background-color: #f4c2c2; /* Cambia el color interior al hacer hover (un tono más oscuro de rosa) */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta la sombra en hover */
     transform: translateY(-2px); /* Eleva el botón ligeramente */
 }
+
+/*boton de descarga de color verde con un hover que hace que se ponga de color un verde más claro y que tenga letras blanca*/
+.opciones button:nth-child(6) {
+    background-color: #4CAF50;
+    color: white;
+}
+.opciones button:nth-child(6):hover{
+    background-color: #4caf4fc9;
+    
+}
+
 
 .login {
     display: flex;

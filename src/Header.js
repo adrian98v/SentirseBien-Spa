@@ -41,6 +41,8 @@ function Header() {
                 <button onClick={() => { history('/servicios'); setMenuOpen(!menuOpen) }}>Servicios</button>
                 <button onClick={() => { history('/contacto'); setMenuOpen(!menuOpen) }}>Contacto</button>
                 <button onClick={() => { history('/noticias'); setMenuOpen(!menuOpen) }}>Noticias</button>
+                <button className='descarga' onClick={() => { window.open("https://drive.google.com/file/d/1sjZhyv-ll0fmVlAsW86m3AJmoZTUv5WI/view?usp=sharing","_blank"); setMenuOpen(!menuOpen) }}>DESCARGAR APP</button>
+                
 
                 {user && (
                 <button onClick={() => { history('/misreservas'); setMenuOpen(!menuOpen) }}>Ir a Pagina Cliente</button>
